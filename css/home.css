@@ -1,0 +1,257 @@
+.low_body{
+    color:rgb(0, 0, 0);
+}
+
+h1{
+    font-size: 50px;
+    position: fixed;
+    left: 45%;
+    top: -3%;
+}
+
+#registo{
+    top: 50%;
+    position: absolute;
+    right: 35%;
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 10%;
+    text-align: center;
+}
+
+#barraPesq{
+ position: fixed;
+ left: 35%;
+ top: 11%;
+}
+
+#topico{
+    width: 60%;
+    height: 5%;
+    border-radius: 5px;
+    background: whitesmoke;
+}
+
+#pesquisa{
+    width: 30%;
+    height: 5%;
+    border-radius: 5px;
+    background: whitesmoke;
+}
+
+#pesquisa:hover{
+    background-color: rgb(199, 195, 195);
+    cursor: pointer;
+}
+
+#login{
+    top: 50%;
+    position: absolute;
+    right: 12%;
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 9%;
+    text-align: center;
+}
+ 
+.bar_alta{
+    /*background-color: rgb(169, 169, 92);*/
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    right: 0%; 
+    height: 10%;
+    width: 100%;
+
+}
+
+#titulo{
+    position: absolute;
+    left: 60%;
+    font-size: 500%;
+}
+
+html {
+    background-color: rgb(255, 242, 0);
+}
+
+#abaOpcoes {
+    display:none;
+    background-color: rgb(238, 203, 3);
+    width: 350px;
+    height: 450px;
+    z-index: 1;
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    border-radius: 12px;
+    border-color: rgb(169, 169, 92);
+    border-style: solid;
+}
+
+
+.btnAba {
+    border-radius: 12px;
+    border-color: rgb(169, 169, 92);
+    border-style: solid;
+    background-color:   whitesmoke;
+    width: 300px;
+    height: 60px;
+    font-size: 20px;
+    position: relative;
+    left: 20px;
+    top: 30px;
+}
+
+.btnAba:hover{
+     background-color: rgb(199, 195, 195);
+    cursor: pointer;
+
+}
+
+img {
+    mix-blend-mode: multiply;
+    width: 50px;
+    top:7%;
+    left:1%;
+}
+
+#lampada{
+    size: 10cm;
+    top: 10%;
+    width: 600px;
+    position: relative;
+     cursor: pointer;
+}
+
+#textCapa{
+   position: absolute;
+    top: 30%;
+    left: 55%;
+    font-size: 200%;
+}
+
+.botoes{
+    border-radius: 200px;
+    width: 45px;
+    mix-blend-mode: multiply;
+    top: 0%; 
+    left:0%;
+    position: absolute;
+} 
+
+#ops {
+    border-radius: 200px;
+    background-color: rgb(221, 221, 9);
+    top: 12%;
+    left: 2%;
+    width: 49px;
+    height: 49px;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+}
+
+input{
+    font-size: 25px;   
+}
+
+#criar{
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    background:whitesmoke;
+    cursor: pointer;
+    width: 150px;
+    height: 60px;
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+#criar:hover{
+    background-color: rgb(199, 195, 195);
+    cursor: pointer;
+}
+
+.popUp{
+    display: none;
+    width: 100px;
+    height: 500px;
+    top: 20%;
+    left: 12%;
+    position: absolute;
+    background-color: rgb(169, 169, 92);
+    border-radius: 30px;
+
+}
+.popUp .fechar{
+    border-radius: 30px;
+    height: 80px;
+    width: 40px;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    vertical-align: top;
+    z-index: 2;
+}
+
+#ideiasScroll{
+    background-color: rgb(238, 203, 3);
+    height: 100%;
+    width: 70%;
+    position: fixed;
+    top :20%;
+    left: 15%;
+    border-radius: 10px;
+    border-color: rgb(169, 169, 92);
+    border-style: solid;
+    z-index: -1;
+}
+
+
+.ideia{
+    position: fixed;
+    height: 30%;
+    width: 65%;
+    left: 18%;
+    cursor: pointer;
+    border-radius: 15px;
+    
+ display: flex;
+     
+}
+
+.ideia:hover{
+    background-color: rgb(209, 178, 3);
+}
+
+.imgIdeia{
+    border-style:solid;
+    border-color:   rgb(116, 26, 26);
+    border: width 5px; 
+    height: 200px;
+    width: 150px;
+    margin: 20px;
+    border-radius: 10px;
+    
+}
+
+.tituloIdeia{
+position: relative;
+    left: 25%;
+    top: -5%;
+    align-items: center;
+    font-size: 30px;
+}
+
+.descriIdeia{
+    
+    position: relative;
+    left: 10%;
+    top: 15%;
+    align-items: center;
+    font-size: 30px;
+
+}

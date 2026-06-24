@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ideias</title>
+
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+    <div class="bar_alta">
+
+        <!-- MENU -->
+        <div>
+
+            <button id="ops">
+                <img class="botoes"
+                     src="images/3bar.png"
+                     alt="Menu">
+            </button>
+
+            <div id="abaOpcoes">
+
+                <button class="btnAba"
+                        onclick="location.href='perfil.html'">
+                    Perfil
+                </button>
+
+                <br><br>
+
+                <button class="btnAba">
+                    Favoritos
+                </button>
+
+                <br><br>
+
+                <button class="btnAba" onclick="location.href='myIdeiasPage.html'">
+                    Minhas Ideias
+                </button>
+
+                <br><br>
+
+                <button class="btnAba" onclick="location.href='amigosPage.html'" >
+                    Amigos
+                </button>
+
+                <br><br>
+
+                <button class="btnAba">
+                    Grupos
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- TITULO -->
+        <h1 class="titulo">Ideias</h1>
+
+        <!-- PESQUISA -->
+        <div id="barraPesq">
+
+            <form id="barraPesquisa">
+
+                <input type="text"
+                       id="topico"
+                       name="topico"
+                       placeholder="O que procura?">
+
+                <input id="pesquisa"
+                       type="submit"
+                       value="Pesquisar">
+
+            </form>
+
+        </div>
+
+        <!-- BOTÃO -->
+        <button id="criar"
+                onclick="location.href='criarIdeia.html'">
+            Criar uma ideia
+        </button>
+
+    </div>
+
+    <!-- CONTEÚDO -->
+    <div class="low_body">
+
+        <div id="ideiasScroll">
+
+            <br>
+
+            <div class="ideia">
+
+                <div class="imgIdeia"></div>
+
+                <h2 class="tituloIdeia">
+                    Título da ideia
+                </h2>
+
+                <p class="descriIdeia">
+                    Descrição da ideia
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- POPUPS -->
+        <div class="popUp" id="CriaIdeia">
+            <button class="fechar">X</button>
+        </div>
+
+        <div class="popUp" id="ProcuraIdeia"></div>
+
+    </div>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const aba = document.getElementById("abaOpcoes");
+            const botao = document.getElementById("ops");
+            const pesquisa = document.getElementById("barraPesquisa");
+
+            // esconder menu ao iniciar
+            aba.style.display = "none";
+
+            // abrir/fechar menu
+            botao.addEventListener("click", function () {
+
+                if (aba.style.display === "none") {
+                    aba.style.display = "block";
+                } else {
+                    aba.style.display = "none";
+                }
+
+            });
+
+           
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+            if (event.target == aba) {
+
+                if (aba.style.display === "block") {
+                    aba.style.display = "none";
+                }
+                
+            }
+            }
+
+            // pesquisa
+            pesquisa.addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+                const texto = document.getElementById("topico").value;
+
+                console.log("Pesquisar:", texto);
+
+                alert("A pesquisar por: " + texto);
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

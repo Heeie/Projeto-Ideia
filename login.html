@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <div class="low_body">
+
+        <img id="lampada"
+             src="images/lampada-de-ideia.png"
+             alt="Lampada"
+             onclick="location.href='capa.html'">
+
+        <div id="dform">
+
+            <h1>Login</h1>
+
+            <form id="formu">
+
+                <label for="nome">Nome de utilizador:</label><br>
+                <input type="text"
+                       id="nome"
+                       name="nome"
+                       placeholder="Escreve o teu nome">
+                <br><br>
+
+                <label for="password">Qual vai ser a palavra-passe da conta?</label><br>
+                <input type="password"
+                       id="password"
+                       name="password"
+                       placeholder="Escreve a password">
+                <br><br>
+
+                <input id="subme"
+                       type="submit"
+                       value="Submeter">
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("formu").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Aqui podes validar login
+            const nome = document.getElementById("nome").value;
+            const password = document.getElementById("password").value;
+
+            console.log(nome, password);
+
+            // Redireciona
+            window.location.href = "body.html";
+        });
+    </script>
+
+</body>
+</html>

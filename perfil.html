@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Perfil</title>
+
+    <link rel="stylesheet" href="css/perfil.css">
+</head>
+
+<body>
+
+    <div class="low_body">
+
+        <img id="lampada"
+             src="images/lampada-de-ideia.png"
+             alt="Lampada"
+             onclick="location.href='body.html'">
+
+        <div id="dform">
+
+            <h1>Informação do Utilizador</h1>
+            <p class="info">Pseudo nome</p>
+            <p class="info">Pseudo email</p>
+
+            <button class="botao" id="formInfo">Alterar Informações</button>
+
+            <form id="formu">
+
+                <label for="nome">Nome:</label><br>
+                <input type="text"
+                       id="nome"
+                       name="nome"
+                       value="Sonhador"
+                       required>
+                <br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email"
+                       id="email"
+                       name="email"
+                       value="sonhador@email.com"
+                       required>
+                <br><br>
+
+                <input id="subme"
+                       type="submit"
+                       value="Guardar" >
+
+            </form>
+
+        </div>
+
+        <br><br>
+
+        <div class="infoSection">
+            <h1>Configuranções</h1>
+
+            <button class="botao">Apagar Conta</button>
+            <br><br>
+            <button class="botao">Alterar Idioma</button>
+
+
+        </div>
+
+       
+
+    </div>
+
+   <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("formu");
+    const botao = document.getElementById("formInfo");
+    const info = document.querySelectorAll(".info");
+
+    // começa escondido
+    form.style.display = "none";
+
+    botao.addEventListener("click", function () {
+
+        const estaAberto = form.style.display === "block";
+
+        if (!estaAberto) {
+
+            form.style.display = "block";
+
+            // esconder info
+            info.forEach(el => el.style.display = "none");
+
+            // esconder botão
+            botao.style.display = "none";
+
+        }
+
+    });
+
+    // guardar alterações
+    form.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+
+        const textos = document.querySelectorAll(".info");
+
+        textos[0].textContent = nome;
+        textos[1].textContent = email;
+
+        alert("Informações atualizadas com sucesso!");
+
+        // voltar ao modo leitura
+        form.style.display = "none";
+
+        info.forEach(el => el.style.display = "block");
+
+        botao.style.display = "block";
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>

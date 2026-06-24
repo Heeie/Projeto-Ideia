@@ -1,0 +1,109 @@
+.low_body{
+    
+    color:rgb(0, 0, 0);
+}
+
+h1{
+    font-size: 42px;
+}
+
+
+html {
+    background-color: rgb(255, 242, 0);
+}
+
+img {
+    mix-blend-mode: multiply;
+    width: 5px;
+    top:7%;
+    left:1%;
+}
+
+#lampada{
+    size: 1cm;
+    top: 2%;
+    width: 100px;
+    position: fixed;
+    cursor: pointer
+}
+
+
+#dform{
+ 
+     background-color: rgb(238, 203, 3);
+    border: 4px;
+    border-style: solid;
+    border-radius: 4%;
+    border-color: rgb(0, 0, 0);
+    padding: 4%;
+    width: 30%;
+    font-size: 160%;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+  min-height: 62vh;
+}
+
+
+input{
+    font-size: 25px;
+   border-radius: 12px;
+   background-color:rgb(255, 247, 97);
+   width: 400px;
+}
+
+#subme{
+    position: absolute;
+    bottom: 3%;
+    left: 5%;
+    width: 90%;
+    height: 8%;
+    border-radius: 45px;
+    background: whitesmoke;
+}
+
+#subme:hover{
+    background-color: #000000;
+    color:antiquewhite;
+     cursor: pointer;
+}
+ #nome{
+    height: 40px;
+    width: 240px;
+ }
+ #email{
+    height: 40px;
+    width: 240px;
+}
+ #password{
+    height: 40px;
+    width: 400px;
+ }
+
+#voltar{ 
+     
+    bottom: 0%;
+    display: flex;
+    text-align: center;
+    height: 60px;
+    width: 140px;
+    color: black;
+    background-color: rgb(169, 169, 92);
+    
+}
+
+
+#img{
+    font-size: 20px;
+}
+
+textarea{
+    
+     background-color:rgb(255, 247, 97);
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+}
+
+
+
+
