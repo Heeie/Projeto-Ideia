@@ -6,6 +6,7 @@
     <title>Login</title>
 
     <link rel="stylesheet" href="css/login.css">
+    <script src="Javascript/login.js" defer></script>
 </head>
 
 <body>
@@ -47,20 +48,6 @@
 
     </div>
 
-    <script>
-        document.getElementById("formu").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            // Aqui podes validar login
-            const nome = document.getElementById("nome").value;
-            const password = document.getElementById("password").value;
-
-            console.log(nome, password);
-
-            // Redireciona
-            window.location.href = "body.html";
-        });
-    </script>
 
 </body>
 </html>

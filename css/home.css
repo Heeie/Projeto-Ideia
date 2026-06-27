@@ -80,12 +80,12 @@ html {
 #abaOpcoes {
     display:none;
     background-color: rgb(238, 203, 3);
-    width: 350px;
-    height: 450px;
+        width: 380px;
+    height: 480px;
     z-index: 1;
     position: absolute;
-    top: 25px;
-    left: 40px;
+    top: 10px;
+    left: 26px;
     border-radius: 12px;
     border-color: rgb(169, 169, 92);
     border-style: solid;
@@ -96,13 +96,13 @@ html {
     border-radius: 12px;
     border-color: rgb(169, 169, 92);
     border-style: solid;
-    background-color:   whitesmoke;
+    background-color: whitesmoke;
     width: 300px;
     height: 60px;
     font-size: 20px;
     position: relative;
-    left: 20px;
-    top: 30px;
+    left: 46px;
+    top: 50px;
 }
 
 .btnAba:hover{
@@ -144,9 +144,10 @@ img {
 
 #ops {
     border-radius: 200px;
-    background-color: rgb(221, 221, 9);
-    top: 12%;
-    left: 2%;
+    
+     background-color: rgb(238, 203, 3);
+   top: 19%;
+    left: 2.2%;
     width: 49px;
     height: 49px;
     position: absolute;
