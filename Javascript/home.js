@@ -37,16 +37,19 @@
 
         
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-        if (event.target == aba) {
+        document.addEventListener("click", function (event) {
 
-            if (aba.style.display === "block") {
-                aba.style.display = "none";
-            }
-            
+    // Se o menu estiver aberto
+    if (aba.style.display === "block") {
+
+        // Se o clique não foi no menu nem no botão
+        if (!aba.contains(event.target) && !botao.contains(event.target)) {
+            aba.style.display = "none";
         }
-        }
+
+    }
+
+});
 
         // pesquisa
         pesquisa.addEventListener("submit", function (event) {
