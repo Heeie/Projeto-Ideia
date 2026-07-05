@@ -1,79 +1,45 @@
 package main.Ideias.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import pt.ul.fc.css.urbanwheels.enums.SubsUtilizador;
+import java.util.ArrayList;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorValue("CLIENTE")
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "tipo" // campo que vai ser usado no JSON para identificar o subtipo
+)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Cliente.class, name = "CLIENTE")
+})
+public class Cliente extends Utilizador {
 
-public class Cliente {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ideia> ideiasCriadas = new ArrayList<>();
 
-    @Column(unique = true, nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private String nome;
-
-    
-    @Column(nullable = false)
-    private String password;
-
-    public Cliente() {}
-
-    public Cliente(String email, String nome, String password) {
-        this.email = email;
-        this.nome = nome;
-        this.password = password;
+    public Cliente() {
+        super();
     }
 
-    public Long getId() {
-        return id;
+    public Cliente(String email, String nome) {
+        super(email, nome);
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public List<Ideia> getHistorico() {
+        return ideiasCriadas;
     }
 
-    public String getEmail() {
-        return email;
+    public void setHistorico(List<Ideia> historico) {
+        this.historico = ideiasCriadas;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public SubsUtilizador getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String p) {
-        this.password = p;
-    }
-
 
 }

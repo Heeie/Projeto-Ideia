@@ -1,6 +1,6 @@
 package main.Ideias.entities;
 
-import main.Client;
+import  main.Ideias.entities.Cliente;
 import main.Ideias.enums.CategoriaIdeia;
 
 @Entity
