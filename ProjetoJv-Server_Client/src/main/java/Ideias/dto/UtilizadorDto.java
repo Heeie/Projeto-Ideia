@@ -1,4 +1,4 @@
-package main.Ideias.dto;
+package Ideias.dto;
 
 
 public record UtilizadorDto(

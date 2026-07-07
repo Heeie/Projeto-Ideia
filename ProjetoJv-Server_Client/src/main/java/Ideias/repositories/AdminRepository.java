@@ -1,7 +1,9 @@
-package main.Ideias.repositories;
+package Ideias.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import main.Ideias.entities.Admin;
+import Ideias.entities.Admin;
 
 public interface AdminRepository extends JpaRepository<Admin, Long> {
+	
+	
 }

@@ -1,22 +1,22 @@
-package main.Ideias.controllers;
+package Ideias.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import main.Ideias.entities.Utilizador;
-import main.Ideias.services.*;
-import main.Ideias.dto.*;
+import Ideias.entities.Utilizador;
+import Ideias.services.*;
+import Ideias.dto.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/utilizadores")
-public class UtilizadorController {
+public class IdeiaController {
 
-    private final UtilizadorService utilizadorService;
+    private final IdeiaController ideiaController;
 
-    public UtilizadorController(UtilizadorService utilizadorService) {
-        this.utilizadorService = utilizadorService;
-    }
+    public IdeiaController(IdeiaController ideiaController) {
+        this.ideiaController = ideiaController;
+        }
 
     // Caso H — Registar novo utilizador (Cliente ou Admin)
     @PostMapping

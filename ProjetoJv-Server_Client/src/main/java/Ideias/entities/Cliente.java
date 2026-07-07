@@ -1,4 +1,4 @@
-package main.Ideias.entities;
+package Ideias.entities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,6 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-
 
 
 @Entity
@@ -30,8 +29,8 @@ public class Cliente extends Utilizador {
         super();
     }
 
-    public Cliente(String email, String nome) {
-        super(email, nome);
+    public Cliente(String email, String nome, String password) {
+        super(email, nome, password);
     }
 
     public List<Ideia> getHistorico() {
@@ -39,7 +38,7 @@ public class Cliente extends Utilizador {
     }
 
     public void setHistorico(List<Ideia> historico) {
-        this.historico = ideiasCriadas;
+    	this.ideiasCriadas = historico;
     }
 
 }

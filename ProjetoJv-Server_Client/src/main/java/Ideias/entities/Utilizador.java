@@ -1,4 +1,4 @@
-package main.Ideias.entities;
+package Ideias.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
@@ -12,10 +12,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 
-import main.Ideias.entities.Ideia;
+import Ideias.entities.Ideia;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+
+import jakarta.persistence.Table;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
+import java.util.ArrayList;
 
 
 
@@ -43,9 +49,9 @@ public class Utilizador {
     private List<Ideia> ideiasFav = new ArrayList<>();
 
 
-    public Cliente() {}
+    public Utilizador() {}
 
-    public Cliente(String email, String nome, String password) {
+    public Utilizador(String email, String nome, String password) {
         this.email = email;
         this.nome = nome;
         this.password = password;
@@ -75,8 +81,8 @@ public class Utilizador {
         this.nome = nome;
     }
 
-    public SubsUtilizador getPassword() {
-        return this.password;
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String p) {

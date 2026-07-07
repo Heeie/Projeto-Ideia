@@ -1,7 +1,7 @@
-package main.Ideias.repositories;
+package Ideias.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import main.Ideias.entities.Ideia;
+import Ideias.entities.Ideia;
 
 public interface IdeiaRepository extends JpaRepository<Ideia, Long> {
 }

@@ -1,13 +1,13 @@
-package main.Ideias.services;
+package Ideias.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.Ideias.entities.Utilizador;
-import main.Ideias.enums.*;
-import main.Ideias.repositories.UtilizadorRepository;
+import Ideias.entities.Utilizador;
+import Ideias.enums.*;
+import Ideias.repositories.UtilizadorRepository;
 
 @Service
 public class UtilizadorService {
@@ -100,8 +100,6 @@ public class UtilizadorService {
             throw new IllegalArgumentException("O nome do utilizador não pode estar vazio.");
         }
 
-        if (utilizador.getSubscricao() == null) {
-            throw new IllegalArgumentException("A subscrição do utilizador não pode ser nula.");
-        }
+        
     }
 }

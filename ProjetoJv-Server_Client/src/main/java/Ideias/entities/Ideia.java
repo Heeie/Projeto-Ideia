@@ -1,7 +1,10 @@
-package main.Ideias.entities;
+package Ideias.entities;
 
-import  main.Ideias.entities.Cliente;
-import main.Ideias.enums.CategoriaIdeia;
+import Ideias.entities.Cliente;
+import Ideias.enums.CategoriaIdeia;
+import jakarta.persistence.*;
+
+import Ideias.enums.CategoriaIdeia;
 
 @Entity
 public class Ideia {
@@ -56,22 +59,23 @@ public class Ideia {
         this.categoria = categoria;
     }
 
-    public String  getReservadoPor() {
+    public String  getDescricao() {
         return this.descricao;
     }
 
-    public void setReservadoPor(String descricao) {
+    public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
    
 
-    public Cliente  getEstacao() {
-        return this.cliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setEstacao(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
 
 }

@@ -1,10 +1,10 @@
-package main.Ideias.controllers;
+package Ideias.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import main.Ideias.entities.Utilizador;
-import main.Ideias.services.*;
-import main.Ideias.dto.*;
+import main.java.Ideias.entities.Utilizador;
+import main.java.Ideias.services.*;
+import main.java.Ideias.dto.*;
 
 import java.util.List;
 

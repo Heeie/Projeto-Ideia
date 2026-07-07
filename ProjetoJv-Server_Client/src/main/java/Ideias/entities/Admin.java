@@ -1,8 +1,7 @@
-package main.Ideias.entities;
+package Ideias.entities;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-
 
 
 @Entity
@@ -13,8 +12,8 @@ public class Admin extends Utilizador{
         super();
     }
 
-    public Admin(String email, String nome, SubsUtilizador subscricao) {
-        super(email, nome, subscricao);
+    public Admin(String email, String nome, String password) {
+        super(email, nome, password);
     }
 
 }

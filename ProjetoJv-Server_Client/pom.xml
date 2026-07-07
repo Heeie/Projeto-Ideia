@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>src.main.Ideias</groupId>
-    <artifactId>salesys</artifactId>
+    <artifactId>ideiasys</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <name>Springboot SaleSys</name>
