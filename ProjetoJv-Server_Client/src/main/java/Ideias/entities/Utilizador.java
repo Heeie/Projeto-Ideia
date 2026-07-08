@@ -47,7 +47,7 @@ public class Utilizador {
 
     @OneToMany(mappedBy = "utilizador")
     private List<Ideia> ideiasFav = new ArrayList<>();
-
+    
 
     public Utilizador() {}
 
@@ -55,6 +55,14 @@ public class Utilizador {
         this.email = email;
         this.nome = nome;
         this.password = password;
+    }
+    
+    public List<Ideia> getIdeiasFav() {
+        return ideiasFav;
+    }
+
+    public void setIdeiasFav(List<Ideia> ideiasFav) {
+        this.ideiasFav = ideiasFav;
     }
 
     public Long getId() {

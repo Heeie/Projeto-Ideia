@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Ideias.entities.Utilizador;
-import Ideias.enums.*;
 import Ideias.repositories.UtilizadorRepository;
 
 @Service
@@ -19,87 +18,97 @@ public class UtilizadorService {
         this.utilizadorRepository = utilizadorRepository;
     }
 
-
     // ===============================
-    // Obter todos os utilizadores
+    // Listar todos
     // ===============================
     public List<Utilizador> getAll() {
         return utilizadorRepository.findAll();
     }
 
     // ===============================
-    // Obter utilizador por ID
+    // Procurar por ID
     // ===============================
     public Utilizador getById(Long id) {
         return utilizadorRepository.findById(id)
                 .orElseThrow(() ->
-                        new IllegalArgumentException("Utilizador com id " + id + " não encontrado."));
+                        new IllegalArgumentException("Utilizador não encontrado."));
     }
 
     // ===============================
-    // Obter utilizador por email
+    // Procurar por email
     // ===============================
     public Utilizador getByEmail(String email) {
         return utilizadorRepository.findByEmail(email)
                 .orElseThrow(() ->
-                        new IllegalArgumentException("Utilizador com email '" + email + "' não encontrado."));
+                        new IllegalArgumentException("Utilizador não encontrado."));
     }
 
     // ===============================
-    // Criar utilizador (subclasse)
+    // Criar
     // ===============================
     public <T extends Utilizador> T criarUtilizador(T utilizador) {
 
         validarUtilizador(utilizador);
 
         if (utilizadorRepository.findByEmail(utilizador.getEmail()).isPresent()) {
-            throw new IllegalArgumentException("Já existe um utilizador com o email: " + utilizador.getEmail());
+            throw new IllegalArgumentException("Já existe um utilizador com esse email.");
         }
 
         return utilizadorRepository.save(utilizador);
     }
 
     // ===============================
-    // Atualizar dados de utilizador
+    // Atualizar
     // ===============================
-    public Utilizador atualizarUtilizador(Long id, String nome, SubsUtilizador subscricao) {
+    public Utilizador atualizarUtilizador(Long id,
+                                          String nome,
+                                          String email,
+                                          String password) {
+
         Utilizador utilizador = getById(id);
 
-        if (nome != null && !nome.isBlank()) {
+        if (nome != null && !nome.isBlank())
             utilizador.setNome(nome);
-        }
 
-        if (subscricao != null) {
-            utilizador.setSubscricao(subscricao);
-        }
+        if (email != null && !email.isBlank())
+            utilizador.setEmail(email);
+
+        if (password != null && !password.isBlank())
+            utilizador.setPassword(password);
+
+        validarUtilizador(utilizador);
 
         return utilizadorRepository.save(utilizador);
     }
 
     // ===============================
-    // Remover utilizador
+    // Remover
     // ===============================
     public void removerUtilizador(Long id) {
+
+        if (!utilizadorRepository.existsById(id)) {
+            throw new IllegalArgumentException("Utilizador não existe.");
+        }
+
         utilizadorRepository.deleteById(id);
     }
 
     // ===============================
-    // Validações básicas
+    // Validação
     // ===============================
     private void validarUtilizador(Utilizador utilizador) {
 
-        if (utilizador.getEmail() == null || utilizador.getEmail().isBlank()) {
-            throw new IllegalArgumentException("O email do utilizador não pode estar vazio.");
-        }
+        if (utilizador.getNome() == null || utilizador.getNome().isBlank())
+            throw new IllegalArgumentException("Nome obrigatório.");
 
-        if (!utilizador.getEmail().contains("@")) {
+        if (utilizador.getEmail() == null || utilizador.getEmail().isBlank())
+            throw new IllegalArgumentException("Email obrigatório.");
+
+        if (!utilizador.getEmail().contains("@"))
             throw new IllegalArgumentException("Email inválido.");
-        }
 
-        if (utilizador.getNome() == null || utilizador.getNome().isBlank()) {
-            throw new IllegalArgumentException("O nome do utilizador não pode estar vazio.");
-        }
-
-        
+        if (utilizador.getPassword() == null || utilizador.getPassword().isBlank())
+            throw new IllegalArgumentException("Password obrigatória.");
     }
+
 }

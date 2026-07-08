@@ -1,12 +1,13 @@
 package Ideias.controllers;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import main.java.Ideias.entities.Utilizador;
-import main.java.Ideias.services.*;
-import main.java.Ideias.dto.*;
 
-import java.util.List;
+import Ideias.dto.UtilizadorDto;
+import Ideias.entities.Utilizador;
+import Ideias.services.UtilizadorService;
 
 @RestController
 @RequestMapping("/api/utilizadores")
@@ -18,39 +19,53 @@ public class UtilizadorController {
         this.utilizadorService = utilizadorService;
     }
 
-    // Caso H — Registar novo utilizador (Cliente ou Admin)
+    // Criar
     @PostMapping
     public ResponseEntity<Utilizador> criar(@RequestBody Utilizador utilizador) {
-        return ResponseEntity.ok(utilizadorService.criarUtilizador(utilizador));
+
+        return ResponseEntity.ok(
+                utilizadorService.criarUtilizador(utilizador)
+        );
     }
 
-    // Caso I — Listar todos os utilizadores
+    // Listar
     @GetMapping
     public List<Utilizador> listar() {
         return utilizadorService.getAll();
     }
 
-    // Caso J — Obter detalhes de um utilizador
+    // Procurar por ID
     @GetMapping("/{id}")
     public ResponseEntity<Utilizador> detalhes(@PathVariable Long id) {
-        return ResponseEntity.ok(utilizadorService.getById(id));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Utilizador> atualizar(
-            @PathVariable Long id,
-            @RequestBody UpdateUtilizadorDto dto) {
 
         return ResponseEntity.ok(
-                utilizadorService.atualizarUtilizador(id, dto.nome(), dto.subscricao())
+                utilizadorService.getById(id)
         );
     }
 
+    // Atualizar
+    @PutMapping("/{id}")
+    public ResponseEntity<Utilizador> atualizar(
+            @PathVariable Long id,
+            @RequestBody UtilizadorDto dto) {
 
-    // Remover utilizador
+        return ResponseEntity.ok(
+                utilizadorService.atualizarUtilizador(
+                        id,
+                        dto.nome(),
+                        dto.email(),
+                        dto.password()
+                )
+        );
+    }
+
+    // Remover
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remover(@PathVariable Long id) {
+
         utilizadorService.removerUtilizador(id);
+
         return ResponseEntity.noContent().build();
     }
+
 }

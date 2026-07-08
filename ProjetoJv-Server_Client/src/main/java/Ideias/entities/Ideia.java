@@ -2,9 +2,10 @@ package Ideias.entities;
 
 import Ideias.entities.Cliente;
 import Ideias.enums.CategoriaIdeia;
+import Ideias.enums.IdeiaStatus;
 import jakarta.persistence.*;
-
-import Ideias.enums.CategoriaIdeia;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import Ideias.enums.IdeiaStatus;
 
 @Entity
 public class Ideia {
@@ -18,21 +19,32 @@ public class Ideia {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private CategoriaIdeia categoria = CategoriaIdeia.COZINHA;
+    private CategoriaIdeia categoria;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private IdeiaStatus estado;
 
     @Column(nullable = true)
     private String descricao;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
+    @JsonBackReference
     private Cliente cliente;
 
+    
+    @ManyToOne
+    @JoinColumn(name = "utilizador_favorito_id")
+    private Utilizador utilizador;
+    
     public Ideia() {}
 
     public Ideia(String nome, CategoriaIdeia categoria, Cliente cliente) {
         this.nome = nome;
         this.categoria = categoria;
         this.cliente = cliente;
+        this.estado = IdeiaStatus.PRIVADA;
     }
 
     public Long getId() {
@@ -58,6 +70,15 @@ public class Ideia {
     public void setCategoria(CategoriaIdeia categoria) {
         this.categoria = categoria;
     }
+    
+    public IdeiaStatus getEstado() {
+        return this.estado;
+    }
+
+
+    public void setEstado(IdeiaStatus estado) {
+        this.estado = estado;
+    }
 
     public String  getDescricao() {
         return this.descricao;
@@ -75,6 +96,14 @@ public class Ideia {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    
+    public Utilizador getUtilizador() {
+        return utilizador;
+    }
+
+    public void setUtilizador(Utilizador utilizador) {
+        this.utilizador = utilizador;
     }
 
 

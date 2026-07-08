@@ -8,6 +8,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -20,9 +21,12 @@ import jakarta.persistence.OneToMany;
 @JsonSubTypes({
     @JsonSubTypes.Type(value = Cliente.class, name = "CLIENTE")
 })
-public class Cliente extends Utilizador {
+public class Cliente extends Utilizador {    
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "cliente",
+               cascade = CascadeType.ALL,
+               orphanRemoval = true)
+    @JsonManagedReference
     private List<Ideia> ideiasCriadas = new ArrayList<>();
 
     public Cliente() {
@@ -33,12 +37,12 @@ public class Cliente extends Utilizador {
         super(email, nome, password);
     }
 
-    public List<Ideia> getHistorico() {
+    public List<Ideia> getIdeiasCriadas() {
         return ideiasCriadas;
     }
 
-    public void setHistorico(List<Ideia> historico) {
-    	this.ideiasCriadas = historico;
+    public void setIdeiasCriadas(List<Ideia> ideiasCriadas) {
+        this.ideiasCriadas = ideiasCriadas;
     }
 
 }

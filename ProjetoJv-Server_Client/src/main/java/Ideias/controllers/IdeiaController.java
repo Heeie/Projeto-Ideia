@@ -1,56 +1,59 @@
 package Ideias.controllers;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import Ideias.entities.Utilizador;
-import Ideias.services.*;
-import Ideias.dto.*;
-
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import Ideias.dto.IdeiaDto;
+import Ideias.entities.Ideia;
+import Ideias.services.IdeiaService;
+
 @RestController
-@RequestMapping("/api/utilizadores")
+@RequestMapping("/api/ideias")
 public class IdeiaController {
 
-    private final IdeiaController ideiaController;
+    private final IdeiaService ideiaService;
 
-    public IdeiaController(IdeiaController ideiaController) {
-        this.ideiaController = ideiaController;
-        }
+    public IdeiaController(IdeiaService ideiaService) {
+        this.ideiaService = ideiaService;
+    }
 
-    // Caso H — Registar novo utilizador (Cliente ou Admin)
+    // Criar ideia
     @PostMapping
-    public ResponseEntity<Utilizador> criar(@RequestBody Utilizador utilizador) {
-        return ResponseEntity.ok(utilizadorService.criarUtilizador(utilizador));
+    public ResponseEntity<Ideia> criar(@RequestBody IdeiaDto dto) {
+        return ResponseEntity.ok(ideiaService.criarIdeia(dto));
     }
 
-    // Caso I — Listar todos os utilizadores
+    // Listar todas
     @GetMapping
-    public List<Utilizador> listar() {
-        return utilizadorService.getAll();
+    public List<Ideia> listar() {
+        return ideiaService.getAll();
     }
 
-    // Caso J — Obter detalhes de um utilizador
+    // Obter por id
     @GetMapping("/{id}")
-    public ResponseEntity<Utilizador> detalhes(@PathVariable Long id) {
-        return ResponseEntity.ok(utilizadorService.getById(id));
+    public ResponseEntity<Ideia> detalhes(@PathVariable Long id) {
+        return ResponseEntity.ok(ideiaService.getById(id));
     }
 
+    // Atualizar
     @PutMapping("/{id}")
-    public ResponseEntity<Utilizador> atualizar(
+    public ResponseEntity<Ideia> atualizar(
             @PathVariable Long id,
-            @RequestBody UpdateUtilizadorDto dto) {
+            @RequestBody IdeiaDto dto) {
 
         return ResponseEntity.ok(
-                utilizadorService.atualizarUtilizador(id, dto.nome(), dto.subscricao())
+                ideiaService.atualizarIdeia(id, dto)
         );
     }
 
-
-    // Remover utilizador
+    // Eliminar
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remover(@PathVariable Long id) {
-        utilizadorService.removerUtilizador(id);
+
+        ideiaService.removerIdeia(id);
+
         return ResponseEntity.noContent().build();
     }
 }
