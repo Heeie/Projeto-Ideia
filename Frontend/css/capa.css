@@ -1,7 +1,22 @@
 .low_body{
     position:relative; 
     color:rgb(0, 0, 0);
+    flex: 1;
 }
+
+html {
+    background-color: rgb(255, 242, 0);
+}
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+    
 
 h1{
     font-size: 42px;
@@ -46,9 +61,7 @@ h1{
     font-size: 500%;
 }
 
-html {
-    background-color: rgb(255, 242, 0);
-}
+
 
 img {
     mix-blend-mode: multiply;
@@ -75,12 +88,16 @@ img {
 
 #bottomText{
     font-size: 25px;
-   position: fixed;
-    bottom: 2%;
-    left: 25%;
-    display:flex;
-  justify-content: center;
-  align-items: center;
+   
+
+  width: 100%;
+    height: 100px;
+    background-color: #d1c200;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-weight: bold;
 }
 
 
@@ -102,4 +119,40 @@ img {
 .low_body button:hover{
      color: rgb(0, 0, 0);
     background-color:rgb(255, 247, 97);
+}
+
+.footer{
+    width: 100%;
+    background-color: #d1c200;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 60px;
+    border-top: 2px solid #b9ab00;
+}
+
+.footer-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.footer-links a{
+    text-decoration: none;
+    color: #222;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.footer-links a:hover{
+    color: white;
+}
+
+.footer-copy{
+    font-size: 14px;
+    color: #444;
+    margin: 0;
 }

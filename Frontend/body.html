@@ -11,114 +11,93 @@
 
 <body>
 
+    <!-- 1. BARRA SUPERIOR (TOPO) -->
     <div class="bar_alta">
-
-        <!-- MENU -->
         <div>
-
             <button id="ops">
-                <img class="botoes"
-                     src="images/3bar.png"
-                     alt="Menu">
+                <img class="botoes" src="images/3bar.png" alt="Menu">
             </button>
-
             <div id="abaOpcoes">
-
-                <button class="btnAba"
-                        onclick="location.href='perfil.html'">
-                    Perfil
-                </button>
-
-                <br><br>
-
-                <button class="btnAba">
-                    Favoritos
-                </button>
-
-                <br><br>
-
-                <button class="btnAba" onclick="location.href='myIdeiasPage.html'">
-                    Minhas Ideias
-                </button>
-
-                <br><br>
-
-                <button class="btnAba" onclick="location.href='amigosPage.html'" >
-                    Amigos
-                </button>
-
-                <br><br>
-
-                <button class="btnAba">
-                    Grupos
-                </button>
-
+                <button class="btnAba" onclick="location.href='perfil.html'">Perfil</button><br><br>
+                <button class="btnAba">Favoritos</button><br><br>
+                <button class="btnAba" onclick="location.href='myIdeiasPage.html'">Minhas Ideias</button><br><br>
+                <button class="btnAba" onclick="location.href='amigosPage.html'">Amigos</button><br><br>
+                <button class="btnAba">Grupos</button>
             </div>
-
         </div>
 
-        <!-- TITULO -->
         <h1 class="titulo">Ideias</h1>
 
-        <!-- PESQUISA -->
         <div id="barraPesq">
-
             <form id="barraPesquisa">
-
-                <input type="text"
-                       id="topico"
-                       name="topico"
-                       placeholder="O que procura?">
-
-                <input id="pesquisa"
-                       type="submit"
-                       value="Pesquisar">
-
+                <input type="text" id="topico" name="topico" placeholder="O que procura?">
+                <input id="pesquisa" type="submit" value="Pesquisar">
             </form>
-
         </div>
 
-        <!-- BOTÃO -->
-        <button id="criar"
-                onclick="location.href='criarIdeia.html'">
-            Criar uma ideia
-        </button>
-
+        <button id="criar" onclick="location.href='criarIdeia.html'">Criar uma ideia</button>
     </div>
 
-    <!-- CONTEÚDO -->
+    <!-- 2. CORPO DA PÁGINA (MEIO) -->
     <div class="low_body">
-
         <div id="ideiasScroll">
 
-            <br>
 
+            <!-- Bloco de exemplo 1 -->
             <div class="ideia">
-
                 <div class="imgIdeia"></div>
-
-                <h2 class="tituloIdeia">
-                    Título da ideia
-                </h2>
-
-                <p class="descriIdeia">
-                    Descrição da ideia
-                </p>
-
+                <div class="textosIdeia">
+                    <h2 class="tituloIdeia">Título da ideia 1</h2>
+                    <p class="descriIdeia">Descrição da ideia 1</p>
+                </div>
+            </div>
+            
+            <!-- Bloco de exemplo 2 (Adicionado para testar o scroll) -->
+            <div class="ideia">
+                <div class="imgIdeia"></div>
+                <div class="textosIdeia">
+                    <h2 class="tituloIdeia">Título da ideia 2</h2>
+                    <p class="descriIdeia">Descrição da ideia 2</p>
+                </div>
             </div>
 
+
+            <!-- Bloco de exemplo 2 (Adicionado para testar o scroll) -->
+            <div class="ideia">
+                <div class="imgIdeia"></div>
+                <div class="textosIdeia">
+                    <h2 class="tituloIdeia">Título da ideia 2</h2>
+                    <p class="descriIdeia">Descrição da ideia 2</p>
+                </div>
+            </div>
+
+            <!-- Bloco de exemplo 2 (Adicionado para testar o scroll) -->
+            <div class="ideia">
+                <div class="imgIdeia"></div>
+                <div class="textosIdeia">
+                    <h2 class="tituloIdeia">Título da ideia 2</h2>
+                    <p class="descriIdeia">Descrição da ideia 2</p>
+                </div>
+            </div>
+
+
+            <!-- Bloco de exemplo 2 (Adicionado para testar o scroll) -->
+            <div class="ideia">
+                <div class="imgIdeia"></div>
+                <div class="textosIdeia">
+                    <h2 class="tituloIdeia">Título da ideia 2</h2>
+                    <p class="descriIdeia">Descrição da ideia 2</p>
+                </div>
+            </div>
+
+
         </div>
-
-        <!-- POPUPS -->
-        <div class="popUp" id="CriaIdeia">
-            <button class="fechar">X</button>
-        </div>
-
-        <div class="popUp" id="ProcuraIdeia"></div>
-
     </div>
-
     
+    <!-- 3. RODAPÉ (BAIXO) -->
+    <footer id="bottom">
+        Sobre | Central de Ajuda | Termos de Serviço | Blog | Configurações
+    </footer>
 
 </body>
 

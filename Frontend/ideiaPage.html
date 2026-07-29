@@ -12,35 +12,36 @@
 <body>
 
     <div class="low_body">
+        <button id="voltar" onclick="history.back()">← Voltar</button>
 
         <img id="lampada"
              src="images/lampada-de-ideia.png"
              alt="Lampada"
              onclick="location.href='body.html'">
 
+            
         <br><br>
 
          <div id="ideiaDiv">
 
-            <br>
+            <div class="imgIdeia">
+                <img src="images/ideia1.jpg" alt="Imagem da ideia">
+            </div>
 
-            
+            <div class="conteudoIdeia">
 
-                <div class="imgIdeia"></div>
+                <h2 class="tituloIdeia">Título da ideia</h2>
 
-                <h2 class="tituloIdeia">
-                    Título da ideia
-                </h2>
-                
                 <h3 class="ctgIdeia">Categoria</h3>
 
                 <p class="descriIdeia">
-                    Descrição da ideia
+                    Esta é a descrição da ideia. Aqui podes colocar um texto mais longo
+                    sem que o layout fique desorganizado.
                 </p>
 
-
                 <button id="edit">Editar</button>
-            
+
+            </div>
 
         </div>
 
