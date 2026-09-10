@@ -155,21 +155,33 @@ body {
     justify-content: center;
 }
 
+#ops img{
+    mix-blend-mode: multiply;
+    height: 60px;
+    width: 60px;
+}
+
 .botoes {
     width: 25px;
+}
+
+#ops img:hover {
+
+    height: 70px;
+    width: 70px;
 }
 
 #abaOpcoes {
     display: none;
     background-color: rgb(238, 203, 3);
     width: 250px;
+    height: 320px;
     position: absolute;
     top: 70px;
-    left: 20px;
-    border-radius: 12px;
-    border: 2px solid rgb(169, 169, 92);
+    left: 0px;
     padding: 20px;
     z-index: 10;
+    border-radius: 12px;
 }
 
 .btnAba {
@@ -185,3 +197,6 @@ body {
 .btnAba:hover {
      background-color: rgb(199, 195, 195);
 }
+
+
+
