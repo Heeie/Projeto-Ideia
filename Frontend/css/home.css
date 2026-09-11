@@ -60,7 +60,7 @@ body {
     background-color: rgb(199, 195, 195);
 }
 
-#criar {
+#criar{
     background: whitesmoke;
     cursor: pointer;
     padding: 10px 20px;
@@ -71,6 +71,8 @@ body {
 
 #criar:hover {
     background-color: rgb(199, 195, 195);
+  
+    width: 110%;
 }
 
 /* 2. CORPO (ONDE FICAM OS CARDS DE IDEIAS) */
@@ -103,6 +105,9 @@ body {
 
 .ideia:hover {
     background-color: rgb(209, 178, 3);
+    height: 100%;
+    width: 105%;
+
 }
 
 .imgIdeia {
@@ -174,8 +179,8 @@ body {
 #abaOpcoes {
     display: none;
     background-color: rgb(238, 203, 3);
-    width: 250px;
-    height: 320px;
+    width: 350px;
+    height: 380px;
     position: absolute;
     top: 70px;
     left: 0px;
@@ -188,14 +193,19 @@ body {
     border-radius: 12px;
     border: 1px solid rgb(169, 169, 92);
     background-color: whitesmoke;
-    width: 100%;
+    width: 80%;
     height: 45px;
     font-size: 16px;
     cursor: pointer;
+    left: 10%;
+    top: 5%;
+    position: relative;
 }
 
 .btnAba:hover {
-     background-color: rgb(199, 195, 195);
+    background-color: rgb(199, 195, 195);
+    width: 85%;
+    height: 50px;
 }
 
 
