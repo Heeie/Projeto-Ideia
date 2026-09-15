@@ -145,6 +145,8 @@ body {
     justify-content: center;
     gap: 15px;
     font-weight: bold;
+    border-top-style: double;
+    border-top-width: 5px;
 }
 
 /* MENU LATERAL (Aba de Opções) */
