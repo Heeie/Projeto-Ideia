@@ -29,6 +29,13 @@ public class Cliente extends Utilizador {
     @JsonManagedReference
     private List<Ideia> ideiasCriadas = new ArrayList<>();
 
+
+    @OneToMany(mappedBy = "cliente",
+               cascade = CascadeType.ALL,
+               orphanRemoval = true)
+    @JsonManagedReference
+    private List<Pedido> pedidos = new ArrayList<>();
+
     public Cliente() {
         super();
     }
