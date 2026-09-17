@@ -53,7 +53,7 @@ body{
     font-size: 16px;
     cursor: pointer;
     left: 15px;
-    position: relative;
+    position: absolute;
 }
 
 .btnLateral:hover{
