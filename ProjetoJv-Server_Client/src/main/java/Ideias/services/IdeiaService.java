@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import Ideias.dto.IdeiaDto;
-import Ideias.entities.Cliente;
 import Ideias.entities.Ideia;
 import Ideias.repositories.IdeiaRepository;
 

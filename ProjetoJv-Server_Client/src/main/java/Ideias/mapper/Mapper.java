@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import Ideias.dto.IdeiaDto;
+import Ideias.dto.PedidoDto;
 import Ideias.dto.UtilizadorDto;
 import Ideias.entities.Admin;
 import Ideias.entities.Cliente;
 import Ideias.entities.Ideia;
+import Ideias.entities.Pedido;
 import Ideias.entities.Utilizador;
 
 public class Mapper {
@@ -113,5 +115,55 @@ public class Mapper {
 
         return ideia;
     }
+
+
+
+
+
+
+     // ========================================
+    //  ============== PEDIDO -> DTO ===========
+    //  ========================================
+
+    public static PedidoDto mapToPedidoDto(Pedido pedido) {
+
+        if (pedido == null)
+            return null;
+
+        return new PedidoDto(
+        	    pedido.getId(),
+        	    pedido.getEstado(),
+                pedido.getType(),
+                pedido.getPedinte(),
+                pedido.getJulgador()
+        	);
+    
+        }
+
+    public static List<PedidoDto> mapToPedidoDtoList(List<Pedido> pedido) {
+        return pedido.stream()
+                .map(Mapper::mapToPedidoDto)
+                .collect(Collectors.toList());
+    }
+
+    // ========================================
+    // ============== DTO -> PEDIDO ===========
+    // ========================================
+
+    public static Pedido mapDtoToPedido(PedidoDto dto) {
+
+        if (dto == null)
+            return null;
+
+        Pedido pedido = new Pedido();
+
+        pedido.setEstado(dto.estado());
+        pedido.setType(dto.tipo());
+        pedido.setPedinte(dto.pedinte());
+        pedido.setJulgador(dto.julgador());
+
+        return pedido;
+    }
+
 
 }

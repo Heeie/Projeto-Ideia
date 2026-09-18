@@ -1,10 +1,7 @@
 package Ideias.entities;
 
-import java.util.ArrayList;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import Ideias.enums.CategoriaIdeia;
 import Ideias.enums.EstadoPedido;
 import Ideias.enums.TypePedido;
 import jakarta.persistence.Column;
@@ -16,11 +13,9 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
+
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+
 
 @Entity
 @Table(
@@ -42,23 +37,20 @@ public class Pedido {
     @Column( nullable = false)
     private EstadoPedido estado;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
-    @JsonBackReference
-    private Cliente pedinte;
+    @Column( nullable = false)
+    private Long pedinte;
     
-
-    @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
-    @JsonBackReference
-    private Cliente julgador;
+    @Column( nullable = false)
+    private Long julgador;
     
-     public Pedido() {
-        super();
-    }
+     public Pedido() {}
 
-    public Pedido(TypePedido tipo, EstadoPedido estado, Cliente pedinte, Cliente julgador) {
-        super();
+
+    public Pedido(TypePedido tipo, EstadoPedido estado, Long pedinte, Long julgador) {
+        this.tipo = tipo;
+        this.estado = estado;
+        this.pedinte = pedinte;
+        this.julgador = julgador;
     }
 
     public TypePedido getType(){
@@ -77,20 +69,25 @@ public class Pedido {
         this.estado = p;
     }
 
-    public Cliente getPedinte(){
+    public Long getPedinte(){
         return this.pedinte;
     }
 
-    public void getPedinte( Cliente c){
+    public void setPedinte( Long c){
         this.pedinte = c;
     }
 
-    public Cliente getJulgador(){
+    public Long getJulgador(){
         return this.julgador;
     }
 
-    public void getJulgador( Cliente c){
+    public void setJulgador( Long c){
         this.julgador = c;
+    }
+
+
+    public Long getId() {
+        return this.id;
     }
 }
 

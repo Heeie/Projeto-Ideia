@@ -1,11 +1,11 @@
 package Ideias.entities;
 
-import Ideias.entities.Cliente;
+
 import Ideias.enums.CategoriaIdeia;
 import Ideias.enums.IdeiaStatus;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import Ideias.enums.IdeiaStatus;
+
 
 @Entity
 public class Ideia {

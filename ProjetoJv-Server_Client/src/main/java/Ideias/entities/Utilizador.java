@@ -1,22 +1,12 @@
 package Ideias.entities;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-
-import Ideias.entities.Ideia;
-
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-
 import jakarta.persistence.Table;
 import jakarta.persistence.OneToMany;
 

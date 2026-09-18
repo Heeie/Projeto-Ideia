@@ -1,6 +1,5 @@
 package Ideias.controller;
 
-import Ideias.dto.IdeiaDto;
 import Ideias.entities.Cliente;
 import Ideias.entities.Ideia;
 import Ideias.enums.CategoriaIdeia;
