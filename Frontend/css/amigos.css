@@ -2,8 +2,11 @@ body{
     margin:0;
     font-family: Arial, Helvetica, sans-serif;
     background: rgb(255,242,0);
-    overflow:auto;
+    
     display:inline-flex;
+
+    overflow:auto;
+    overflow-x:hidden;
 }
 
 .low_body{
@@ -73,7 +76,15 @@ body{
     top: 0px;
 }
 
-#barraPesq{
+#Amigos{
+    display: none;
+}
+
+#PesquisarAmigo{
+    display: none;
+}
+
+.barraPesq{
     position: relative;
     top: 10%;
     left: 30%;
@@ -91,7 +102,15 @@ body{
     color: black;
 }
 
-#pesquisa {
+#nomeU{
+    height: 40px;
+    width: 270px;
+    border-radius: 10px;
+    text-align: center;
+    color: black;
+}
+
+.pesquisa {
         background: whitesmoke;
     cursor: pointer;
     height: 45px;
@@ -101,7 +120,7 @@ body{
     
 }
 
-#pesquisa:hover {
+.pesquisa:hover {
     background-color: rgb(199, 195, 195);
     height: 50px;
     width: 85px;
@@ -109,38 +128,37 @@ body{
    
 }
 
-#Titulo{
+.Titulo{
     position: relative;
-    left: 350px;
+    left: 300px;
 }
 
-#ListAmigos{
+.ListAmigos{
     background: linear-gradient(to right, #c86d1d, rgb(210, 199, 1));
     height: 600px;
-    width: 650px;
+    width: 750px;
     border-radius: 10px;
     border-style: groove;
     border-color: goldenrod;
     border-width: 5px;
     position: relative;
     top: 25px;
-    left: 15%;
+    left: 10%;
 }
 
 .amigoConta{
     position: relative;
-    height: 40px;
+    height: 53px;
     width: 610px;
     display: flex;
     top: 30px;
-    left: 20px;
+    left: 60px;
     
 }
 
 .amigoConta:hover{
     background: linear-gradient(to right, #a45b1a, rgb(159, 151, 3));
-    height: 50px;
-    width: 620px;
+    
     border-radius: 10px;
     cursor: pointer;
 
@@ -150,7 +168,7 @@ body{
 .amigoConta button{
     position: absolute;
     right: 10px;
-    top: 7px;
+    top: 8px;
     height: 30px;
     width: 75px;
     color: black;
@@ -170,7 +188,7 @@ body{
     position: absolute;
     height: max-content;
     left: 20px;
-    top: -20px;
+    top: -9px;
 }
 
 .amigoConta p{
@@ -181,3 +199,73 @@ body{
     font-size: 25px;
     top: -15px;
 }
+
+
+.amigoPedido{
+    position: relative;
+    height: 53px;
+    width: 610px;
+    display: flex;
+    top: 30px;
+    left: 60px;
+    
+}
+
+.amigoPedido:hover{
+    background: linear-gradient(to right, #a45b1a, rgb(159, 151, 3));
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+    
+
+.amigoPedido #aceitarBtn{
+    position: absolute;
+    right: 100px;
+    top: 8px;
+    height: 30px;
+    width: 75px;
+    color: black;
+    background-color: rgb(21, 194, 12);
+    border-radius: 10px;
+    border-style: hidden;
+
+}
+
+.amigoPedido #recusarBtn{
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    height: 30px;
+    width: 75px;
+    color: black;
+    background-color: rgb(200, 17, 17);
+    border-radius: 10px;
+    border-style: hidden;
+
+}
+
+.amigoPedido #aceitarBtn:hover{
+    height: 35px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.amigoPedido #recusarBtn:hover{
+    height: 35px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.amigoPedido h2{
+    position: absolute;
+    height: max-content;
+    left: 20px;
+    top: -9px;
+}
+
+
+
+
+
+

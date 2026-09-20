@@ -18,7 +18,7 @@ document.getElementById("formu").addEventListener("submit", function(event) {
 
     // 4. Valida a palavra-passe
     if (userSalvo.password === pass) {
-        alert("Login feito com sucesso!!!!");
+        
         sessionStorage.setItem("userLoged", name);
         window.location.href = "body.html";
     } else {

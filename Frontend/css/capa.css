@@ -121,38 +121,3 @@ img {
     background-color:rgb(255, 247, 97);
 }
 
-.footer{
-    width: 100%;
-    background-color: #d1c200;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: 60px;
-    border-top: 2px solid #b9ab00;
-}
-
-.footer-links{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-bottom: 15px;
-}
-
-.footer-links a{
-    text-decoration: none;
-    color: #222;
-    font-size: 18px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.footer-links a:hover{
-    color: white;
-}
-
-.footer-copy{
-    font-size: 14px;
-    color: #444;
-    margin: 0;
-}
