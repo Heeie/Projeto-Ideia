@@ -1,11 +1,17 @@
 package Ideias.entities;
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import Ideias.enums.CategoriaIdeia;
 import Ideias.enums.IdeiaStatus;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 @Entity
 public class Ideia {
@@ -87,8 +93,6 @@ public class Ideia {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-   
 
     public Cliente getCliente() {
         return cliente;
