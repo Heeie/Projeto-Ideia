@@ -125,20 +125,19 @@ public class Mapper {
     //  ============== PEDIDO -> DTO ===========
     //  ========================================
 
-    public static PedidoDto mapToPedidoDto(Pedido pedido) {
+   public static PedidoDto mapToPedidoDto(Pedido pedido) {
 
         if (pedido == null)
             return null;
 
         return new PedidoDto(
-        	    pedido.getId(),
-        	    pedido.getEstado(),
-                pedido.getType(),
-                pedido.getPedinte(),
-                pedido.getJulgador()
-        	);
-    
-        }
+            pedido.getId(),
+            pedido.getType(),
+            pedido.getEstado(),
+            pedido.getPedinte(),
+            pedido.getJulgador()
+        );
+    }
 
     public static List<PedidoDto> mapToPedidoDtoList(List<Pedido> pedido) {
         return pedido.stream()

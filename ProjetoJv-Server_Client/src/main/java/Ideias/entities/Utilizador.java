@@ -2,19 +2,11 @@ package Ideias.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 import jakarta.persistence.Table;
 import jakarta.persistence.OneToMany;
 

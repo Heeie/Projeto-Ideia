@@ -1,17 +1,9 @@
 package Ideias.entities;
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 import Ideias.enums.CategoriaIdeia;
 import Ideias.enums.IdeiaStatus;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
 @Entity
 public class Ideia {
