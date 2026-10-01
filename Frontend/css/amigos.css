@@ -25,6 +25,7 @@ body{
     width: 90px;
     cursor: pointer;
     mix-blend-mode: hard-light;
+    transition: 0.3s;
 }
 
 #lampada:hover{
@@ -57,6 +58,7 @@ body{
     cursor: pointer;
     left: 15px;
     position: absolute;
+    transition: 0.3s;
 }
 
 .btnLateral:hover{
@@ -111,12 +113,14 @@ body{
 }
 
 .pesquisa {
-        background: whitesmoke;
+    background: whitesmoke;
     cursor: pointer;
     height: 45px;
     width: 80px;
     border-radius: 10px;
-    position:relative;
+    position:fixed;
+    transition: 0.3s;
+    margin-left: 10px;
     
 }
 
@@ -153,6 +157,7 @@ body{
     display: flex;
     top: 30px;
     left: 60px;
+    transition: 0.3s ease;
     
 }
 
@@ -175,6 +180,7 @@ body{
     background-color: rgb(200, 17, 17);
     border-radius: 10px;
     border-style: hidden;
+    transition: 0.3s;
 
 }
 
@@ -208,6 +214,7 @@ body{
     display: flex;
     top: 30px;
     left: 60px;
+    transition: 0.3s ease;
     
 }
 
@@ -229,6 +236,7 @@ body{
     background-color: rgb(21, 194, 12);
     border-radius: 10px;
     border-style: hidden;
+    transition: 0.3s;
 
 }
 
@@ -242,6 +250,7 @@ body{
     background-color: rgb(200, 17, 17);
     border-radius: 10px;
     border-style: hidden;
+    transition: 0.3s;
 
 }
 

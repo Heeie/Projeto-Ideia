@@ -128,10 +128,127 @@ body{
 #CommentsDiv {
     width: 80%;
     max-width: 1100px;
-    background: rgb(231, 183, 0);
+    background: rgb(238,203,3);   
     border: 4px solid rgb(169,169,92); 
     border-radius: 15px;             
     padding: 30px;                    
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     min-height: 150px; 
+    display: inline;
+}
+
+.imgComment{
+    width: 70px;
+    height: 70px;
+    border: 3px solid rgb(0 0 0);
+    border-radius: 35px;
+    background: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    margin-left: 15px;
+}
+
+.imgComment img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.textComment{
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 60%;
+}
+
+.comment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s;
+    border: none;
+    border-radius: 25px;
+    margin-top: 15px;
+    margin-left: 120px;
+    width: 800px;
+    height: 100px;
+
+}
+
+.comment:hover{
+     background: rgb(190, 152, 0);
+}
+
+.comment button{
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .3s;
+    width: 110px;
+    height: 50px;
+}
+
+.LikeComment{
+    
+    background: white;
+}
+
+.LikeComment:hover{
+    background:black;
+    color:white;
+}
+
+
+.EditComment{
+    display: block;
+    background:rgb(214, 61, 10);
+}
+
+.EditComment:hover{
+    background:black;
+    color:white;
+}
+
+
+.footer{
+    width: 100%;
+    background-color: rgb(214, 203, 0);
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 60px;
+    border-top: 2px solid #e0b700;
+}
+
+.footer-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.footer-links a{
+    text-decoration: none;
+    color: #222;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.footer-links a:hover{
+    color: white;
+}
+
+.footer-copy{
+    font-size: 14px;
+    color: #444;
+    margin: 0;
 }

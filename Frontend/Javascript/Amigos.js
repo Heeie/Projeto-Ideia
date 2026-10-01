@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             pesquisarAmigos.style.display = "block";
             pedidosAmigos.style.display = "none";
         } else {
-            pesquisarAmigos.style.display = "none";
+            pesquisarAmigos.style.display = "block";
         }
     });
     
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             pesquisarAmigos.style.display = "none" ;
             pedidosAmigos.style.display = "block";
         } else {
-            pedidosAmigos.style.display = "none";
+            pedidosAmigos.style.display = "block";
         }
     });
 });

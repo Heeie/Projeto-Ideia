@@ -5,6 +5,7 @@ html {
     animation-timeline: scroll(root);
     min-height: 100vh; 
     margin: 0;
+      
 }
 
 body {
@@ -41,23 +42,36 @@ body {
 
 #barraPesq {
     display: flex;
-    gap: 5px;
+    gap: 10px;
 }
 
-#topico, #pesquisa {
+#topico {
     font-size: 18px;
     padding: 5px 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    margin-right: 10px;
+    transition: 0.3s ease;
 }
+
+#topico:hover {
+    transform: scale(1.06);
+}
+
 
 #pesquisa {
     background: whitesmoke;
     cursor: pointer;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: 0.3s ease;
 }
 
 #pesquisa:hover {
     background-color: rgb(199, 195, 195);
+    transform: scale(1.06);
 }
 
 #criar{
@@ -67,12 +81,11 @@ body {
     border-radius: 12px;
     font-size: 16px;
     border: 1px solid #ccc;
+    transition:.3s;
 }
 
 #criar:hover {
     background-color: rgb(199, 195, 195);
-  
-    width: 110%;
 }
 
 /* 2. CORPO (ONDE FICAM OS CARDS DE IDEIAS) */
@@ -87,27 +100,25 @@ body {
 #ideiasScroll {
     width: 70%;
     display: flex;
-    flex-direction: column; /* Organiza os cards um abaixo do outro */
-    gap: 30px; /* Cria espaçamento perfeito entre cada post */
+    flex-direction: column; 
+    gap: 30px;
 }
 
-/* CARD INDIVIDUAL DE IDEIA */
+
 .ideia {
-    background-color: rgba(255, 255, 255, 0.6); /* Fundo semi-transparente para ver o fade atrás */
+    background-color: rgba(255, 255, 255, 0.6); 
     border-radius: 15px;
     padding: 20px;
     display: flex;
     align-items: center;
     gap: 20px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: 0.3s ease;
 }
 
 .ideia:hover {
     background-color: rgb(209, 178, 3);
-    height: 100%;
-    width: 105%;
-
+    transform: scale(1.03);
 }
 
 .imgIdeia {
@@ -115,7 +126,7 @@ body {
     height: 150px;
     width: 120px;
     border-radius: 10px;
-    background-color: #ddd; /* Cor cinza padrão caso não tenha imagem */
+    background-color: #ddd;
 }
 
 .textosIdeia {
@@ -160,6 +171,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition:.5s;
 }
 
 #ops img{
@@ -202,6 +214,7 @@ body {
     left: 10%;
     top: 5%;
     position: relative;
+    transition:.3s;
 }
 
 .btnAba:hover {
