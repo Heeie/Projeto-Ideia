@@ -1,89 +1,513 @@
-body{
-    margin:0;
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
     font-family: Arial, Helvetica, sans-serif;
-    background: rgb(255,242,0);
+
+    color: #222;
+
+    background: linear-gradient(
+        135deg,
+        #fff200,
+        #f3d900,
+        #e67e22
+    );
 }
 
-.low_body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:40px;
+
+/* =========================
+   CONTAINER
+========================= */
+
+.low_body {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 100px 20px 50px;
 }
 
-#lampada{
-    position:fixed;
-    top:20px;
-    left:20px;
-    width:90px;
-    cursor:pointer;
-    mix-blend-mode:multiply;
+
+/* =========================
+   LÂMPADA
+========================= */
+
+#lampada {
+
+    position: fixed;
+
+    top: 20px;
+    left: 20px;
+
+    width: 90px;
+
+    cursor: pointer;
+
+    mix-blend-mode: multiply;
+
+    z-index: 10;
+
+    transition: 0.3s ease;
 }
 
-#dform{
-    width:600px;
-    background:rgb(238,203,3);
-    border:4px solid rgb(169,169,92);
-    border-radius:20px;
-    padding:35px;
-    box-sizing:border-box;
-    box-shadow:0 8px 20px rgba(0,0,0,.2);
+#lampada:hover {
+
+    transform: rotate(-5deg) scale(1.08);
 }
 
-h1{
-    margin-top:0;
-    text-align:center;
-    font-size:40px;
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+#dform {
+
+    width: 100%;
+
+    max-width: 750px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    border: 1px solid rgba(169, 145, 0, 0.4);
+
+    border-radius: 25px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.18);
+
+    backdrop-filter: blur(5px);
 }
 
-label{
-    display:block;
-    margin-bottom:8px;
-    font-size:22px;
-    font-weight:bold;
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.cabecalho {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 35px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #e3d26b;
 }
+
+.iconeCriar {
+
+    width: 65px;
+    height: 65px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    background: #fff1a3;
+
+    border: 1px solid #e1c900;
+
+    font-size: 32px;
+}
+
+.cabecalho h1 {
+
+    margin: 0;
+
+    color: #333;
+
+    font-size: 32px;
+}
+
+.cabecalho p {
+
+    margin: 6px 0 0;
+
+    color: #777;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   CAMPOS
+========================= */
+
+.campo {
+
+    margin-bottom: 25px;
+}
+
+label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #3d3d3d;
+
+    font-size: 16px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
 
 input[type="text"],
-textarea{
-    width:100%;
-    padding:12px;
-    font-size:18px;
-    border:2px solid black;
-    border-radius:10px;
-    background:rgb(255,247,97);
-    box-sizing:border-box;
-    margin-bottom:20px;
+textarea {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #d5c45b;
+
+    border-radius: 12px;
+
+    background: #fffde0;
+
+    color: #222;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.25s ease;
 }
 
-textarea{
-    resize:vertical;
-    min-height:150px;
+input[type="text"] {
+
+    height: 50px;
 }
 
-input[type="file"]{
-    width:100%;
-    margin-bottom:30px;
-    font-size:18px;
+textarea {
+
+    min-height: 160px;
+
+    resize: vertical;
+
+    line-height: 1.5;
 }
 
-#subme{
-    width:100%;
-    height:50px;
-    border:none;
-    border-radius:30px;
-    background:white;
-    font-size:20px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
+
+input[type="text"]:focus,
+textarea:focus {
+
+    background: white;
+
+    border-color: #b29200;
+
+    box-shadow:
+        0 0 0 3px rgba(178, 146, 0, 0.15);
 }
 
-#subme:hover{
-    background:black;
-    color:white;
+
+/* =========================
+   UPLOAD
+========================= */
+
+.upload-area {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 160px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 25px;
+
+    border: 2px dashed #d2b500;
+
+    border-radius: 15px;
+
+    background: #fff9c7;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
 }
 
-#listAlbuns{
-    margin-top:30px;
+.upload-area:hover {
+
+    background: #fffde0;
+
+    border-color: #b29300;
+
+    transform: translateY(-2px);
+}
+
+.upload-icon {
+
+    font-size: 35px;
+
+    margin-bottom: 3px;
+}
+
+.upload-area strong {
+
+    font-size: 17px;
+
+    color: #444;
+}
+
+.upload-area small {
+
+    color: #888;
+
+    font-size: 13px;
+}
+
+
+/* Input file */
+
+input[type="file"] {
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   PREVIEW
+========================= */
+
+#preview-container {
+
+    display: none;
+
+    margin-bottom: 25px;
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    background: #fff9c7;
+
+    border: 1px solid #e3d26b;
+
+    text-align: center;
+}
+
+#preview-container p {
+
+    margin: 0 0 12px;
+
+    font-weight: bold;
+
+    color: #555;
+}
+
+#preview {
+
+    display: block;
+
+    width: 100%;
+
+    max-height: 300px;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+}
+
+
+/* =========================
+   BOTÕES
+========================= */
+
+.form-buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+.form-buttons button {
+
+    height: 52px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+/* Cancelar */
+
+#cancelar {
+
+    flex: 0.7;
+
+    background: #eeeeee;
+
+    border: 1px solid #cccccc;
+
+    color: #444;
+}
+
+#cancelar:hover {
+
+    background: #dddddd;
+
+    transform: translateY(-2px);
+}
+
+
+/* Criar */
+
+#subme {
+
+    flex: 1.3;
+
+    background: #e0b900;
+
+    color: #222;
+}
+
+#subme:hover {
+
+    background: #c59f00;
+
+    color: white;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   LISTA
+========================= */
+
+#listAlbuns {
+
+    margin-top: 30px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    #lampada {
+
+        width: 70px;
+
+        top: 15px;
+        left: 15px;
+    }
+
+    .low_body {
+
+        padding: 90px 15px 30px;
+    }
+
+    #dform {
+
+        padding: 22px;
+
+        border-radius: 20px;
+    }
+
+    .cabecalho {
+
+        gap: 12px;
+
+        margin-bottom: 25px;
+    }
+
+    .iconeCriar {
+
+        width: 52px;
+        height: 52px;
+
+        font-size: 25px;
+    }
+
+    .cabecalho h1 {
+
+        font-size: 25px;
+    }
+
+    .cabecalho p {
+
+        font-size: 13px;
+    }
+
+    .form-buttons {
+
+        flex-direction: column;
+    }
+
+    #cancelar,
+    #subme {
+
+        flex: none;
+
+        width: 100%;
+    }
+
 }

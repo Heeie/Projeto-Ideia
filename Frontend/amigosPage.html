@@ -4,86 +4,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Amigos</title>
+
     <link rel="stylesheet" href="css/amigos.css">
-     <script src="Javascript/Amigos.js" defer></script>
+    <script src="Javascript/Amigos.js" defer></script>
 </head>
 
 <body>
 
-      <div id="lateral">
+    <!-- MENU LATERAL -->
+    <aside id="lateral">
 
-            <img id="lampada"
+        <img id="lampada"
              src="images/lampada-de-ideia.png"
-             alt="Lampada"
+             alt="Lâmpada"
              onclick="location.href='body.html'">
-              <br><br> <br><br> <br><br><br><br> <br><br>
 
-            <button class="btnLateral" id="amigosPage">Amigos</button>
-            <br><br><br>
-            <button class="btnLateral" id="pesquisaPage">Pesquisar Utilizador</button>
-             <br><br><br>
-            <button class="btnLateral" id="pedidosPage">Pedidos de Amizade</button>
-             <br><br><br>
-            
+        <div class="menu-lateral">
+
+            <button class="btnLateral ativo" id="amigosPage">
+                👥 Amigos
+            </button>
+
+            <button class="btnLateral" id="pesquisaPage">
+                🔎 Pesquisar Utilizador
+            </button>
+
+            <button class="btnLateral" id="pedidosPage">
+                📨 Pedidos de Amizade
+            </button>
+
         </div>
 
-        <div id="Principal">
+    </aside>
 
 
-            <div id="Amigos">
-                <div class="barraPesq">
-                    <form id="barraPesquisa">
-                        <input type="text" id="nomeA" name="nomeAmigo" placeholder="Escreva um nome">
-                        <input class="pesquisa" type="submit" value="Pesquisar">
-                    </form>
-                </div>
-                <h1 class="Titulo">Lista de Amigos</h1>
-                <div class="ListAmigos">
-                    <div class="amigoConta">
-                        <h2>Nome</h2>
-                        <p>Estado: Online</p>
-                        <button>Remover</button>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="Principal">
+
+        <!-- ================= AMIGOS ================= -->
+        <section id="Amigos" class="pagina">
+
+            <div class="cabecalhoPagina">
+                <div>
+                    <span class="iconeTitulo">👥</span>
+                    <div>
+                        <h1 class="Titulo">Os meus amigos</h1>
+                        <p>Consulta e gere a tua lista de amigos.</p>
                     </div>
                 </div>
             </div>
 
+            <div class="barraPesq">
+                <form id="barraPesquisa">
 
-            <div id="PesquisarAmigo">
-                <div class="barraPesq">
-                    <form class="barraPesquisa">
-                        <input type="text" id="nomeU" name="nomeUtilizador" placeholder="Procure por um nome">
-                        <input class="pesquisa" type="submit" value="Pesquisar">
-                    </form>
+                    <input
+                        type="text"
+                        id="nomeA"
+                        name="nomeAmigo"
+                        placeholder="🔎 Procurar nos teus amigos..."
+                    >
+
+                    <button class="pesquisa" type="submit">
+                        Pesquisar
+                    </button>
+
+                </form>
+            </div>
+
+            <div class="ListAmigos">
+
+                <div class="lista-vazia" style="display: none;">
+                    <span>👥</span>
+                    <h2>Ainda não tens amigos</h2>
+                    <p>Procura utilizadores e começa a adicionar amigos.</p>
                 </div>
-                <h1 class="Titulo">Utilizadores Encontrados</h1>
-                <div class="ListAmigos">
-                    <div class="amigoConta">
-                        <h2>Nome</h2>
-                        <p>Estado: Online</p>
-                        <button>Remover</button>
+
+                <div class="amigoConta">
+
+                    <div class="avatar">
+                        👤
                     </div>
-                </div>
 
+                    <div class="dadosAmigo">
+                        <h2>Nome</h2>
+                        <p>
+                            <span class="estado online"></span>
+                            Online
+                        </p>
+                    </div>
+
+                    <button class="remover">
+                        Remover
+                    </button>
+
+                </div>
 
             </div>
 
-            <div id="PedidoAmizade">
-                 
-                <h1 class="Titulo">Pedidos de Amizade</h1>
-                <div class="ListAmigos">
+        </section>
 
-                    <div class="amigoPedido">
-                        <h2>Nome</h2>
-                        <button id="aceitarBtn">Aceitar</button>
-                        <button id="recusarBtn">Recusar</button>
+
+        <!-- ================= PESQUISAR ================= -->
+        <section id="PesquisarAmigo" class="pagina">
+
+            <div class="cabecalhoPagina">
+
+                <div>
+                    <span class="iconeTitulo">🔎</span>
+
+                    <div>
+                        <h1 class="Titulo">Pesquisar Utilizador</h1>
+                        <p>Encontra novos utilizadores para adicionar como amigos.</p>
                     </div>
                 </div>
 
             </div>
 
-            
-        </div>
+            <div class="barraPesq">
+
+                <form class="barraPesquisa">
+
+                    <input
+                        type="text"
+                        id="nomeU"
+                        name="nomeUtilizador"
+                        placeholder="🔎 Procure por um nome..."
+                    >
+
+                    <button class="pesquisa" type="submit">
+                        Pesquisar
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div class="ListAmigos">
+
+                <div class="amigoConta">
+
+                    <div class="avatar">
+                        👤
+                    </div>
+
+                    <div class="dadosAmigo">
+                        <h2>Nome</h2>
+
+                        <p>
+                            <span class="estado online"></span>
+                            Online
+                        </p>
+                    </div>
+
+                    <button class="adicionar">
+                        + Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PEDIDOS ================= -->
+        <section id="PedidoAmizade" class="pagina">
+
+            <div class="cabecalhoPagina">
+
+                <div>
+                    <span class="iconeTitulo">📨</span>
+
+                    <div>
+                        <h1 class="Titulo">Pedidos de Amizade</h1>
+                        <p>Gere os pedidos de amizade que recebeste.</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="ListAmigos">
+
+                <div class="amigoPedido">
+
+                    <div class="avatar">
+                        👤
+                    </div>
+
+                    <div class="dadosAmigo">
+                        <h2>Nome</h2>
+                        <p>Quer ser teu amigo</p>
+                    </div>
+
+                    <div class="acoesPedido">
+
+                        <button id="aceitarBtn">
+                            ✓ Aceitar
+                        </button>
+
+                        <button id="recusarBtn">
+                            ✕ Recusar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
 
 </body>
 </html>

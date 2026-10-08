@@ -1,0 +1,167 @@
+.low_body{
+    color:rgb(0, 0, 0);
+    text-align: center;
+}
+
+h1{
+    font-size: 42px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+html {
+    background-color: rgb(255, 242, 0);
+}
+
+img {
+    mix-blend-mode: multiply;
+    width: 5px;
+    top:7%;
+    left:1%;
+}
+
+#lampada{
+    size: 1cm;
+    top: 2%;
+    width: 90px;
+    position: fixed;
+    transition: 0.3s;
+    
+}
+#lampada:hover{
+    width: 100px;
+    cursor: pointer
+}
+
+#gruposScroll {
+
+    background-color: rgb(238, 203, 3);
+    position: fixed;
+    top: 15%;
+    bottom: 150px;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    border-radius: 10px;
+    border: 2px solid rgb(169, 169, 92);
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 1;
+}
+
+#gruposScroll::-webkit-scrollbar {
+    width: 10px;
+}
+
+#gruposScroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+#gruposScroll::-webkit-scrollbar-thumb {
+    background: rgb(169, 145, 0);
+    border-radius: 10px;
+}
+
+#gruposScroll::-webkit-scrollbar-thumb:hover {
+    background: rgb(120, 100, 0);
+}
+
+.grupo {
+    background: rgba(255, 255, 255, 0.85);
+    width: 90%;
+    min-height: 90px;
+    margin: 15px auto;
+    padding: 15px 25px;
+    border-radius: 18px;
+    border: 1px solid rgba(169, 145, 0, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    transition: 
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.grupo:hover {
+    background-color: rgb(255, 250, 205);
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.imgGrupo {
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 3px solid rgb(238, 203, 3);
+    background-color: #ddd;
+    object-fit: cover;
+    margin: 0;
+    position: static;
+}
+
+.NomeGrupo {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    flex: 1;
+    text-align: left;
+}
+
+.Nmembros {
+    margin: 0;
+    padding: 8px 15px;
+    background-color: #fff4a3;
+    border-radius: 20px;
+    color: #555;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+    border: 1px solid rgba(169, 145, 0, 0.25);
+}
+
+.footer{
+    width: 100%;
+    background-color: rgb(255 242 0);
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 60px;
+    border-top: 2px solid #ffe159;
+    position: fixed;
+    bottom: 0px;
+}
+
+.footer-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.footer-links a{
+    text-decoration: none;
+    color: #817706;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.footer-links a:hover{
+    color: rgb(0, 0, 0);
+}
+
+.footer-copy{
+    font-size: 14px;
+    color: #444;
+    margin: 0;
+}

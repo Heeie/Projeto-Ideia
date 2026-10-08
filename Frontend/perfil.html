@@ -12,117 +12,318 @@
 
 <body>
 
-    <div class="low_body">
+    <!-- LOGO -->
 
-        <img id="lampada"
-             src="images/lampada-de-ideia.png"
-             alt="Lampada"
-             onclick="location.href='body.html'">
+    <img id="lampada"
+         src="images/lampada-de-ideia.png"
+         alt="Lâmpada"
+         onclick="location.href='body.html'">
 
-        <div id="dform">
 
-            <h1>Informação do Utilizador</h1>
-            <p class="info"><strong>Nome:</strong> Sonhador</p>
-            <p class="info"><strong>Email:</strong> sonhador@email.com</p>
+    <main class="perfil-container">
 
-            <button class="botao" id="formInfo">Alterar Informações</button>
+
+        <!-- =========================
+             INFORMAÇÕES DO UTILIZADOR
+        ========================== -->
+
+        <section id="dform">
+
+            <div class="section-title">
+
+                <span class="icone">👤</span>
+
+                <div>
+                    <h1>Informação do Utilizador</h1>
+                    <p>Consulta e altera os teus dados pessoais.</p>
+                </div>
+
+            </div>
+
+
+            <!-- MODO DE VISUALIZAÇÃO -->
+
+            <div id="dadosUtilizador">
+
+                <div class="info-card">
+
+                    <span class="info-label">
+                        Nome
+                    </span>
+
+                    <span class="info-value" id="nomeInfo">
+                        Sonhador
+                    </span>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span class="info-label">
+                        Email
+                    </span>
+
+                    <span class="info-value" id="emailInfo">
+                        sonhador@email.com
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button class="botao"
+                    id="formInfo">
+
+                ✏️ Alterar Informações
+
+            </button>
+
+
+            <!-- FORMULÁRIO -->
 
             <form id="formu">
 
-                <label for="nome">Nome:</label><br>
+                <label for="nome">
+                    Nome
+                </label>
+
                 <input type="text"
                        id="nome"
                        name="nome"
                        value="Sonhador"
                        required>
-                <br><br>
 
-                <label for="email">Email:</label><br>
+
+                <label for="email">
+                    Email
+                </label>
+
                 <input type="email"
                        id="email"
                        name="email"
                        value="sonhador@email.com"
                        required>
-                <br><br>
 
-                <input id="subme"
-                       type="submit"
-                       value="Guardar" >
+
+                <div class="form-buttons">
+
+                    <button type="button"
+                            id="cancelar">
+
+                        Cancelar
+
+                    </button>
+
+                    <button id="subme"
+                            type="submit">
+
+                        Guardar alterações
+
+                    </button>
+
+                </div>
 
             </form>
 
-        </div>
+        </section>
 
-        <br><br>
 
-        <div class="infoSection">
-            <h1>Configurações</h1>
 
-            <button class="botao">Alterar Informações</button>
-            <button class="botao">Alterar Palavra-passe</button>
-            <button class="botao">Alterar Idioma</button>
-            <button class="botao">Apagar Conta</button>
-        </div>
+        <!-- =========================
+             CONFIGURAÇÕES
+        ========================== -->
 
-       
+        <section class="infoSection">
 
-    </div>
+            <div class="section-title">
 
-   <script>
+                <span class="icone">⚙️</span>
 
-document.addEventListener("DOMContentLoaded", function () {
+                <div>
 
-    const form = document.getElementById("formu");
-    const botao = document.getElementById("formInfo");
-    const info = document.querySelectorAll(".info");
+                    <h1>Configurações</h1>
 
-    // começa escondido
-    form.style.display = "none";
+                    <p>
+                        Personaliza a tua conta e as tuas preferências.
+                    </p>
 
-    botao.addEventListener("click", function () {
+                </div>
 
-        const estaAberto = form.style.display === "block";
+            </div>
 
-        if (!estaAberto) {
 
-            form.style.display = "block";
+            <div class="config-list">
 
-            // esconder info
-            info.forEach(el => el.style.display = "none");
+                <button class="config-button">
 
-            // esconder botão
-            botao.style.display = "none";
+                    <span>
+                        👤
+                    </span>
 
-        }
+                    <div>
+                        <strong>Alterar Informações</strong>
+                        <small>
+                            Atualiza os teus dados pessoais
+                        </small>
+                    </div>
 
-    });
+                    <b>›</b>
 
-    // guardar alterações
-    form.addEventListener("submit", function (event) {
+                </button>
 
-        event.preventDefault();
 
-        const nome = document.getElementById("nome").value;
-        const email = document.getElementById("email").value;
+                <button class="config-button">
 
-        const textos = document.querySelectorAll(".info");
+                    <span>
+                        🔒
+                    </span>
 
-        textos[0].textContent = nome;
-        textos[1].textContent = email;
+                    <div>
+                        <strong>Alterar Palavra-passe</strong>
+                        <small>
+                            Mantém a tua conta segura
+                        </small>
+                    </div>
 
-        alert("Informações atualizadas com sucesso!");
+                    <b>›</b>
 
-        // voltar ao modo leitura
-        form.style.display = "none";
+                </button>
 
-        info.forEach(el => el.style.display = "block");
 
-        botao.style.display = "block";
-    });
+                <button class="config-button">
 
-});
+                    <span>
+                        🌐
+                    </span>
 
-</script>
+                    <div>
+                        <strong>Alterar Idioma</strong>
+                        <small>
+                            Escolhe o idioma da aplicação
+                        </small>
+                    </div>
+
+                    <b>›</b>
+
+                </button>
+
+
+                <button class="config-button apagar">
+
+                    <span>
+                        🗑️
+                    </span>
+
+                    <div>
+                        <strong>Apagar Conta</strong>
+                        <small>
+                            Elimina permanentemente a tua conta
+                        </small>
+                    </div>
+
+                    <b>›</b>
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const form = document.getElementById("formu");
+
+            const botao = document.getElementById("formInfo");
+
+            const cancelar = document.getElementById("cancelar");
+
+            const nomeInfo = document.getElementById("nomeInfo");
+
+            const emailInfo = document.getElementById("emailInfo");
+
+            const nomeInput = document.getElementById("nome");
+
+            const emailInput = document.getElementById("email");
+
+
+            /* Abrir formulário */
+
+            botao.addEventListener("click", function () {
+
+                form.style.display = "block";
+
+                botao.style.display = "none";
+
+                document.getElementById("dadosUtilizador").style.display = "none";
+
+            });
+
+
+            /* Cancelar */
+
+            cancelar.addEventListener("click", function () {
+
+                form.style.display = "none";
+
+                botao.style.display = "block";
+
+                document.getElementById("dadosUtilizador").style.display = "block";
+
+            });
+
+
+            /* Guardar */
+
+            form.addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+
+                const nome = nomeInput.value.trim();
+
+                const email = emailInput.value.trim();
+
+
+                if (nome === "" || email === "") {
+
+                    alert("Preenche todos os campos.");
+
+                    return;
+
+                }
+
+
+                nomeInfo.textContent = nome;
+
+                emailInfo.textContent = email;
+
+
+                form.style.display = "none";
+
+                botao.style.display = "block";
+
+                document.getElementById("dadosUtilizador").style.display = "block";
+
+
+                alert("Informações atualizadas com sucesso!");
+
+            });
+
+        });
+
+    </script>
 
 </body>
 

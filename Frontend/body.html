@@ -4,110 +4,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Ideias</title>
+
     <link rel="stylesheet" href="css/home.css">
     <script src="Javascript/home.js" defer></script>
 </head>
 
 <body>
 
-    <!-- 1. BARRA SUPERIOR (TOPO) -->
-    <div class="bar_alta">
-        <div>
+    <!-- =========================
+         BARRA SUPERIOR
+    ========================== -->
+
+    <header class="bar_alta">
+
+        <!-- Menu -->
+        <div class="menu-container">
+
             <button id="ops">
-                <img class="botoes" src="images/3bar.png" alt="Menu">
+                <img class="botoes"
+                     src="images/3bar.png"
+                     alt="Menu">
             </button>
+
             <div id="abaOpcoes">
-                <button class="btnAba" onclick="location.href='perfil.html'">Perfil</button><br><br>
-                <button class="btnAba">Favoritos</button><br><br>
-                <button class="btnAba" onclick="location.href='myIdeiasPage.html'">Minhas Ideias</button><br><br>
-                <button class="btnAba" onclick="location.href='amigosPage.html'">Amigos</button><br><br>
-                <button class="btnAba">Grupos</button>
+
+                <button class="btnAba"
+                        onclick="location.href='perfil.html'">
+                    Perfil
+                </button>
+
+                <button class="btnAba"
+                        onclick="location.href='favoritos.html'">
+                    Favoritos
+                </button>
+
+                <button class="btnAba"
+                        onclick="location.href='myIdeiasPage.html'">
+                    Minhas Ideias
+                </button>
+
+                <button class="btnAba"
+                        onclick="location.href='amigosPage.html'">
+                    Amigos
+                </button>
+
+                <button class="btnAba"
+                        onclick="location.href='grupos.html'">
+                    Grupos
+                </button>
+
             </div>
+
         </div>
 
-        <h1 class="titulo">Ideias</h1>
 
-        <div id="barraPesq">
-            <form id="barraPesquisa">
-                <input type="text" id="topico" name="topico" placeholder="O que procura?">
-                <input id="pesquisa" type="submit" value="Pesquisar">
-            </form>
-        </div>
+        <!-- Título -->
+        <h1 class="titulo">
+            Ideias
+        </h1>
 
-        <div>
-            <button id="criar" onclick="location.href='criarIdeia.html'">Criar uma ideia</button>
-        </div>
-       
-    </div>
 
-    <!-- 2. CORPO DA PÁGINA (MEIO) -->
-    <div class="low_body">
+        <!-- Pesquisa -->
+        <form id="barraPesquisa">
+
+            <input
+                type="text"
+                id="topico"
+                name="topico"
+                placeholder="O que procura?">
+
+            <button id="pesquisa" type="submit">
+                Pesquisar
+            </button>
+
+        </form>
+
+
+        <!-- Criar ideia -->
+        <button id="criar"
+                onclick="location.href='criarIdeia.html'">
+            + Criar uma ideia
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         CORPO
+    ========================== -->
+
+    <main class="low_body">
+
         <div id="ideiasScroll">
 
 
-            <!-- Bloco de exemplo 1 -->
-            <div class="ideia">
-                <div class="imgIdeia"></div>
-                <div class="textosIdeia">
-                    <h2 class="tituloIdeia">Título da ideia 1</h2>
-                    <p class="descriIdeia">Descrição da ideia 1</p>
+            <!-- IDEIA 1 -->
+
+            <article class="ideia">
+
+                <div class="imgIdeia">
+                    💡
                 </div>
-            </div>
-            
-            <!-- Bloco de exemplo 2 (Adicionado para testar o scroll) -->
-            <div class="ideia">
-                <div class="imgIdeia"></div>
+
                 <div class="textosIdeia">
-                    <h2 class="tituloIdeia">Título da ideia 2</h2>
-                    <p class="descriIdeia">Descrição da ideia 2</p>
+
+                    <h2 class="tituloIdeia">
+                        Título da ideia 1
+                    </h2>
+
+                    <p class="descriIdeia">
+                        Descrição da ideia 1. Aqui podes apresentar
+                        brevemente a ideia criada pelo utilizador.
+                    </p>
+
+                    <span class="autorIdeia">
+                        Por: Heie
+                    </span>
+
                 </div>
-            </div>
+
+                <button class="favoritar"
+                        title="Adicionar aos favoritos">
+                    ☆
+                </button>
+
+            </article>
 
 
-            <!-- Bloco de exemplo 2 (Adicionado para testar o scroll) -->
-            <div class="ideia">
-                <div class="imgIdeia"></div>
-                <div class="textosIdeia">
-                    <h2 class="tituloIdeia">Título da ideia 2</h2>
-                    <p class="descriIdeia">Descrição da ideia 2</p>
-                </div>
-            </div>
+            <!-- IDEIA 2 -->
 
-            
-            <div class="ideia">
-                <div class="imgIdeia"></div>
-                <div class="textosIdeia">
-                    <h2 class="tituloIdeia">Título da ideia 2</h2>
-                    <p class="descriIdeia">Descrição da ideia 2</p>
+            <article class="ideia">
+
+                <div class="imgIdeia">
+                    💡
                 </div>
-            </div>
+
+                <div class="textosIdeia">
+
+                    <h2 class="tituloIdeia">
+                        Aplicação para estudantes
+                    </h2>
+
+                    <p class="descriIdeia">
+                        Uma aplicação para ajudar estudantes
+                        a organizar os seus projetos.
+                    </p>
+
+                    <span class="autorIdeia">
+                        Por: Utilizador
+                    </span>
+
+                </div>
+
+                <button class="favoritar"
+                        title="Adicionar aos favoritos">
+                    ☆
+                </button>
+
+            </article>
 
 
-            <div class="ideia">
-                <div class="imgIdeia"></div>
-                <div class="textosIdeia">
-                    <h2 class="tituloIdeia">Título da ideia 2</h2>
-                    <p class="descriIdeia">Descrição da ideia 2</p>
+            <!-- IDEIA 3 -->
+
+            <article class="ideia">
+
+                <div class="imgIdeia">
+                    💡
                 </div>
-            </div>
+
+                <div class="textosIdeia">
+
+                    <h2 class="tituloIdeia">
+                        Plataforma de ideias
+                    </h2>
+
+                    <p class="descriIdeia">
+                        Uma plataforma onde todos podem partilhar
+                        e desenvolver novas ideias.
+                    </p>
+
+                    <span class="autorIdeia">
+                        Por: Utilizador
+                    </span>
+
+                </div>
+
+                <button class="favoritar"
+                        title="Adicionar aos favoritos">
+                    ☆
+                </button>
+
+            </article>
+
+
+            <!-- IDEIA 4 -->
+
+            <article class="ideia">
+
+                <div class="imgIdeia">
+                    💡
+                </div>
+
+                <div class="textosIdeia">
+
+                    <h2 class="tituloIdeia">
+                        Sistema de grupos
+                    </h2>
+
+                    <p class="descriIdeia">
+                        Criar grupos para desenvolver ideias
+                        em conjunto com outros utilizadores.
+                    </p>
+
+                    <span class="autorIdeia">
+                        Por: Utilizador
+                    </span>
+
+                </div>
+
+                <button class="favoritar"
+                        title="Adicionar aos favoritos">
+                    ☆
+                </button>
+
+            </article>
 
 
         </div>
-    </div>
-    
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer class="footer">
+
         <div class="footer-links">
+
             <a href="#">Sobre</a>
             <a href="#">Central de Ajuda</a>
             <a href="#">Termos de Serviço</a>
             <a href="#">Blog</a>
             <a href="#">Configurações</a>
+
         </div>
 
         <p class="footer-copy">
             © 2026 Ideias. Todos os direitos reservados.
         </p>
+
     </footer>
 
 </body>

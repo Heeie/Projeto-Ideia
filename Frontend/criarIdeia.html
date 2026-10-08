@@ -1,57 +1,217 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 
 <head>
-<link rel="stylesheet" href="css/criarIdeia.css">
-<script src="Javascript/CriarIdeia..js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Criar Ideia</title>
+
+    <link rel="stylesheet" href="css/criarIdeia.css">
+    <script src="Javascript/CriarIdeia..js" defer></script>
 </head>
+
 <body>
-    
 
-    <div class="low_body">
-        <img class="" 
-        id="lampada" 
-        src="images/lampada-de-ideia.png" 
-        alt=""
+    <!-- Lâmpada / voltar à página principal -->
+    <img
+        id="lampada"
+        src="images/lampada-de-ideia.png"
+        alt="Lâmpada"
         onclick="location.href='body.html'"
-        >
-        <div id="dform">
-            <h1>Criar Ideia</h1>
-            <form action="" id="formu">
-                <label for="fname">Título da Ideia?:</label><br>
-                <input
-                    type="text"
-                    id="ideia"
-                    name="ideia"
-                    placeholder="Título da ideia"
-                    required>
+    >
 
-                <label for="lname">Descrição de Ideia</label><br>
-                
-               <textarea id="descri" name="descri" rows="6"></textarea> <br><br>
 
-                <label for="lname">Insira uma imagem aqui</label><br>
-                <input
-                    type="file"
-                    id="img"
-                    name="img"
-                    accept="image/*">
+    <main class="low_body">
 
-                <input id="subme" type="submit" value="Submeter">
+        <section id="dform">
+
+            <!-- Cabeçalho -->
+            <div class="cabecalho">
+
+                <div class="iconeCriar">
+                    💡
+                </div>
+
+                <div>
+                    <h1>Criar uma Ideia</h1>
+
+                    <p>
+                        Partilha a tua ideia com a comunidade.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Formulário -->
+            <form id="formu">
+
+                <!-- Título -->
+                <div class="campo">
+
+                    <label for="ideia">
+                        Título da ideia
+                    </label>
+
+                    <input
+                        type="text"
+                        id="ideia"
+                        name="ideia"
+                        placeholder="Ex.: Uma aplicação para..."
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Descrição -->
+                <div class="campo">
+
+                    <label for="descri">
+                        Descrição da ideia
+                    </label>
+
+                    <textarea
+                        id="descri"
+                        name="descri"
+                        rows="6"
+                        placeholder="Explica a tua ideia com o máximo de detalhe possível..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Imagem -->
+                <div class="campo">
+
+                    <label for="img">
+                        Imagem da ideia
+                    </label>
+
+                    <div class="upload-area">
+
+                        <span class="upload-icon">
+                            🖼️
+                        </span>
+
+                        <strong>
+                            Escolhe uma imagem
+                        </strong>
+
+                        <small>
+                            PNG, JPG ou JPEG
+                        </small>
+
+                        <input
+                            type="file"
+                            id="img"
+                            name="img"
+                            accept="image/*"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Preview -->
+                <div id="preview-container">
+
+                    <p>Pré-visualização</p>
+
+                    <img
+                        id="preview"
+                        alt="Pré-visualização da imagem"
+                    >
+
+                </div>
+
+
+                <!-- Botões -->
+                <div class="form-buttons">
+
+                    <button
+                        type="button"
+                        id="cancelar"
+                        onclick="location.href='body.html'"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        id="subme"
+                        type="submit"
+                    >
+                        💡 Criar Ideia
+                    </button>
+
+                </div>
+
             </form>
 
 
-            <div id="listAlbuns">
+            <!-- Lista de álbuns / ideias -->
+            <div id="listAlbuns"></div>
 
-            </div>
-            
-            
-        </div>
-         
-        
+        </section>
 
-    </div>
-</body>  
+    </main>
+
+
+    <script>
+
+        const inputImagem = document.getElementById("img");
+        const previewContainer =
+            document.getElementById("preview-container");
+
+        const preview =
+            document.getElementById("preview");
+
+
+        inputImagem.addEventListener("change", function () {
+
+            const ficheiro = this.files[0];
+
+            if (!ficheiro) {
+
+                previewContainer.style.display = "none";
+
+                return;
+            }
+
+
+            if (!ficheiro.type.startsWith("image/")) {
+
+                alert("Por favor, seleciona uma imagem válida.");
+
+                this.value = "";
+
+                previewContainer.style.display = "none";
+
+                return;
+            }
+
+
+            const reader = new FileReader();
+
+
+            reader.onload = function (event) {
+
+                preview.src = event.target.result;
+
+                previewContainer.style.display = "block";
+
+            };
+
+
+            reader.readAsDataURL(ficheiro);
+
+        });
+
+    </script>
+
+</body>
 
 </html>
