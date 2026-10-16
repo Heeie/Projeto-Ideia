@@ -1,84 +1,207 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IdeiaIndividual</title>
-    <link rel="stylesheet" href="css//ideiaPage.css">
-    <script src="Javascript/" defer></script>
+
+    <title>Detalhes da Ideia | Ideias</title>
+
+    <link rel="stylesheet" href="css/ideiaPage.css">
+    <script src="Javascript/ideiaPage.js" defer></script>
 </head>
 
 <body>
-    <div class="low_body">
-        <button id="voltar" onclick="history.back()">← Voltar</button>
 
-        <img id="lampada"
-             src="images/lampada-de-ideia.png"
-             alt="Lampada"
-             onclick="location.href='body.html'">
+    <header class="topbar">
+        <a href="body.html" class="logo" aria-label="Página inicial">
+            <img src="images/lampada-de-ideia.png" alt="">
+            <span>Ideias</span>
+        </a>
 
-        <br><br>
+        <button id="voltar" type="button" onclick="history.back()">
+            <span aria-hidden="true">←</span> Voltar
+        </button>
+    </header>
 
-        <div id="ideiaDiv">
+    <main class="low_body">
+
+        <!-- DETALHES DA IDEIA -->
+        <article id="ideiaDiv">
+
             <div class="imgIdeia">
-                <img src="images/ideia1.jpg" alt="Imagem da ideia">
+                <img src="images/ideia1.jpg" alt="Imagem representativa da ideia">
             </div>
+
             <div class="conteudoIdeia">
-                <h2 class="tituloIdeia">Título da ideia</h2>
-                <h3 class="ctgIdeia">Categoria</h3>
+
+                <span class="etiqueta">💡 Ideia em destaque</span>
+
+                <h1 class="tituloIdeia">Título da ideia</h1>
+
+                <span class="ctgIdeia">Tecnologia</span>
+
                 <p class="descriIdeia">
-                    Esta é a descrição da ideia. Aqui podes colocar um texto mais longo
-                    sem que o layout fique desorganizado.
+                    Esta é a descrição da ideia. Aqui podes explicar o problema
+                    que pretendes resolver, como funciona a tua solução e
+                    o impacto que poderá ter.
+
+                    O objetivo é partilhar ideias, receber sugestões e encontrar
+                    pessoas interessadas em ajudar a transformar uma ideia
+                    num projeto real.
                 </p>
-                <button id="edit">Editar</button>
-            </div>
-        </div>
 
-        <div id="CommentsDiv">
-            
+                <div class="autorInfo">
+                    <div class="avatar">H</div>
 
-            <div class="comment">
-                <div class="imgComment">
-                    <img src="images/ideia2.jpg" alt="Imagem utilizador">
+                    <div>
+                        <strong>Heie</strong>
+                        <span>Autor da ideia</span>
+                    </div>
                 </div>
-                <p class="textComment">Texto para simular o que seria um comentário</p>
-                <button class="LikeComment">Gostar</button>
-                <button class="EditComment">Editar</button>
-            </div>
 
+                <div class="acoesIdeia">
+                    <button id="likeIdeia" class="btn btn-primary" type="button">
+                        ♡ Gostar <span id="totalGostos">12</span>
+                    </button>
 
-            <div class="comment">
-                <div class="imgComment">
-                    <img src="images/ideia2.jpg" alt="Imagem utilizador">
+                    <button id="favoritarIdeia" class="btn btn-secondary" type="button">
+                        ☆ Favoritar
+                    </button>
+
+                    <button id="edit" class="btn btn-secondary" type="button">
+                        ✎ Editar
+                    </button>
                 </div>
-                <p class="textComment">Texto para simular o que seria um comentário</p>
-                <button class="LikeComment">Gostar</button>
-                <button class="EditComment">Editar</button>
+
+            </div>
+        </article>
+
+        <!-- COMENTÁRIOS -->
+        <section id="CommentsDiv" aria-labelledby="tituloComentarios">
+
+            <div class="sectionHeader">
+                <div>
+                    <h2 id="tituloComentarios">Discussão</h2>
+                    <p>Partilha a tua opinião e ajuda a desenvolver esta ideia.</p>
+                </div>
+
+                <span class="contador">
+                    <span id="totalComentarios">2</span> comentários
+                </span>
             </div>
 
+            <!-- FORMULÁRIO PARA COMENTAR -->
+            <form id="commentForm" class="novoComentario">
 
-            
-        </div>
+                <div class="avatar avatar-utilizador">H</div>
 
-    </div>
+                <div class="campoComentario">
+                    <label for="textoComentario">Adicionar um comentário</label>
 
+                    <textarea
+                        id="textoComentario"
+                        placeholder="O que achas desta ideia?"
+                        rows="3"
+                        maxlength="1000"
+                        required
+                    ></textarea>
+
+                    <div class="formFooter">
+                        <span>Partilha uma opinião construtiva.</span>
+                        <button type="submit" class="btn btn-primary">
+                            Publicar comentário
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- LISTA DE COMENTÁRIOS -->
+            <div id="listaComentarios" class="listaComentarios">
+
+                <article class="comment">
+                    <div class="avatar avatar-outro">M</div>
+
+                    <div class="commentBody">
+                        <div class="commentHeader">
+                            <div>
+                                <strong class="nomeComentario">Maria</strong>
+                                <span class="dataComentario">Há 2 horas</span>
+                            </div>
+
+                            <button class="menuComentario" type="button"
+                                    aria-label="Editar comentário">•••</button>
+                        </div>
+
+                        <p class="textComment">
+                            Gosto muito desta ideia! Acho que poderia ser útil
+                            para muitas pessoas.
+                        </p>
+
+                        <div class="acoesComentario">
+                            <button class="LikeComment" type="button">
+                                ♡ Gostar <span class="likesComentario">3</span>
+                            </button>
+
+                            <button class="EditComment" type="button">
+                                Editar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="comment">
+                    <div class="avatar avatar-terceiro">J</div>
+
+                    <div class="commentBody">
+                        <div class="commentHeader">
+                            <div>
+                                <strong class="nomeComentario">João</strong>
+                                <span class="dataComentario">Há 30 minutos</span>
+                            </div>
+
+                            <button class="menuComentario" type="button"
+                                    aria-label="Editar comentário">•••</button>
+                        </div>
+
+                        <p class="textComment">
+                            Podíamos acrescentar novas funcionalidades e
+                            trabalhar juntos para melhorar o projeto.
+                        </p>
+
+                        <div class="acoesComentario">
+                            <button class="LikeComment" type="button">
+                                ♡ Gostar <span class="likesComentario">1</span>
+                            </button>
+
+                            <button class="EditComment" type="button">
+                                Editar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
 
     <footer class="footer">
-        <div class="footer-links">
-            <a href="#">Sobre</a>
+        <nav class="footer-links" aria-label="Links de rodapé">
+            <a href="sobre.html">Sobre</a>
             <a href="#">Central de Ajuda</a>
             <a href="#">Termos de Serviço</a>
             <a href="#">Blog</a>
-            <a href="#">Configurações</a>
-        </div>
+            <a href="definicoes.html">Configurações</a>
+        </nav>
 
         <p class="footer-copy">
             © 2026 Ideias. Todos os direitos reservados.
         </p>
     </footer>
 
-
 </body>
-
 </html>
