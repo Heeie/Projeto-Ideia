@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+
+    <title>Login | Ideias</title>
 
     <link rel="stylesheet" href="css/login.css">
     <script src="Javascript/login.js" defer></script>
@@ -11,41 +14,95 @@
 
 <body>
 
-    <div class="low_body">
+    <header class="cabecalho">
+        <a href="capa.html" class="logo" aria-label="Voltar à página inicial">
+            <img
+                id="lampada"
+                src="images/lampada-de-ideia.png"
+                alt="Voltar à página inicial"
+            >
+        </a>
 
-        <img id="lampada"
-             src="images/lampada-de-ideia.png"
-             alt="Lampada"
-             onclick="location.href='capa.html'">
+        <a href="capa.html" class="voltar">
+            ← Página inicial
+        </a>
+    </header>
 
-        <div id="dform">
 
-            <h1>Login</h1>
+    <main class="low_body">
+
+        <div class="decor decor-top"></div>
+        <div class="decor decor-bottom"></div>
+
+        <section id="dform">
+
+            <div class="iconeLogin">
+                <span>↪</span>
+            </div>
+
+            <h1>Bem-vindo de volta!</h1>
+
+            <p class="descricao">
+                Entra na tua conta e continua a explorar as tuas ideias.
+            </p>
+
 
             <form id="formu">
 
-                <label for="nome">Nome de utilizador</label>
-                <input type="text"
-                    id="nome"
-                    name="nome"
-                    placeholder="Escreve o teu nome">
+                <div class="campo">
+                    <label for="nome">Nome de utilizador</label>
 
-                <label for="password">Palavra-passe</label>
-                <input type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Escreve a password">
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Escreve o teu nome de utilizador"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
 
-                <input id="subme"
-                    type="submit"
-                    value="Entrar">
+
+                <div class="campo">
+                    <label for="password">Palavra-passe</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Escreve a tua palavra-passe"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+
+                <button id="subme" type="submit">
+                    Entrar na minha conta
+                    <span>→</span>
+                </button>
 
             </form>
 
-        </div>
 
-    </div>
+            <div class="separador">
+                <span>ou</span>
+            </div>
 
+
+            <p class="registo">
+                Ainda não tens conta?
+                <a href="registro.html">Regista-te aqui</a>
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        © 2026 Ideias. Todos os direitos reservados.
+    </footer>
 
 </body>
 </html>

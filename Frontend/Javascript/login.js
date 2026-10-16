@@ -1,27 +1,54 @@
-document.getElementById("formu").addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    const name = document.getElementById("nome").value;
-    const pass = document.getElementById("password").value;
-    
-    // 1. Procura o utilizador no localStorage
-    const dadosLocais = localStorage.getItem(name);
 
-    // 2. Verifica se o utilizador realmente existe
-    if (!dadosLocais) {
-        alert("Utilizador não encontrado!");
-        return; // Para a execução aqui
-    }
+document.addEventListener("DOMContentLoaded", function () {
 
-    // 3. Converte os dados para objeto de forma segura
-    const userSalvo = JSON.parse(dadosLocais);
+    const form = document.getElementById("formu");
+    const nomeInput = document.getElementById("nome");
+    const passwordInput = document.getElementById("password");
 
-    // 4. Valida a palavra-passe
-    if (userSalvo.password === pass) {
-        
-        sessionStorage.setItem("userLoged", name);
-        window.location.href = "body.html";
-    } else {
-        alert("Palavra-passe incorreta! Falhou!!!");
-    } 
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const nome = nomeInput.value.trim();
+        const password = passwordInput.value;
+
+        if (!nome || !password) {
+            alert("Preenche o nome de utilizador e a palavra-passe.");
+            return;
+        }
+
+        const dadosLocais = localStorage.getItem(nome);
+
+        if (!dadosLocais) {
+            alert("Utilizador não encontrado!");
+            return;
+        }
+
+        let userSalvo;
+
+        try {
+            userSalvo = JSON.parse(dadosLocais);
+        } catch (error) {
+            alert("Os dados desta conta são inválidos. Tenta novamente ou regista a conta de novo.");
+            return;
+        }
+
+        if (
+            !userSalvo ||
+            typeof userSalvo.password !== "string"
+        ) {
+            alert("Não foi possível validar esta conta.");
+            return;
+        }
+
+        if (userSalvo.password === password) {
+
+            sessionStorage.setItem("userLoged", nome);
+
+            window.location.href = "body.html";
+
+        } else {
+            alert("Palavra-passe incorreta!");
+        }
+    });
+
 });

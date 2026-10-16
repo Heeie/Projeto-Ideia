@@ -1,41 +1,106 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 
 <head>
-<link rel="stylesheet" href="css/capa.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ideias — Guarda todas!</title>
+
+    <link rel="stylesheet" href="css/capa.css">
 </head>
+
 <body>
 
-    
-    <div class="bar_alta">
-        
-        <h1 class="titulo" id="titulo">Ideias</h1>
-    </div>
+    <!-- Cabeçalho -->
+    <header class="bar_alta">
+        <a class="logo" href="capa.html" aria-label="Página inicial">
+            <img
+                id="lampadaPequena"
+                src="images/lampada-de-ideia.png"
+                alt=""
+            >
+        </a>
 
-    <div class="low_body">
+        <h1 class="titulo">Ideias</h1>
+    </header>
 
-        <img class="" id="lampada" src="images/lampada-de-ideia.png" alt="">
-        <p id="textCapa"> Existem boas e más ideias, guarda todas! </p>
-        
-            <button id="registo" onclick="location.href='registro.html'"> Registar</button>
-            <button id="login" onclick="location.href='login.html'">Login</button>
 
-        
-    </div>
-    
+    <!-- Conteúdo principal -->
+    <main class="low_body">
+
+        <div class="decor decor-top"></div>
+        <div class="decor decor-bottom"></div>
+
+        <!-- Ilustração -->
+        <section class="hero-imagem" aria-label="Uma lâmpada que simboliza uma ideia">
+            <div class="halo"></div>
+
+            <img
+                id="lampada"
+                src="images/lampada-de-ideia.png"
+                alt="Lâmpada que simboliza novas ideias"
+            >
+
+            <div class="sombra-lampada"></div>
+        </section>
+
+
+        <!-- Texto e ações -->
+        <section class="hero-conteudo">
+
+            <span class="etiqueta">O lugar das tuas ideias</span>
+
+            <h2 id="textCapa">
+                Existem boas e más ideias,
+                <span>guarda todas!</span>
+            </h2>
+
+            <p class="subtitulo">
+                Regista as tuas ideias, organiza os teus projetos
+                e partilha a tua criatividade.
+            </p>
+
+            <div class="botoes">
+                <button
+                    id="registo"
+                    onclick="location.href='registro.html'"
+                >
+                    <span class="icone-botao" aria-hidden="true">♟</span>
+                    Registar
+                </button>
+
+                <button
+                    id="login"
+                    onclick="location.href='login.html'"
+                >
+                    <span class="icone-botao" aria-hidden="true">↪</span>
+                    Login
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Rodapé -->
     <footer class="footer">
-        <div class="footer-links">
+
+        <nav class="footer-links" aria-label="Links do rodapé">
             <a href="#">Sobre</a>
             <a href="#">Central de Ajuda</a>
             <a href="#">Termos de Serviço</a>
             <a href="#">Blog</a>
             <a href="#">Configurações</a>
-        </div>
+        </nav>
 
         <p class="footer-copy">
             © 2026 Ideias. Todos os direitos reservados.
         </p>
-    </footer>
-</body>  
 
+    </footer>
+
+</body>
 </html>

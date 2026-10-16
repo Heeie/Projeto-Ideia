@@ -1,123 +1,638 @@
-.low_body{
-    position:relative; 
-    color:rgb(0, 0, 0);
-    flex: 1;
+
+/* ==============================
+   RESET E CONFIGURAÇÃO GERAL
+============================== */
+
+* {
+    box-sizing: border-box;
 }
 
-html {
-    background-color: rgb(255, 242, 0);
-}
-html, body{
-    height: 100%;
+html,
+body {
     margin: 0;
+    min-height: 100%;
 }
 
-body{
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+
     display: flex;
     flex-direction: column;
-}
-    
 
-h1{
-    font-size: 42px;
-}
+    font-family: Arial, Helvetica, sans-serif;
+    color: #171500;
 
-#registo{
-  top: 50%;
-    position: absolute;
-    right: 35%;
-    border: 2px;
-    border-color: black;
-    border-style: solid;
-    border-radius: 10%;
-    text-align: center;
-}
+    background: linear-gradient(
+        135deg,
+        #fff000 0%,
+        #ffdf00 55%,
+        #ffb000 100%
+    );
 
-#login{
-    top: 50%;
-    position: absolute;
-    right: 12%;
-    border: 2px;
-    border-color: black;
-    border-style: solid;
-    border-radius: 9%;
-    text-align: center;
-}
- 
-.bar_alta{
-    /*background-color: rgb(169, 169, 92);*/
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    right: 0%; 
-    height: 10%;
-    width: 100%;
-
-}
-
-#titulo{
-    position: absolute;
-    left: 60%;
-    font-size: 500%;
+    overflow-x: hidden;
 }
 
 
+/* ==============================
+   CABEÇALHO
+============================== */
 
-img {
-    mix-blend-mode: multiply;
-    width: 50px;
-    top:7%;
-    left:1%;
-}
-
-#lampada{
-    size: 10cm;
-    top: 10%;
-    width: 600px;
+.bar_alta {
     position: relative;
-     cursor: pointer;
-}
+    z-index: 5;
 
-#textCapa{
-   position: absolute;
-    top: 30%;
-    left: 51%;
-    font-size: 200%;
-}
+    width: 100%;
+    min-height: 120px;
 
-
-#bottomText{
-    font-size: 25px;
-   
-
-  width: 100%;
-    height: 100px;
-    background-color: #d1c200;;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    font-weight: bold;
+
+    padding: 15px 30px;
+
+    background: rgba(255, 225, 0, 0.88);
+
+    border-bottom: 2px solid rgba(180, 135, 0, 0.35);
+
+    box-shadow: 0 5px 18px rgba(105, 75, 0, 0.12);
+}
+
+.logo {
+    position: absolute;
+    left: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#lampadaPequena {
+    display: block;
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+    mix-blend-mode: multiply;
+
+    transition: transform 0.3s ease;
+}
+
+.logo:hover #lampadaPequena {
+    transform: rotate(-8deg) scale(1.1);
+}
+
+.titulo {
+    margin: 0;
+
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 900;
+    letter-spacing: -3px;
+
+    color: #171500;
 }
 
 
-.low_body button{
-    width: 200px;
-    height: 120px;
-    font-size: 22px;
-    padding: 0.6em 2em;
-    color: rgb(255, 255, 255);
-    background: #222;
-    cursor: pointer;
+/* ==============================
+   ÁREA PRINCIPAL
+============================== */
+
+.low_body {
     position: relative;
-    z-index: 0;
-    border-radius: 10px;
-  
-   
+    isolation: isolate;
+
+    flex: 1;
+
+    width: 100%;
+    min-height: 570px;
+
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+
+    gap: 35px;
+
+    padding: 45px clamp(30px, 7vw, 110px);
+
+    overflow: hidden;
 }
 
-.low_body button:hover{
-     color: rgb(0, 0, 0);
-    background-color:rgb(255, 247, 97);
+
+/* Formas decorativas */
+
+.decor {
+    position: absolute;
+    z-index: -1;
+
+    pointer-events: none;
+    border-radius: 50%;
 }
 
+.decor-top {
+    width: 420px;
+    height: 420px;
+
+    top: -300px;
+    right: -130px;
+
+    background: rgba(255, 145, 0, 0.25);
+}
+
+.decor-bottom {
+    width: 470px;
+    height: 470px;
+
+    bottom: -360px;
+    left: -180px;
+
+    background: rgba(255, 142, 0, 0.28);
+}
+
+
+/* ==============================
+   ILUSTRAÇÃO DA LÂMPADA
+============================== */
+
+.hero-imagem {
+    position: relative;
+
+    min-width: 0;
+    min-height: 400px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.halo {
+    position: absolute;
+
+    width: min(90%, 410px);
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 140, 0.95) 0%,
+        rgba(255, 205, 0, 0.35) 48%,
+        rgba(255, 170, 0, 0) 72%
+    );
+
+    animation: pulsar 4s ease-in-out infinite;
+}
+
+#lampada {
+    position: relative;
+    z-index: 1;
+
+    display: block;
+
+    width: min(100%, 420px);
+    max-height: 440px;
+
+    object-fit: contain;
+
+    mix-blend-mode: multiply;
+
+    filter: drop-shadow(0 18px 12px rgba(111, 74, 0, 0.15));
+
+    animation: flutuar 4s ease-in-out infinite;
+}
+
+.sombra-lampada {
+    position: absolute;
+
+    width: 42%;
+    height: 22px;
+
+    bottom: 7%;
+
+    border-radius: 50%;
+
+    background: rgba(114, 76, 0, 0.18);
+    filter: blur(12px);
+
+    animation: sombra 4s ease-in-out infinite;
+}
+
+
+/* ==============================
+   TEXTO PRINCIPAL
+============================== */
+
+.hero-conteudo {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 650px;
+
+    justify-self: center;
+}
+
+.etiqueta {
+    display: inline-block;
+
+    margin-bottom: 20px;
+    padding: 9px 15px;
+
+    border: 1px solid rgba(100, 75, 0, 0.2);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.35);
+
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+#textCapa {
+    margin: 0;
+
+    font-size: clamp(35px, 4vw, 62px);
+    line-height: 1.12;
+
+    font-weight: 900;
+    letter-spacing: -1.8px;
+
+    color: #171500;
+}
+
+#textCapa span {
+    display: block;
+}
+
+
+/* Descrição */
+
+.subtitulo {
+    max-width: 500px;
+
+    margin: 22px 0 32px;
+
+    color: #514500;
+
+    font-size: clamp(16px, 1.5vw, 19px);
+    line-height: 1.65;
+}
+
+
+/* ==============================
+   BOTÕES
+============================== */
+
+.botoes {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 16px;
+}
+
+.botoes button {
+    min-width: 190px;
+    min-height: 68px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    padding: 15px 25px;
+
+    border: 2px solid #171500;
+    border-radius: 18px;
+
+    font-family: inherit;
+    font-size: 19px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.icone-botao {
+    font-size: 29px;
+    line-height: 1;
+}
+
+
+/* Registar */
+
+#registo {
+    color: white;
+    background: #17191c;
+
+    box-shadow: 0 8px 0 rgba(80, 56, 0, 0.12);
+}
+
+#registo:hover {
+    background: #33363b;
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 12px 20px rgba(60, 45, 0, 0.2);
+}
+
+
+/* Login */
+
+#login {
+    color: #171500;
+    background: rgba(255, 230, 0, 0.35);
+
+    box-shadow: 0 8px 0 rgba(80, 56, 0, 0.08);
+}
+
+#login:hover {
+    background: #fff9bd;
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 12px 20px rgba(60, 45, 0, 0.15);
+}
+
+.botoes button:active {
+    transform: translateY(0);
+}
+
+.botoes button:focus-visible,
+.footer a:focus-visible,
+.logo:focus-visible {
+    outline: 3px solid #171500;
+    outline-offset: 4px;
+}
+
+
+/* ==============================
+   RODAPÉ
+============================== */
+
+.footer {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+
+    padding: 25px 20px 20px;
+
+    background: rgba(245, 190, 0, 0.72);
+
+    border-top: 1px solid rgba(150, 100, 0, 0.22);
+
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 0;
+}
+
+.footer-links a {
+    padding: 8px 22px;
+
+    color: #211b00;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.footer-links a + a {
+    border-left: 1px solid rgba(80, 60, 0, 0.4);
+}
+
+.footer-links a:hover {
+    color: #8b3900;
+    text-decoration: underline;
+}
+
+.footer-copy {
+    max-width: 780px;
+
+    margin: 18px auto 0;
+    padding-top: 17px;
+
+    border-top: 1px solid rgba(100, 75, 0, 0.25);
+
+    color: #392d00;
+
+    font-size: 14px;
+}
+
+
+/* ==============================
+   ANIMAÇÕES
+============================== */
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes sombra {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(0.8);
+        opacity: 0.45;
+    }
+}
+
+@keyframes pulsar {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.07);
+        opacity: 1;
+    }
+}
+
+
+/* ==============================
+   TABLETS
+============================== */
+
+@media (max-width: 900px) {
+    .bar_alta {
+        min-height: 100px;
+    }
+
+    .logo {
+        left: 22px;
+    }
+
+    #lampadaPequena {
+        width: 50px;
+        height: 50px;
+    }
+
+    .low_body {
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 20px;
+
+        padding: 35px 30px;
+    }
+
+    .hero-imagem {
+        min-height: 300px;
+    }
+
+    #lampada {
+        max-height: 330px;
+    }
+
+    #textCapa {
+        font-size: clamp(32px, 4.5vw, 45px);
+    }
+
+    .botoes button {
+        min-width: 155px;
+        min-height: 58px;
+
+        padding: 12px 18px;
+
+        font-size: 17px;
+    }
+}
+
+
+/* ==============================
+   TELEMÓVEIS
+============================== */
+
+@media (max-width: 650px) {
+    .bar_alta {
+        min-height: 85px;
+        padding: 12px 15px;
+    }
+
+    .logo {
+        left: 15px;
+    }
+
+    #lampadaPequena {
+        width: 42px;
+        height: 42px;
+    }
+
+    .titulo {
+        font-size: 42px;
+        letter-spacing: -2px;
+    }
+
+    .low_body {
+        grid-template-columns: 1fr;
+        gap: 0;
+
+        padding: 25px 22px 45px;
+    }
+
+    .hero-imagem {
+        min-height: 240px;
+    }
+
+    #lampada {
+        width: min(75%, 250px);
+        max-height: 250px;
+    }
+
+    .halo {
+        width: 230px;
+    }
+
+    .sombra-lampada {
+        bottom: 2%;
+    }
+
+    .hero-conteudo {
+        text-align: center;
+    }
+
+    .etiqueta {
+        margin-bottom: 15px;
+    }
+
+    #textCapa {
+        font-size: clamp(34px, 8vw, 46px);
+        letter-spacing: -1px;
+    }
+
+    .subtitulo {
+        margin: 18px auto 25px;
+        font-size: 16px;
+    }
+
+    .botoes {
+        flex-direction: column;
+        align-items: stretch;
+
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .botoes button {
+        width: 100%;
+        min-height: 58px;
+    }
+
+    .footer {
+        padding: 20px 15px;
+    }
+
+    .footer-links {
+        gap: 5px 0;
+    }
+
+    .footer-links a {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .footer-links a + a {
+        border-left: none;
+    }
+
+    .footer-copy {
+        line-height: 1.6;
+        font-size: 12px;
+    }
+}
+
+
+/* Respeitar a preferência de movimento reduzido */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

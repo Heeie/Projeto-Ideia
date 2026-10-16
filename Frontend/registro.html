@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -5,60 +6,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Registo</title>
+    <title>Registo | Ideias</title>
 
     <link rel="stylesheet" href="css/forms_Registo.css">
-     <script src="Javascript/registro.js" defer></script>
+    <script src="Javascript/registro.js" defer></script>
 </head>
 
 <body>
 
-    <div class="low_body">
+    <header class="cabecalho">
+        <a href="capa.html" class="logo" aria-label="Voltar à página inicial">
+            <img
+                id="lampada"
+                src="images/lampada-de-ideia.png"
+                alt="Ideias — página inicial"
+            >
+        </a>
 
-        <img id="lampada"
-             src="images/lampada-de-ideia.png"
-             alt="Lampada"
-             onclick="location.href='capa.html'">
+        <a href="login.html" class="link-login">
+            Já tens conta? <strong>Entrar →</strong>
+        </a>
+    </header>
 
-        <div id="dform">
 
-            <h1>Formulário de Registo</h1>
+    <main class="low_body">
 
-           <form id="formu">
+        <div class="decor decor-top"></div>
+        <div class="decor decor-bottom"></div>
 
-            <label for="nome">Nome de utilizador</label>
-            <input type="text"
-                id="nome"
-                name="nome"
-                placeholder="Nome de utilizador"
-                required>
+        <section id="dform">
 
-            <label for="email">Email do utilizador</label>
-            <input type="email"
-                id="email"
-                name="email"
-                placeholder="exemplo@email.com"
-                required>
+            <div class="iconeRegisto" aria-hidden="true">
+                ✨
+            </div>
 
-            <label for="password">Palavra-passe</label>
-            <input type="password"
-                id="password"
-                name="password"
-                placeholder="Escreve a password"
-                required>
+            <h1>Cria a tua conta</h1>
 
-            <input id="subme"
-                type="submit"
-                value="Registar">
+            <p class="descricao">
+                Todas as grandes criações começam com uma ideia.
+                Guarda as tuas e começa hoje!
+            </p>
 
-        </form>
 
-        </div>
+            <form id="formu">
 
-    </div>
+                <div class="campo">
+                    <label for="nome">Nome de utilizador</label>
 
-    
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Escolhe um nome de utilizador"
+                        autocomplete="username"
+                        minlength="3"
+                        maxlength="30"
+                        required
+                    >
+                </div>
+
+
+                <div class="campo">
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="exemplo@email.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+
+                <div class="campo">
+                    <label for="password">Palavra-passe</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Cria uma palavra-passe"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                    <small class="ajuda">
+                        Utiliza pelo menos 8 caracteres.
+                    </small>
+                </div>
+
+
+                <button id="subme" type="submit">
+                    Criar conta
+                    <span>→</span>
+                </button>
+
+            </form>
+
+
+            <p class="termos">
+                Ao criares uma conta, poderás começar a guardar
+                e organizar as tuas ideias.
+            </p>
+
+
+            <p class="registo-mobile">
+                Já tens conta?
+                <a href="login.html">Inicia sessão</a>
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        © 2026 Ideias. Todos os direitos reservados.
+    </footer>
 
 </body>
-
 </html>

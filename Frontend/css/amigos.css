@@ -40,11 +40,7 @@ body {
     width: 280px;
     height: 100vh;
 
-    background: linear-gradient(
-        180deg,
-        #e67e22,
-        #d96b16
-    );
+    background: linear-gradient(180deg, #e6cd22, #d99116);
 
     border-right: 1px solid rgba(0, 0, 0, 0.2);
 
