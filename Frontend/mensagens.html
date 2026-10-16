@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mensagens | Ideias</title>
+
+    <link rel="stylesheet" href="css/mensagens.css">
+    <script src="Javascript/mensagens.js" defer></script>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="bar_alta">
+
+        <button class="btnVoltar" onclick="location.href='body.html'">
+            ← Voltar
+        </button>
+
+        <h1 class="titulo">
+            <a href="body.html">Ideias</a>
+        </h1>
+
+        <span class="tituloPagina">Mensagens privadas</span>
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="mensagens-container">
+
+        <!-- LISTA DE CONVERSAS -->
+        <aside class="painel-conversas">
+
+            <div class="cabecalho-conversas">
+                <h2>Mensagens</h2>
+
+                <button id="novaMensagem" title="Nova conversa">
+                    +
+                </button>
+            </div>
+
+            <input
+                type="search"
+                id="pesquisarConversa"
+                placeholder="Pesquisar conversas..."
+                aria-label="Pesquisar conversas">
+
+            <div id="listaConversas">
+
+                <button class="conversa ativa"
+                        data-id="1"
+                        data-nome="Ana Silva"
+                        data-avatar="👩"
+                        data-mensagens="Olá! Vi a tua ideia e achei muito interessante.|Obrigado! Ainda estou a desenvolvê-la.|Se quiseres, podemos trabalhar nela juntos."
+                        type="button">
+
+                    <span class="avatar">👩</span>
+
+                    <span class="info-conversa">
+                        <strong>Ana Silva</strong>
+                        <span class="ultimaMensagem">
+                            Se quiseres, podemos trabalhar...
+                        </span>
+                    </span>
+
+                    <span class="hora">10:42</span>
+
+                </button>
+
+
+                <button class="conversa"
+                        data-id="2"
+                        data-nome="Miguel Costa"
+                        data-avatar="👨"
+                        data-mensagens="Olá! Tenho uma ideia para uma aplicação.|Conta-me mais sobre ela!"
+                        type="button">
+
+                    <span class="avatar">👨</span>
+
+                    <span class="info-conversa">
+                        <strong>Miguel Costa</strong>
+                        <span class="ultimaMensagem">
+                            Conta-me mais sobre ela!
+                        </span>
+                    </span>
+
+                    <span class="hora">Ontem</span>
+
+                </button>
+
+
+                <button class="conversa"
+                        data-id="3"
+                        data-nome="Sofia Martins"
+                        data-avatar="👩‍💻"
+                        data-mensagens="Já viste o novo grupo de programação?|Ainda não, vou ver!"
+                        type="button">
+
+                    <span class="avatar">👩‍💻</span>
+
+                    <span class="info-conversa">
+                        <strong>Sofia Martins</strong>
+                        <span class="ultimaMensagem">
+                            Ainda não, vou ver!
+                        </span>
+                    </span>
+
+                    <span class="hora">Seg.</span>
+
+                </button>
+
+            </div>
+
+            <p id="semConversas" hidden>
+                Não foram encontradas conversas.
+            </p>
+
+        </aside>
+
+
+        <!-- ÁREA DE CHAT -->
+        <section class="painel-chat">
+
+            <div class="cabecalho-chat">
+
+                <span id="avatarContacto" class="avatar avatar-grande">
+                    👩
+                </span>
+
+                <div class="dados-contacto">
+                    <h2 id="nomeContacto">Ana Silva</h2>
+                    <span class="estado-contacto">
+                        Conversa privada
+                    </span>
+                </div>
+
+                <button id="apagarConversa"
+                        class="btnApagar"
+                        title="Limpar conversa">
+                    🗑️
+                </button>
+
+            </div>
+
+
+            <div id="areaMensagens" class="area-mensagens"
+                 aria-live="polite" aria-label="Mensagens da conversa">
+
+                <p class="separador-data">Hoje</p>
+
+                <div class="mensagem recebida">
+                    <p>Olá! Vi a tua ideia e achei muito interessante.</p>
+                    <span>10:35</span>
+                </div>
+
+                <div class="mensagem enviada">
+                    <p>Obrigado! Ainda estou a desenvolvê-la.</p>
+                    <span>10:38</span>
+                </div>
+
+                <div class="mensagem recebida">
+                    <p>Se quiseres, podemos trabalhar nela juntos.</p>
+                    <span>10:42</span>
+                </div>
+
+            </div>
+
+
+            <!-- FORMULÁRIO DE ENVIO -->
+            <form id="formMensagem" class="form-mensagem">
+
+                <textarea
+                    id="textoMensagem"
+                    placeholder="Escreve uma mensagem..."
+                    rows="1"
+                    maxlength="2000"
+                    required
+                    aria-label="Escrever mensagem"></textarea>
+
+                <button type="submit" id="enviarMensagem"
+                        aria-label="Enviar mensagem">
+                    Enviar ➤
+                </button>
+
+            </form>
+
+            <p class="aviso-chat">
+                Não partilhes palavras-passe ou informações sensíveis.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- JANELA DE NOVA CONVERSA -->
+    <dialog id="dialogNovaMensagem">
+
+        <form id="formNovaConversa">
+
+            <h2>Nova conversa</h2>
+
+            <label for="nomeNovoContacto">
+                Nome do contacto
+            </label>
+
+            <input
+                id="nomeNovoContacto"
+                type="text"
+                placeholder="Ex.: João Silva"
+                maxlength="60"
+                required>
+
+            <div class="acoes-dialogo">
+                <button type="button" id="cancelarNovaConversa">
+                    Cancelar
+                </button>
+
+                <button type="submit">
+                    Criar conversa
+                </button>
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <footer class="footer">
+        <nav class="footer-links">
+            <a href="body.html">Início</a>
+            <a href="perfil.html">Perfil</a>
+            <a href="amigosPage.html">Amigos</a>
+            <a href="grupos.html">Grupos</a>
+            <a href="notificacoes.html">Notificações</a>
+            <a href="definicoes.html">Definições</a>
+        </nav>
+
+        <p class="footer-copy">
+            © 2026 Ideias. Todos os direitos reservados.
+        </p>
+    </footer>
+
+</body>
+</html>

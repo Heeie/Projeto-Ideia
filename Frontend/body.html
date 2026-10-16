@@ -13,10 +13,6 @@
 
 <body>
 
-    <!-- =========================
-         BARRA SUPERIOR
-    ========================== -->
-
     <header class="bar_alta">
 
         <!-- Menu -->
@@ -28,34 +24,87 @@
                      alt="Menu">
             </button>
 
-            <div id="abaOpcoes">
+           
 
-                <button class="btnAba"
-                        onclick="location.href='perfil.html'">
-                    Perfil
-                </button>
+                
+        <div id="abaOpcoes">
 
-                <button class="btnAba"
-                        onclick="location.href='favoritos.html'">
-                    Favoritos
-                </button>
+            <button class="btnAba" onclick="location.href='body.html'">
+                🏠 Início
+            </button>
 
-                <button class="btnAba"
-                        onclick="location.href='myIdeiasPage.html'">
-                    Minhas Ideias
-                </button>
+            <button class="btnAba" onclick="location.href='perfil.html'">
+                👤 Perfil
+            </button>
 
-                <button class="btnAba"
-                        onclick="location.href='amigosPage.html'">
-                    Amigos
-                </button>
+            <button class="btnAba" onclick="location.href='favoritos.html'">
+                ⭐ Favoritos
+            </button>
 
-                <button class="btnAba"
-                        onclick="location.href='grupos.html'">
-                    Grupos
-                </button>
+            <button class="btnAba" onclick="location.href='myIdeiasPage.html'">
+                💡 Minhas Ideias
+            </button>
 
-            </div>
+            <button class="btnAba" onclick="location.href='criarIdeia.html'">
+                ➕ Criar uma Ideia
+            </button>
+
+            <button class="btnAba" onclick="location.href='resultadosPesquisa.html'">
+                🔎 Explorar Ideias
+            </button>
+
+            <button class="btnAba" onclick="location.href='ideiaPage.html'">
+                📄 Detalhes de uma Ideia
+            </button>
+
+            <button class="btnAba" onclick="location.href='amigosPage.html'">
+                👥 Amigos
+            </button>
+
+            <button class="btnAba" onclick="location.href='grupos.html'">
+                🧑‍🤝‍🧑 Grupos
+            </button>
+
+            <button class="btnAba" onclick="location.href='mensagens.html'">
+                💬 Mensagens
+            </button>
+
+            <button class="btnAba" onclick="location.href='notificacoes.html'">
+                🔔 Notificações
+            </button>
+
+            <button class="btnAba" onclick="location.href='definicoes.html'">
+                ⚙️ Definições
+            </button>
+
+            <button class="btnAba" onclick="location.href='sobre.html'">
+                ℹ️ Sobre
+            </button>
+
+            <button class="btnAba" onclick="location.href='ajuda.html'">
+                ❓ Central de Ajuda
+            </button>
+
+            <button class="btnAba" onclick="location.href='termos.html'">
+                📜 Termos de Serviço
+            </button>
+
+            <button class="btnAba" onclick="location.href='blog.html'">
+                📰 Blog
+            </button>
+
+            <button class="btnAba" onclick="location.href='recuperarPassword.html'">
+                🔑 Recuperar Palavra-passe
+            </button>
+
+            <button class="btnAba" onclick="location.href='login.html'">
+                🚪 Terminar Sessão
+            </button>
+
+        </div>
+
+
+        
 
         </div>
 
@@ -99,109 +148,89 @@
 
         <div id="ideiasScroll">
 
-
             <!-- IDEIA 1 -->
+            <article class="ideia"
+                     onclick="location.href='ideiaPage.html?id=1'"
+                     role="link"
+                     tabindex="0">
 
-            <article class="ideia">
-
-                <div class="imgIdeia">
-                    💡
-                </div>
-
+                <div class="imgIdeia">💡</div>
                 <div class="textosIdeia">
-
-                    <h2 class="tituloIdeia">
-                        Título da ideia 1
-                    </h2>
-
+                    <h2 class="tituloIdeia">Título da ideia 1</h2>
                     <p class="descriIdeia">
                         Descrição da ideia 1. Aqui podes apresentar
                         brevemente a ideia criada pelo utilizador.
                     </p>
-
-                    <span class="autorIdeia">
-                        Por: Heie
-                    </span>
-
+                    <span class="autorIdeia">Por: Heie</span>
                 </div>
-
                 <button class="favoritar"
-                        title="Adicionar aos favoritos">
+                        type="button"
+                        title="Adicionar aos favoritos"
+                        aria-label="Adicionar ideia 1 aos favoritos"
+                        onclick="event.stopPropagation()">
                     ☆
                 </button>
-
             </article>
 
 
             <!-- IDEIA 2 -->
 
-            <article class="ideia">
+            <article class="ideia"
+                     onclick="location.href='ideiaPage.html?id=1'"
+                     role="link"
+                     tabindex="0">
 
-                <div class="imgIdeia">
-                    💡
-                </div>
-
+                <div class="imgIdeia">💡</div>
                 <div class="textosIdeia">
-
-                    <h2 class="tituloIdeia">
-                        Aplicação para estudantes
-                    </h2>
-
+                    <h2 class="tituloIdeia">Título da ideia 1</h2>
                     <p class="descriIdeia">
-                        Uma aplicação para ajudar estudantes
-                        a organizar os seus projetos.
+                        Descrição da ideia 1. Aqui podes apresentar
+                        brevemente a ideia criada pelo utilizador.
                     </p>
-
-                    <span class="autorIdeia">
-                        Por: Utilizador
-                    </span>
-
+                    <span class="autorIdeia">Por: Heie</span>
                 </div>
-
                 <button class="favoritar"
-                        title="Adicionar aos favoritos">
+                        type="button"
+                        title="Adicionar aos favoritos"
+                        aria-label="Adicionar ideia 1 aos favoritos"
+                        onclick="event.stopPropagation()">
                     ☆
                 </button>
-
             </article>
 
 
             <!-- IDEIA 3 -->
 
-            <article class="ideia">
+            <article class="ideia"
+                     onclick="location.href='ideiaPage.html?id=1'"
+                     role="link"
+                     tabindex="0">
 
-                <div class="imgIdeia">
-                    💡
-                </div>
-
+                <div class="imgIdeia">💡</div>
                 <div class="textosIdeia">
-
-                    <h2 class="tituloIdeia">
-                        Plataforma de ideias
-                    </h2>
-
+                    <h2 class="tituloIdeia">Título da ideia 1</h2>
                     <p class="descriIdeia">
-                        Uma plataforma onde todos podem partilhar
-                        e desenvolver novas ideias.
+                        Descrição da ideia 1. Aqui podes apresentar
+                        brevemente a ideia criada pelo utilizador.
                     </p>
-
-                    <span class="autorIdeia">
-                        Por: Utilizador
-                    </span>
-
+                    <span class="autorIdeia">Por: Heie</span>
                 </div>
-
                 <button class="favoritar"
-                        title="Adicionar aos favoritos">
+                        type="button"
+                        title="Adicionar aos favoritos"
+                        aria-label="Adicionar ideia 1 aos favoritos"
+                        onclick="event.stopPropagation()">
                     ☆
                 </button>
-
             </article>
 
 
             <!-- IDEIA 4 -->
 
-            <article class="ideia">
+            <article class="ideia"
+                     onclick="location.href='ideiaPage.html?id=1'"
+                     role="link"
+                     tabindex="0">
 
                 <div class="imgIdeia">
                     💡
@@ -241,24 +270,20 @@
          FOOTER
     ========================== -->
 
+    
     <footer class="footer">
-
         <div class="footer-links">
-
-            <a href="#">Sobre</a>
-            <a href="#">Central de Ajuda</a>
-            <a href="#">Termos de Serviço</a>
-            <a href="#">Blog</a>
-            <a href="#">Configurações</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="ajuda.html">Central de Ajuda</a>
+            <a href="termos.html">Termos de Serviço</a>
+            <a href="blog.html">Blog</a>
+            <a href="definicoes.html">Configurações</a>
+            <a href="login.html">Iniciar Sessão</a>
 
         </div>
-
         <p class="footer-copy">
             © 2026 Ideias. Todos os direitos reservados.
         </p>
-
     </footer>
-
 </body>
-
 </html>

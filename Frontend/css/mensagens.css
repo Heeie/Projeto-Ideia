@@ -1,0 +1,546 @@
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #292929;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #fff200, #ffe046);
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* CABEÇALHO */
+
+.bar_alta {
+    min-height: 85px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: rgba(238, 203, 3, 0.96);
+    border-bottom: 2px solid rgba(169, 145, 0, 0.5);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.btnVoltar {
+    padding: 11px 16px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    font-weight: bold;
+}
+
+.btnVoltar:hover {
+    background: #fff5a3;
+}
+
+.titulo {
+    margin: 0;
+    font-size: 30px;
+}
+
+.titulo a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.tituloPagina {
+    margin-left: auto;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* LAYOUT */
+
+.mensagens-container {
+    width: min(1250px, 94%);
+    flex: 1;
+    min-height: 560px;
+    height: 70vh;
+    max-height: 850px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: 330px minmax(0, 1fr);
+    overflow: hidden;
+    background: white;
+    border: 1px solid rgba(169, 145, 0, 0.35);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* LISTA DE CONVERSAS */
+
+.painel-conversas {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: #fffdf0;
+    border-right: 1px solid #e8dfaa;
+}
+
+.cabecalho-conversas {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabecalho-conversas h2 {
+    margin: 0;
+    font-size: 23px;
+}
+
+#novaMensagem {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #ffe34d;
+    font-size: 27px;
+}
+
+#novaMensagem:hover {
+    background: #ffd21c;
+}
+
+#pesquisarConversa {
+    margin: 0 15px 15px;
+    width: calc(100% - 30px);
+    padding: 12px;
+    border: 1px solid #ded49c;
+    border-radius: 10px;
+    outline: none;
+}
+
+#pesquisarConversa:focus {
+    border-color: #b99b00;
+    box-shadow: 0 0 0 3px rgba(185, 155, 0, 0.12);
+}
+
+#listaConversas {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.conversa {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    border-bottom: 1px solid #f0ebd2;
+    background: transparent;
+    text-align: left;
+}
+
+.conversa:hover,
+.conversa.ativa {
+    background: #fff2a5;
+}
+
+.avatar {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ffe990;
+    font-size: 25px;
+}
+
+.info-conversa {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info-conversa strong {
+    font-size: 15px;
+}
+
+.ultimaMensagem {
+    overflow: hidden;
+    color: #777;
+    font-size: 13px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.hora {
+    align-self: flex-start;
+    color: #888;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+/* ÁREA DE CHAT */
+
+.painel-chat {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.cabecalho-chat {
+    min-height: 82px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border-bottom: 1px solid #eee7c5;
+}
+
+.avatar-grande {
+    width: 50px;
+    height: 50px;
+}
+
+.dados-contacto {
+    flex: 1;
+    min-width: 0;
+}
+
+.dados-contacto h2 {
+    margin: 0 0 5px;
+    font-size: 18px;
+}
+
+.estado-contacto {
+    color: #8b7800;
+    font-size: 13px;
+}
+
+.btnApagar {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background: #fff5d7;
+}
+
+.btnApagar:hover {
+    background: #ffe2a3;
+}
+
+.area-mensagens {
+    flex: 1;
+    min-height: 0;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    background:
+        radial-gradient(#eee8c8 0.7px, transparent 0.7px);
+    background-size: 18px 18px;
+}
+
+.separador-data {
+    align-self: center;
+    margin: 0 0 10px;
+    padding: 7px 13px;
+    border-radius: 20px;
+    background: #fff2b0;
+    color: #6f6000;
+    font-size: 12px;
+}
+
+.mensagem {
+    max-width: min(75%, 480px);
+    padding: 12px 15px 8px;
+    border-radius: 15px;
+    overflow-wrap: anywhere;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+.mensagem p {
+    margin: 0 0 7px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+}
+
+.mensagem span {
+    display: block;
+    text-align: right;
+    font-size: 11px;
+    color: #777;
+}
+
+.recebida {
+    align-self: flex-start;
+    background: white;
+    border: 1px solid #eee7c5;
+    border-top-left-radius: 4px;
+}
+
+.enviada {
+    align-self: flex-end;
+    background: #fff0a0;
+    border-top-right-radius: 4px;
+}
+
+/* ESCREVER MENSAGEM */
+
+.form-mensagem {
+    padding: 15px;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    border-top: 1px solid #eee7c5;
+    background: white;
+}
+
+#textoMensagem {
+    flex: 1;
+    min-width: 0;
+    max-height: 130px;
+    resize: vertical;
+    padding: 13px 15px;
+    border: 1px solid #ded49c;
+    border-radius: 12px;
+    outline: none;
+}
+
+#textoMensagem:focus {
+    border-color: #b99b00;
+}
+
+#enviarMensagem {
+    min-height: 45px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 12px;
+    background: #f2d500;
+    font-weight: bold;
+}
+
+#enviarMensagem:hover {
+    background: #ffdf22;
+}
+
+.aviso-chat {
+    margin: 0;
+    padding: 0 15px 12px;
+    color: #888;
+    font-size: 11px;
+}
+
+/* JANELA DE NOVA CONVERSA */
+
+#dialogNovaMensagem {
+    width: min(400px, calc(100% - 30px));
+    padding: 25px;
+    border: 1px solid #d8c64b;
+    border-radius: 18px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+}
+
+#dialogNovaMensagem::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+#formNovaConversa {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#formNovaConversa h2 {
+    margin: 0 0 5px;
+}
+
+#nomeNovoContacto {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ded49c;
+    border-radius: 10px;
+}
+
+.acoes-dialogo {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.acoes-dialogo button {
+    padding: 10px 13px;
+    border: none;
+    border-radius: 9px;
+    background: #ffe65a;
+    font-weight: bold;
+}
+
+/* RODAPÉ */
+
+.footer {
+    padding: 25px 20px;
+    background: rgba(220, 187, 5, 0.95);
+    border-top: 2px solid #ede626;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-copy {
+    margin: 0;
+    color: #3d2600;
+    font-size: 14px;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 750px) {
+    .bar_alta {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .titulo {
+        font-size: 25px;
+    }
+
+    .tituloPagina {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .mensagens-container {
+        width: 96%;
+        height: 75vh;
+        min-height: 500px;
+        margin: 15px auto;
+        grid-template-columns: 110px minmax(0, 1fr);
+    }
+
+    .cabecalho-conversas {
+        padding: 12px 8px;
+        justify-content: center;
+    }
+
+    .cabecalho-conversas h2 {
+        display: none;
+    }
+
+    #pesquisarConversa {
+        margin: 0 5px 10px;
+        width: calc(100% - 10px);
+        padding: 9px 5px;
+        font-size: 12px;
+    }
+
+    .conversa {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 12px 4px;
+        gap: 5px;
+    }
+
+    .info-conversa {
+        width: 100%;
+        text-align: center;
+    }
+
+    .info-conversa strong {
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .ultimaMensagem,
+    .hora {
+        display: none;
+    }
+
+    .cabecalho-chat {
+        padding: 12px 8px;
+        gap: 8px;
+    }
+
+    .avatar-grande {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+    }
+
+    .dados-contacto h2 {
+        font-size: 15px;
+        overflow-wrap: anywhere;
+    }
+
+    .area-mensagens {
+        padding: 12px 8px;
+    }
+
+    .mensagem {
+        max-width: 95%;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .form-mensagem {
+        padding: 8px;
+        gap: 5px;
+    }
+
+    #textoMensagem {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #enviarMensagem {
+        padding: 0 10px;
+        font-size: 13px;
+    }
+
+    .btnApagar {
+        width: 32px;
+        height: 36px;
+    }
+
+    .aviso-chat {
+        font-size: 10px;
+        line-height: 1.4;
+    }
+}
