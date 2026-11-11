@@ -1,1 +1,41 @@
-<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Perfil | Ideias</title><link rel="stylesheet" href="css/paginas.css"><script src="Javascript/api.js" defer></script><script src="Javascript/ideias.js" defer></script><script src="Javascript/perfil.js" defer></script></head><body><header><a class="logo" href="body.html">💡 Ideias</a><a href="body.html">← Início</a></header><main><span class="eyebrow">A tua conta</span><h1>Perfil</h1><p>Atualiza os dados guardados neste navegador.</p><form id="perfilForm"><label for="nome">Nome de utilizador</label><input id="nome" name="nome" autocomplete="username" required minlength="3" maxlength="30"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required><p><button type="submit">Guardar alterações</button></p><p id="feedback" role="status"></p></form><nav><a href="myIdeiasPage.html">Minhas ideias</a><a href="favoritos.html">Favoritos</a><a href="definicoes.html">Definições</a><a href="recuperarPassword.html">Ajuda com a palavra-passe</a></nav></main><footer>© 2026 Ideias</footer></body></html>
+<!doctype html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Perfil | Ideias</title>
+    <link rel="stylesheet" href="css/paginas.css">
+    <script src="Javascript/api.js" defer></script>
+    <script src="Javascript/ideias.js" defer></script>
+    <script src="Javascript/perfil.js" defer></script>
+    <link rel="stylesheet" href="css/design-system.css">
+</head>
+<body class="perfil-page">
+    <header class="site-header">
+        <a class="logo" href="body.html"><img src="images/lampada-de-ideia.png" alt=""><span>Ideias</span></a>
+        <span class="header-context">A tua conta</span>
+    </header>
+    <main class="perfil-main">
+        <section class="perfil-intro">
+            <div class="perfil-avatar" id="perfilAvatar" aria-hidden="true">💡</div>
+            <div><span class="eyebrow">O teu espaço</span><h1>Perfil</h1><p>Gere a informação associada à tua conta.</p></div>
+        </section>
+        <section class="perfil-card" aria-labelledby="dadosContaTitulo">
+            <div class="perfil-card-heading"><div><h2 id="dadosContaTitulo">Dados da conta</h2><p>As alterações são guardadas na tua conta.</p></div><span class="perfil-badge">Conta pessoal</span></div>
+            <form id="perfilForm">
+                <div class="perfil-form-grid">
+                    <div class="perfil-field"><label for="nome">Nome de utilizador</label><input id="nome" name="nome" autocomplete="username" required minlength="3" maxlength="30"></div>
+                    <div class="perfil-field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+                </div>
+                <div class="perfil-form-footer"><p id="feedback" role="status" aria-live="polite"></p><button type="submit">Guardar alterações</button></div>
+            </form>
+        </section>
+        <section class="perfil-shortcuts" aria-label="Atalhos da conta">
+            <a href="myIdeiasPage.html"><span>💡</span><span><strong>Minhas ideias</strong><small>Gere as tuas publicações</small></span><b aria-hidden="true">→</b></a>
+            <a href="favoritos.html"><span>☆</span><span><strong>Favoritos</strong><small>Ideias que guardaste</small></span><b aria-hidden="true">→</b></a>
+            <a href="definicoes.html"><span>⚙</span><span><strong>Definições</strong><small>Preferências e notificações</small></span><b aria-hidden="true">→</b></a>
+        </section>
+    </main>
+    <footer>© 2026 Ideias. Todas as ideias merecem um lugar.</footer>
+</body>
+</html>

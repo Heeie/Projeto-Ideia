@@ -11,41 +11,32 @@
 
         const aba = document.getElementById("abaOpcoes");
         const botao = document.getElementById("ops");
+        const overlay = document.getElementById("menuOverlay");
+        const closeMenu = document.getElementById("fecharMenu");
+        const setMenuOpen = open => {
+            aba.classList.toggle("aberto", open);
+            overlay.classList.toggle("aberto", open);
+            document.body.classList.toggle("menu-aberto", open);
+            aba.inert = !open;
+            aba.setAttribute("aria-hidden", String(!open));
+            botao.setAttribute("aria-expanded", String(open));
+            if (open) closeMenu.focus();
+            else botao.focus();
+        };
         const pesquisa = document.getElementById("barraPesquisa");
+        const currentUser = IdeiasAPI.current();
+        document.getElementById("menuNomeUtilizador").textContent = currentUser?.nome || "A tua comunidade";
         document.getElementById("terminarSessao").addEventListener("click", () => {
             IdeiasAPI.signOut();
             window.location.href = "capa.html";
         });
-
-        // esconder menu ao iniciar
-        aba.style.display = "none";
-
-        // abrir/fechar menu
-        botao.addEventListener("click", function () {
-
-            if (aba.style.display === "none") {
-                aba.style.display = "block";
-            } else {
-                aba.style.display = "none";
-            }
-
+        botao.addEventListener("click", () => setMenuOpen(true));
+        closeMenu.addEventListener("click", () => setMenuOpen(false));
+        overlay.addEventListener("click", () => setMenuOpen(false));
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && aba.classList.contains("aberto")) setMenuOpen(false);
         });
-
-        
-
-        document.addEventListener("click", function (event) {
-
-    // Se o menu estiver aberto
-    if (aba.style.display === "block") {
-
-        // Se o clique não foi no menu nem no botão
-        if (!aba.contains(event.target) && !botao.contains(event.target)) {
-            aba.style.display = "none";
-        }
-
-    }
-
-});
+        aba.querySelectorAll("a").forEach(link => link.addEventListener("click", () => setMenuOpen(false)));
 
         // pesquisa
         pesquisa.addEventListener("submit", function (event) {

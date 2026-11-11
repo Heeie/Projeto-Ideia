@@ -1,5 +1,6 @@
 package Ideias.config;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.context.annotation.Bean;
@@ -19,9 +20,10 @@ public class CorsConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:5500", "http://127.0.0.1:5500"));
+        config.setAllowedOrigins(Arrays.stream(System.getenv().getOrDefault("IDEIAS_CORS_ALLOWED_ORIGINS", "http://localhost:5500,http://127.0.0.1:5500").split(","))
+                .map(String::trim).filter(origin -> !origin.isBlank()).toList());
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("Content-Type", "Accept"));
+        config.setAllowedHeaders(List.of("Content-Type", "Accept", "Authorization"));
         config.setAllowCredentials(false);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/api/**", config);

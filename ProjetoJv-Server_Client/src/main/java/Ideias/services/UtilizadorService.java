@@ -14,6 +14,12 @@ import Ideias.exceptions.ResourceNotFoundException;
 import Ideias.exceptions.UnauthorizedException;
 import Ideias.repositories.IdeiaRepository;
 import Ideias.repositories.UtilizadorRepository;
+import Ideias.repositories.ComentarioRepository;
+import Ideias.repositories.GrupoRepository;
+import Ideias.repositories.AmizadeRepository;
+import Ideias.repositories.ConversaRepository;
+import Ideias.repositories.PreferenciasRepository;
+import Ideias.repositories.NotificacaoRepository;
 
 @Service
 @Transactional
@@ -21,12 +27,27 @@ public class UtilizadorService {
     private final UtilizadorRepository utilizadorRepository;
     private final IdeiaRepository ideiaRepository;
     private final PasswordService passwordService;
+    private final ComentarioRepository comentarioRepository;
+    private final GrupoRepository grupoRepository;
+    private final AmizadeRepository amizadeRepository;
+    private final ConversaRepository conversaRepository;
+    private final PreferenciasRepository preferenciasRepository;
+    private final NotificacaoRepository notificacaoRepository;
 
     public UtilizadorService(UtilizadorRepository utilizadorRepository, IdeiaRepository ideiaRepository,
-            PasswordService passwordService) {
+            PasswordService passwordService, ComentarioRepository comentarioRepository,
+            GrupoRepository grupoRepository, AmizadeRepository amizadeRepository,
+            ConversaRepository conversaRepository, PreferenciasRepository preferenciasRepository,
+            NotificacaoRepository notificacaoRepository) {
         this.utilizadorRepository = utilizadorRepository;
         this.ideiaRepository = ideiaRepository;
         this.passwordService = passwordService;
+        this.comentarioRepository = comentarioRepository;
+        this.grupoRepository = grupoRepository;
+        this.amizadeRepository = amizadeRepository;
+        this.conversaRepository = conversaRepository;
+        this.preferenciasRepository = preferenciasRepository;
+        this.notificacaoRepository = notificacaoRepository;
     }
 
     @Transactional(readOnly = true)
@@ -81,6 +102,31 @@ public class UtilizadorService {
 
     public void removerUtilizador(Long id) {
         Utilizador utilizador = getById(id);
+        comentarioRepository.findAll().forEach(comentario -> comentario.getGostadaPor().remove(utilizador));
+        comentarioRepository.findByAutor_Id(id).forEach(comentario -> {
+            comentario.getGostadaPor().clear();
+            comentarioRepository.delete(comentario);
+        });
+        grupoRepository.findAll().stream().filter(grupo -> grupo.getCriador().getId().equals(id)).forEach(grupo -> {
+            grupo.getMembros().clear();
+            grupoRepository.delete(grupo);
+        });
+        grupoRepository.findAll().forEach(grupo -> grupo.getMembros().remove(utilizador));
+        amizadeRepository.findByRequerente_IdOrDestinatario_Id(id, id).forEach(amizadeRepository::delete);
+        conversaRepository.findDistinctByParticipantes_Id(id).forEach(conversaRepository::delete);
+        notificacaoRepository.findByDestinatario_Id(id).forEach(notificacaoRepository::delete);
+        preferenciasRepository.deleteById(id);
+        if (utilizador instanceof Cliente) {
+            ideiaRepository.findByCliente_Id(id).forEach(ideia -> {
+                ideia.getFavoritaPor().forEach(favorito -> favorito.getIdeiasFav().remove(ideia));
+                ideia.getGostadaPor().forEach(gostador -> gostador.getIdeiasGostadas().remove(ideia));
+                comentarioRepository.findByIdeia_Id(ideia.getId()).forEach(comentario -> {
+                    comentario.getGostadaPor().clear();
+                    comentarioRepository.delete(comentario);
+                });
+                ideiaRepository.delete(ideia);
+            });
+        }
         utilizador.getIdeiasFav().clear();
         utilizador.getIdeiasGostadas().clear();
         utilizadorRepository.delete(utilizador);

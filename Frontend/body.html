@@ -11,6 +11,7 @@
     <script src="Javascript/api.js" defer></script>
     <script src="Javascript/ideias.js" defer></script>
     <script src="Javascript/home.js" defer></script>
+    <link rel="stylesheet" href="css/design-system.css">
 </head>
 
 <body>
@@ -20,7 +21,7 @@
         <!-- Menu -->
         <div class="menu-container">
 
-            <button id="ops">
+            <button id="ops" type="button" aria-label="Abrir menu de navegação" aria-controls="abaOpcoes" aria-expanded="false">
                 <img class="botoes"
                      src="images/3bar.png"
                      alt="Menu">
@@ -29,81 +30,37 @@
            
 
                 
-        <div id="abaOpcoes">
-
-            <button class="btnAba" onclick="location.href='body.html'">
-                🏠 Início
-            </button>
-
-            <button class="btnAba" onclick="location.href='perfil.html'">
-                👤 Perfil
-            </button>
-
-            <button class="btnAba" onclick="location.href='favoritos.html'">
-                ⭐ Favoritos
-            </button>
-
-            <button class="btnAba" onclick="location.href='myIdeiasPage.html'">
-                💡 Minhas Ideias
-            </button>
-
-            <button class="btnAba" onclick="location.href='criarIdeia.html'">
-                ➕ Criar uma Ideia
-            </button>
-
-            <button class="btnAba" onclick="location.href='resultadosPesquisa.html'">
-                🔎 Explorar Ideias
-            </button>
-
-            <button class="btnAba" onclick="location.href='ideiaPage.html'">
-                📄 Detalhes de uma Ideia
-            </button>
-
-            <button class="btnAba" onclick="location.href='amigosPage.html'">
-                👥 Amigos
-            </button>
-
-            <button class="btnAba" onclick="location.href='grupos.html'">
-                🧑‍🤝‍🧑 Grupos
-            </button>
-
-            <button class="btnAba" onclick="location.href='mensagens.html'">
-                💬 Mensagens
-            </button>
-
-            <button class="btnAba" onclick="location.href='notificacoes.html'">
-                🔔 Notificações
-            </button>
-
-            <button class="btnAba" onclick="location.href='definicoes.html'">
-                ⚙️ Definições
-            </button>
-
-            <button class="btnAba" onclick="location.href='sobre.html'">
-                ℹ️ Sobre
-            </button>
-
-            <button class="btnAba" onclick="location.href='ajuda.html'">
-                ❓ Central de Ajuda
-            </button>
-
-            <button class="btnAba" onclick="location.href='termos.html'">
-                📜 Termos de Serviço
-            </button>
-
-            <button class="btnAba" onclick="location.href='blog.html'">
-                📰 Blog
-            </button>
-
-            <button class="btnAba" onclick="location.href='recuperarPassword.html'">
-                🔑 Recuperar Palavra-passe
-            </button>
-
-            <button class="btnAba" id="terminarSessao">
-                🚪 Terminar Sessão
-            </button>
-
-        </div>
+        <button id="menuOverlay" type="button" aria-label="Fechar menu" tabindex="-1"></button>
+        <aside id="abaOpcoes" aria-label="Menu principal" aria-hidden="true" inert>
+            <div class="menu-cabecalho">
+                <div class="menu-marca"><span class="menu-lampada">💡</span><span><strong>Ideias</strong><small>Explora e cria</small></span></div>
+                <button id="fecharMenu" class="fechar-menu" type="button" aria-label="Fechar menu">×</button>
+            </div>
+            <div class="menu-utilizador"><span class="menu-avatar">👤</span><span id="menuNomeUtilizador">A tua comunidade</span></div>
+            <nav class="menu-navegacao">
+                <a class="btnAba destaque" href="body.html"><span>⌂</span> Início</a>
+                <a class="btnAba destaque" href="resultadosPesquisa.html"><span>⌕</span> Explorar ideias</a>
+                <a class="btnAba destaque" href="criarIdeia.html"><span>＋</span> Criar ideia</a>
+                <a class="btnAba destaque" href="favoritos.html"><span>☆</span> Favoritos</a>
+                <details class="menu-mais">
+                    <summary>Mais opções <span aria-hidden="true">⌄</span></summary>
+                    <div class="menu-secundario">
+                        <a class="btnAba" href="perfil.html">Perfil</a>
+                        <a class="btnAba" href="myIdeiasPage.html">Minhas ideias</a>
+                        <a class="btnAba" href="amigosPage.html">Amigos</a>
+                        <a class="btnAba" href="grupos.html">Grupos</a>
+                        <a class="btnAba" href="mensagens.html">Mensagens</a>
+                        <a class="btnAba" href="notificacoes.html">Notificações</a>
+                        <a class="btnAba" href="definicoes.html">Definições</a>
+                        <a class="btnAba" href="sobre.html">Sobre e ajuda</a>
+                    </div>
+                </details>
+            </nav>
+            <div class="menu-rodape">
+                <a href="termos.html">Termos e privacidade</a>
+                <button class="btnAba terminar-sessao" id="terminarSessao" type="button">Terminar sessão</button>
+            </div>
+        </aside>
 
 
         

@@ -1,1 +1,135 @@
-*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;color:#302b1f;background:linear-gradient(135deg,#fff9c9,#ffe56d 55%,#ffbd68)}header{padding:16px max(5%,calc((100% - 1050px)/2));display:flex;justify-content:space-between;align-items:center;background:#efcb03}.logo{font-size:22px;font-weight:800;color:inherit;text-decoration:none}header a:last-child{color:inherit}main{width:min(920px,90%);margin:48px auto;background:#ffffffdf;padding:clamp(22px,5vw,48px);border-radius:24px;box-shadow:0 15px 45px #6e4b0f20}h1{font-size:clamp(30px,5vw,46px);margin:8px 0 12px}h2{margin-top:30px}p,li{line-height:1.7;color:#514a3d}.eyebrow{color:#936611;font-weight:bold;text-transform:uppercase;letter-spacing:1px}a.button,button{display:inline-block;border:0;border-radius:12px;padding:12px 18px;background:#e9b900;color:#29251f;font-weight:bold;text-decoration:none;cursor:pointer}input,select{font:inherit;padding:12px;border:1px solid #d7c875;border-radius:10px}label{display:block;font-weight:bold;margin:15px 0 6px}.notice{padding:16px;margin:12px 0;background:#fff8d8;border-radius:12px}.muted{font-size:14px;color:#746b5b}footer{text-align:center;padding:25px}nav{display:flex;gap:16px;flex-wrap:wrap}nav a{color:#514a3d}
+:root {
+    --page-bg: #f7f6f0;
+    --surface: #fff;
+    --surface-soft: #fffaf0;
+    --accent: #e5b900;
+    --accent-strong: #c99d00;
+    --text: #29281f;
+    --text-muted: #777568;
+    --border: #e9e5d6;
+    --radius: 18px;
+    --shadow: 0 12px 36px rgba(56, 49, 15, .08);
+}
+
+* { box-sizing: border-box; }
+html { min-height: 100%; background: var(--page-bg); }
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    color: var(--text);
+    background: radial-gradient(ellipse at 10% 0%, #fff7d5 0, transparent 42%), var(--page-bg);
+    font-family: "Segoe UI", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid #8f7400; outline-offset: 3px; }
+
+header {
+    min-height: 72px;
+    padding: 12px max(5%, calc((100% - 1080px) / 2));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    background: rgba(255, 255, 255, .9);
+    border-bottom: 1px solid var(--border);
+}
+.logo { display: inline-flex; align-items: center; gap: 9px; color: var(--text); font-size: 21px; font-weight: 800; text-decoration: none; }
+.logo img { width: 38px; height: 38px; object-fit: contain; }
+.header-context { color: var(--text-muted); font-size: 14px; font-weight: 600; }
+
+main {
+    width: min(920px, 90%);
+    margin: 42px auto;
+    padding: clamp(24px, 5vw, 48px);
+    flex: 1 0 auto;
+    background: var(--surface);
+    border: 1px solid rgba(222, 215, 190, .7);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+}
+h1 { margin: 8px 0 12px; font-size: clamp(30px, 5vw, 44px); letter-spacing: -.035em; line-height: 1.1; }
+h2 { margin: 26px 0 10px; font-size: 21px; }
+p, li { color: #5b594d; line-height: 1.7; }
+.eyebrow { color: #8e7200; font-size: 12px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+
+button, a.button, main > a.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    color: #302900;
+    background: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+button:hover, a.button:hover, main > a.button:hover { background: #f1cc37; box-shadow: 0 5px 14px rgba(112, 89, 0, .12); transform: translateY(-1px); }
+button:disabled { cursor: wait; opacity: .65; transform: none; }
+input, select, textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 13px;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid #dcd8c8;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent-strong); box-shadow: 0 0 0 3px rgba(229, 185, 0, .16); }
+label { display: block; margin: 16px 0 7px; color: #454338; font-size: 14px; font-weight: 700; }
+.notice { margin: 14px 0; padding: 18px; background: var(--surface-soft); border: 1px solid #f0e9d1; border-radius: 14px; }
+.notice h2 { margin-top: 0; }
+.muted { color: var(--text-muted); font-size: 14px; }
+main nav { display: flex; gap: 10px; flex-wrap: wrap; }
+main nav a { padding: 9px 12px; color: #62530b; background: #fff8dc; border-radius: 9px; font-size: 14px; font-weight: 650; text-decoration: none; }
+main nav a:hover { background: #fff0af; }
+footer { padding: 22px; color: var(--text-muted); font-size: 13px; text-align: center; }
+
+/* Perfil */
+.perfil-main { width: min(900px, 92%); padding: 0; background: transparent; border: 0; box-shadow: none; }
+.perfil-intro { display: flex; align-items: center; gap: 19px; margin: 8px 0 26px; }
+.perfil-intro h1 { margin: 5px 0; font-size: clamp(31px, 5vw, 42px); }
+.perfil-intro p { margin: 0; }
+.perfil-avatar { display: grid; place-items: center; width: 76px; height: 76px; flex: 0 0 auto; border: 5px solid #fff; border-radius: 24px; color: #604d00; background: linear-gradient(145deg, #ffed9b, #f1c928); box-shadow: 0 5px 18px rgba(92, 75, 0, .12); font-size: 31px; font-weight: 800; }
+.perfil-card { padding: clamp(22px, 4vw, 34px); background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); }
+.perfil-card-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; margin-bottom: 22px; }
+.perfil-card-heading h2 { margin: 0 0 5px; font-size: 20px; }
+.perfil-card-heading p { margin: 0; font-size: 14px; }
+.perfil-badge { padding: 7px 10px; color: #756000; background: #fff6d5; border-radius: 20px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.perfil-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.perfil-field label { margin-top: 0; }
+.perfil-form-footer { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-top: 24px; padding-top: 18px; border-top: 1px solid #efede4; }
+.perfil-form-footer p { margin: 0; font-size: 14px; }
+.perfil-form-footer p:empty { display: none; }
+.perfil-shortcuts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 17px; }
+.perfil-shortcuts a { display: grid; grid-template-columns: 35px 1fr 18px; align-items: center; gap: 10px; min-height: 78px; padding: 13px; background: rgba(255,255,255,.82); border: 1px solid var(--border); border-radius: 15px; text-decoration: none; transition: border-color .18s, transform .18s, box-shadow .18s; }
+.perfil-shortcuts a:hover { border-color: #d9be45; box-shadow: 0 7px 20px rgba(65, 56, 15, .08); transform: translateY(-2px); }
+.perfil-shortcuts a > span:first-child { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 11px; color: #705d00; background: #fff2b9; font-size: 19px; }
+.perfil-shortcuts strong, .perfil-shortcuts small { display: block; }
+.perfil-shortcuts strong { font-size: 13px; }
+.perfil-shortcuts small { margin-top: 4px; color: var(--text-muted); font-size: 11px; line-height: 1.35; }
+.perfil-shortcuts b { color: #8b761e; }
+
+@media (max-width: 620px) {
+    header { min-height: 62px; padding: 10px 5%; }
+    main { width: 92%; margin: 22px auto; padding: 22px; }
+    .perfil-main { padding: 0; }
+    .perfil-avatar { width: 61px; height: 61px; border-radius: 19px; font-size: 25px; }
+    .perfil-intro { gap: 13px; margin-bottom: 20px; }
+    .perfil-card-heading { flex-direction: column; }
+    .perfil-form-grid, .perfil-shortcuts { grid-template-columns: 1fr; }
+    .perfil-form-footer { align-items: stretch; flex-direction: column; }
+    .perfil-form-footer button { width: 100%; }
+}

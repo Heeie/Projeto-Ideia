@@ -13,37 +13,42 @@ import Ideias.entities.Cliente;
 import Ideias.entities.Utilizador;
 import Ideias.services.UtilizadorService;
 import jakarta.validation.Valid;
+import Ideias.security.ActorGuard;
+import Ideias.dto.UtilizadorResumoDto;
+import jakarta.servlet.http.HttpServletRequest;
+import Ideias.security.ApiTokenService;
 
 @RestController
 @RequestMapping("/api/utilizadores")
 public class UtilizadorController {
     private final UtilizadorService utilizadorService;
+    private final ApiTokenService tokens;
 
-    public UtilizadorController(UtilizadorService utilizadorService) {
+    public UtilizadorController(UtilizadorService utilizadorService, ApiTokenService tokens) {
         this.utilizadorService = utilizadorService;
+        this.tokens = tokens;
     }
 
     @PostMapping
     public ResponseEntity<UtilizadorResponseDto> criar(@Valid @RequestBody UtilizadorDto dto) {
-        if (!"CLIENTE".equals(dto.tipo().trim().toUpperCase(Locale.ROOT)))
-            throw new IllegalArgumentException("Só é permitido registar contas de cliente.");
-        Cliente novo = new Cliente(dto.email(), dto.nome(), dto.password());
-        return ResponseEntity.ok(resposta(utilizadorService.criarUtilizador(novo)));
+        throw new IllegalArgumentException("Utiliza o endpoint /api/auth/registo para criar uma conta.");
     }
 
     @GetMapping
-    public List<UtilizadorResponseDto> listar() {
-        return utilizadorService.getAll().stream().map(UtilizadorController::resposta).toList();
+    public List<UtilizadorResumoDto> listar() {
+        return utilizadorService.getAll().stream().map(u -> new UtilizadorResumoDto(u.getId(), u.getNome(), u instanceof Cliente ? "CLIENTE" : "ADMIN")).toList();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UtilizadorResponseDto> detalhes(@PathVariable Long id) {
+    public ResponseEntity<UtilizadorResponseDto> detalhes(@PathVariable Long id, HttpServletRequest request) {
+        ActorGuard.requireCurrentUser(request, id);
         return ResponseEntity.ok(resposta(utilizadorService.getById(id)));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<UtilizadorResponseDto> atualizar(@PathVariable Long id,
-            @Valid @RequestBody UtilizadorDto dto) {
+            @Valid @RequestBody UtilizadorDto dto, HttpServletRequest request) {
+        ActorGuard.requireCurrentUser(request, id);
         Utilizador atualizado = utilizadorService.atualizarUtilizador(id,
                 dto.nome(), dto.email(), dto.password());
         return ResponseEntity.ok(resposta(atualizado));
@@ -51,14 +56,17 @@ public class UtilizadorController {
 
     @PutMapping("/{id}/perfil")
     public ResponseEntity<UtilizadorResponseDto> atualizarPerfil(@PathVariable Long id,
-            @Valid @RequestBody AtualizarPerfilDto dto) {
+            @Valid @RequestBody AtualizarPerfilDto dto, HttpServletRequest request) {
+        ActorGuard.requireCurrentUser(request, id);
         Utilizador atualizado = utilizadorService.atualizarUtilizador(id, dto.nome(), dto.email(), null);
         return ResponseEntity.ok(resposta(atualizado));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remover(@PathVariable Long id) {
+    public ResponseEntity<Void> remover(@PathVariable Long id, HttpServletRequest request) {
+        ActorGuard.requireCurrentUser(request, id);
         utilizadorService.removerUtilizador(id);
+        tokens.revokeUser(id);
         return ResponseEntity.noContent().build();
     }
 

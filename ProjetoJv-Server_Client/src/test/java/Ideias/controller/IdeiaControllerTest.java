@@ -7,6 +7,7 @@ import Ideias.enums.CategoriaIdeia;
 import Ideias.enums.IdeiaStatus;
 import Ideias.repositories.ClienteRepository;
 import Ideias.repositories.IdeiaRepository;
+import Ideias.security.ApiTokenService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ class IdeiaControllerTest {
 
     @Autowired
     private IdeiaRepository ideiaRepository;
+    @Autowired private ApiTokenService tokens;
 
     @Autowired
     private ClienteRepository clienteRepository;
@@ -60,7 +62,7 @@ class IdeiaControllerTest {
         );
 
         ideia.setDescricao("Descrição inicial");
-        ideia.setEstado(IdeiaStatus.PRIVADA);
+        ideia.setEstado(IdeiaStatus.PUBLICA);
 
         ideia = ideiaRepository.save(ideia);
     }
@@ -68,7 +70,7 @@ class IdeiaControllerTest {
     @Test
     void testCriar() throws Exception {
 
-        mockMvc.perform(post("/api/ideias")
+        mockMvc.perform(post("/api/ideias").header("Authorization", auth())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -85,7 +87,7 @@ class IdeiaControllerTest {
 
     @Test
     void criarIdeiaComImagemParaFrontend() throws Exception {
-        mockMvc.perform(post("/api/ideias")
+        mockMvc.perform(post("/api/ideias").header("Authorization", auth())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -105,7 +107,7 @@ class IdeiaControllerTest {
     @Test
     void testAtualizar() throws Exception {
 
-        mockMvc.perform(put("/api/ideias/" + ideia.getId())
+        mockMvc.perform(put("/api/ideias/" + ideia.getId()).header("Authorization", auth())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -132,7 +134,7 @@ class IdeiaControllerTest {
     @Test
     void testDetalhes() throws Exception {
 
-        mockMvc.perform(get("/api/ideias/" + ideia.getId()))
+        mockMvc.perform(get("/api/ideias/" + ideia.getId()).header("Authorization", auth()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.nome").value("Ideia Inicial"));
     }
@@ -140,11 +142,13 @@ class IdeiaControllerTest {
     @Test
     void testRemover() throws Exception {
 
-        mockMvc.perform(delete("/api/ideias/" + ideia.getId()))
+        mockMvc.perform(delete("/api/ideias/" + ideia.getId()).header("Authorization", auth()))
                 .andExpect(status().isNoContent());
 
         List<Ideia> lista = ideiaRepository.findAll();
 
         assertTrue(lista.isEmpty());
     }
+
+    private String auth() { return "Bearer " + tokens.issue(cliente.getId()); }
 }

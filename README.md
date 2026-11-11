@@ -11,7 +11,7 @@ cd Frontend
 python -m http.server 5500
 ```
 
-Abre `http://localhost:5500/capa.html`. O cliente JavaScript usa `http://localhost:8080` por omissão; podes substituir o endereço definindo `window.IDEIAS_API_BASE` antes de `Javascript/api.js`.
+Abre `http://localhost:5500/capa.html`. O cliente JavaScript usa `http://localhost:8080` por omissão; podes substituir o endereço definindo `window.IDEIAS_API_BASE` antes de `Javascript/api.js`. Também podes iniciar o servidor incluído com `node serve.js` dentro de `Frontend`.
 
 Favoritos, gostos, comentários, grupos, amizades, mensagens, preferências de notificação e notificações são persistidos pela API. As páginas sociais requerem sessão iniciada. O navegador mantém apenas o cache temporário das ideias e os dados de sessão.
 
@@ -24,7 +24,7 @@ cd ProjetoJv-Server_Client
 mvn spring-boot:run
 ```
 
-A documentação OpenAPI fica disponível em `/swagger-ui.html` quando o servidor está ativo. Autenticação e registo: `POST /api/auth/registo` e `POST /api/auth/login`. Os endpoints CRUD incluem `GET/POST /api/ideias`, `GET/PUT/DELETE /api/ideias/{id}` e operações equivalentes em `/api/utilizadores`. As respostas de utilizador nunca incluem a palavra-passe; os erros usam estados HTTP adequados e um corpo JSON com `status` e `message`.
+A documentação OpenAPI fica disponível em `/swagger-ui.html` quando o servidor está ativo. Autenticação e registo: `POST /api/auth/registo` e `POST /api/auth/login`. A lista pública `GET /api/ideias` mostra apenas ideias públicas; as operações de criação, edição e remoção exigem token. `GET /api/ideias/minhas` devolve as ideias da sessão. Os perfis ficam em `/api/utilizadores/{id}/perfil`; `GET /api/utilizadores` fornece apenas identificadores e nomes para pesquisa de contactos. As respostas nunca incluem palavras-passe; os erros usam estados HTTP adequados e um corpo JSON com `status` e `message`.
 
 As áreas sociais incluem `/api/utilizadores/{id}/favoritos`, `/api/ideias/{id}/gostos` e `/api/ideias/{id}/comentarios`; gestão de grupos em `/api/grupos`; pedidos e relações em `/api/amizades`; conversas e mensagens em `/api/conversas`; e `/api/utilizadores/{id}/preferencias` e `/api/utilizadores/{id}/notificacoes`. Pedidos de amizade, comentários e mensagens criam notificações para o destinatário.
 
@@ -34,4 +34,8 @@ Para compilar: `mvn clean compile`. A suite `mvn test` cobre CRUD, registo/login
 
 ## Estado e limitações
 
-As palavras-passe são derivadas com PBKDF2 e nunca são devolvidas pela API. O endpoint de login ainda não emite tokens nem protege os endpoints CRUD com autorização. Usa o servidor apenas em desenvolvimento até ser adicionada autorização por utilizador e configuração de produção.
+As palavras-passe são derivadas com PBKDF2 e nunca são devolvidas pela API. O login e o registo emitem tokens Bearer com validade de 12 horas; os endpoints privados exigem sessão e comparam a conta autenticada com o utilizador indicado. A sessão é mantida em memória, pelo que reiniciar a API termina as sessões ativas e esta configuração destina-se a uma única instância.
+
+Para produção, ativa `SPRING_PROFILES_ACTIVE=prod`, define `IDEIAS_DB_URL`, `IDEIAS_DB_USER`, `IDEIAS_DB_PASSWORD` e `IDEIAS_CORS_ALLOWED_ORIGINS` (origens separadas por vírgulas) e serve o frontend por HTTPS numa origem indicada. O perfil de produção desativa H2 Console e Swagger e valida o esquema em vez de o alterar automaticamente. Cria/aplica migrações de base de dados antes do primeiro arranque. Não uses as credenciais H2 de desenvolvimento em produção.
+
+A recuperação de palavra-passe por email continua assinalada como indisponível na página, pois o projeto não inclui um fornecedor de email nem credenciais SMTP; não é seguro permitir redefinição apenas com o endereço de email.

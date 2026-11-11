@@ -3,6 +3,7 @@ package Ideias.controller;
 import Ideias.entities.Cliente;
 import Ideias.entities.Utilizador;
 import Ideias.repositories.UtilizadorRepository;
+import Ideias.security.ApiTokenService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ class UtilizadorControllerTest {
 
     @Autowired
     private UtilizadorRepository utilizadorRepository;
+    @Autowired private ApiTokenService tokens;
 
     private Cliente cliente;
 
@@ -46,14 +48,13 @@ class UtilizadorControllerTest {
     @Test
     void testCriar() throws Exception {
 
-        mockMvc.perform(post("/api/utilizadores")
+        mockMvc.perform(post("/api/auth/registo")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
                                     "email":"novo@exemplo.com",
                                     "nome":"Maria",
-                                    "password":"abc123",
-                                    "tipo":"CLIENTE"
+                                    "password":"abc123"
                                 }
                                 """))
                 .andExpect(status().isOk())
@@ -64,7 +65,7 @@ class UtilizadorControllerTest {
     @Test
     void testAtualizar() throws Exception {
 
-        mockMvc.perform(put("/api/utilizadores/" + cliente.getId())
+        mockMvc.perform(put("/api/utilizadores/" + cliente.getId()).header("Authorization", auth())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -82,7 +83,7 @@ class UtilizadorControllerTest {
     @Test
     void testListarTodos() throws Exception {
 
-        mockMvc.perform(get("/api/utilizadores"))
+        mockMvc.perform(get("/api/utilizadores").header("Authorization", auth()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].nome").value("João"));
     }
@@ -90,7 +91,7 @@ class UtilizadorControllerTest {
     @Test
     void testDetalhes() throws Exception {
 
-        mockMvc.perform(get("/api/utilizadores/" + cliente.getId()))
+        mockMvc.perform(get("/api/utilizadores/" + cliente.getId()).header("Authorization", auth()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.nome").value("João"))
                 .andExpect(jsonPath("$.email").value("teste@exemplo.com"));
@@ -99,7 +100,7 @@ class UtilizadorControllerTest {
     @Test
     void testRemover() throws Exception {
 
-        mockMvc.perform(delete("/api/utilizadores/" + cliente.getId()))
+        mockMvc.perform(delete("/api/utilizadores/" + cliente.getId()).header("Authorization", auth()))
                 .andExpect(status().isNoContent());
 
         List<Utilizador> lista = utilizadorRepository.findAll();
@@ -135,7 +136,7 @@ class UtilizadorControllerTest {
 
     @Test
     void atualizarPerfilSemSubstituirCredenciais() throws Exception {
-        mockMvc.perform(put("/api/utilizadores/" + cliente.getId() + "/perfil")
+        mockMvc.perform(put("/api/utilizadores/" + cliente.getId() + "/perfil").header("Authorization", auth())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"nome":"João Novo","email":"joao.novo@exemplo.com"}
@@ -147,6 +148,8 @@ class UtilizadorControllerTest {
         org.junit.jupiter.api.Assertions.assertEquals("123456",
                 utilizadorRepository.findById(cliente.getId()).orElseThrow().getPassword());
     }
+
+    private String auth() { return "Bearer " + tokens.issue(cliente.getId()); }
 
     @Test
     void permitirCorsParaFrontendLocal() throws Exception {

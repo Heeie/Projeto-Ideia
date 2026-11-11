@@ -11,23 +11,15 @@
     <link rel="stylesheet" href="css/mensagens.css">
     <script src="Javascript/api.js" defer></script>
     <script src="Javascript/mensagens.js" defer></script>
+    <link rel="stylesheet" href="css/design-system.css">
 </head>
 
 <body>
 
     <!-- CABEÇALHO -->
     <header class="bar_alta">
-
-        <button class="btnVoltar" onclick="location.href='body.html'">
-            ← Voltar
-        </button>
-
-        <h1 class="titulo">
-            <a href="body.html">Ideias</a>
-        </h1>
-
-        <span class="tituloPagina">Mensagens privadas</span>
-
+        <a href="body.html" class="logo"><img src="images/lampada-de-ideia.png" alt=""><span>Ideias</span></a>
+        <span class="tituloPagina">Mensagens</span>
     </header>
 
 
@@ -51,71 +43,7 @@
                 placeholder="Pesquisar conversas..."
                 aria-label="Pesquisar conversas">
 
-            <div id="listaConversas">
-
-                <button class="conversa ativa"
-                        data-id="1"
-                        data-nome="Ana Silva"
-                        data-avatar="👩"
-                        data-mensagens="Olá! Vi a tua ideia e achei muito interessante.|Obrigado! Ainda estou a desenvolvê-la.|Se quiseres, podemos trabalhar nela juntos."
-                        type="button">
-
-                    <span class="avatar">👩</span>
-
-                    <span class="info-conversa">
-                        <strong>Ana Silva</strong>
-                        <span class="ultimaMensagem">
-                            Se quiseres, podemos trabalhar...
-                        </span>
-                    </span>
-
-                    <span class="hora">10:42</span>
-
-                </button>
-
-
-                <button class="conversa"
-                        data-id="2"
-                        data-nome="Miguel Costa"
-                        data-avatar="👨"
-                        data-mensagens="Olá! Tenho uma ideia para uma aplicação.|Conta-me mais sobre ela!"
-                        type="button">
-
-                    <span class="avatar">👨</span>
-
-                    <span class="info-conversa">
-                        <strong>Miguel Costa</strong>
-                        <span class="ultimaMensagem">
-                            Conta-me mais sobre ela!
-                        </span>
-                    </span>
-
-                    <span class="hora">Ontem</span>
-
-                </button>
-
-
-                <button class="conversa"
-                        data-id="3"
-                        data-nome="Sofia Martins"
-                        data-avatar="👩‍💻"
-                        data-mensagens="Já viste o novo grupo de programação?|Ainda não, vou ver!"
-                        type="button">
-
-                    <span class="avatar">👩‍💻</span>
-
-                    <span class="info-conversa">
-                        <strong>Sofia Martins</strong>
-                        <span class="ultimaMensagem">
-                            Ainda não, vou ver!
-                        </span>
-                    </span>
-
-                    <span class="hora">Seg.</span>
-
-                </button>
-
-            </div>
+            <div id="listaConversas" aria-live="polite"></div>
 
             <p id="semConversas" hidden>
                 Não foram encontradas conversas.
@@ -149,26 +77,8 @@
             </div>
 
 
-            <div id="areaMensagens" class="area-mensagens"
-                 aria-live="polite" aria-label="Mensagens da conversa">
-
-                <p class="separador-data">Hoje</p>
-
-                <div class="mensagem recebida">
-                    <p>Olá! Vi a tua ideia e achei muito interessante.</p>
-                    <span>10:35</span>
-                </div>
-
-                <div class="mensagem enviada">
-                    <p>Obrigado! Ainda estou a desenvolvê-la.</p>
-                    <span>10:38</span>
-                </div>
-
-                <div class="mensagem recebida">
-                    <p>Se quiseres, podemos trabalhar nela juntos.</p>
-                    <span>10:42</span>
-                </div>
-
+            <div id="areaMensagens" class="area-mensagens" aria-live="polite" aria-label="Mensagens da conversa">
+                <p class="separador-data">Seleciona uma conversa para começar.</p>
             </div>
 
 

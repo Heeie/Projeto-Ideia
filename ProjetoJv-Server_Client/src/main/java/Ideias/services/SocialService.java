@@ -12,6 +12,7 @@ import Ideias.dto.*;
 import Ideias.entities.*;
 import Ideias.exceptions.ConflictException;
 import Ideias.exceptions.ResourceNotFoundException;
+import Ideias.exceptions.ForbiddenException;
 import Ideias.repositories.*;
 
 @Service
@@ -37,29 +38,30 @@ public class SocialService {
         this.messages = messages; this.preferences = preferences; this.notifications = notifications;
     }
 
-    public List<Ideia> favoritos(Long userId) { return user(userId).getIdeiasFav().stream().toList(); }
+    public List<Ideia> favoritos(Long userId) { return user(userId).getIdeiasFav().stream().filter(i -> acessivel(i, userId)).toList(); }
     public boolean favorito(Long userId, Long ideaId, boolean save) {
-        Utilizador user = user(userId); Ideia idea = idea(ideaId);
+        Utilizador user = user(userId); Ideia idea = idea(ideaId); exigirAcesso(idea, userId);
         if (save) return user.getIdeiasFav().add(idea);
         user.getIdeiasFav().remove(idea); return false;
     }
     public int gostos(Long ideaId) { return idea(ideaId).getGostadaPor().size(); }
+    public void exigirAcessoIdeia(Long ideaId, Long userId) { exigirAcesso(idea(ideaId), userId); }
     public boolean gostado(Long ideaId, Long userId) {
         return idea(ideaId).getGostadaPor().stream().anyMatch(user -> user.getId().equals(userId));
     }
     public int gostar(Long ideaId, Long userId, boolean like) {
-        Ideia idea = idea(ideaId); Utilizador user = user(userId);
+        Ideia idea = idea(ideaId); exigirAcesso(idea, userId); Utilizador user = user(userId);
         if (like) user.getIdeiasGostadas().add(idea); else user.getIdeiasGostadas().remove(idea);
         return idea.getGostadaPor().size();
     }
 
     public List<ComentarioResponseDto> listarComentarios(Long ideaId, Long userId) {
-        idea(ideaId);
+        exigirAcesso(idea(ideaId), userId);
         return comments.findByIdeia_IdOrderByCriadoEmAsc(ideaId).stream()
                 .map(comment -> comentarioDto(comment, userId)).toList();
     }
     public ComentarioResponseDto comentar(Long ideaId, ComentarioCriarDto dto) {
-        Ideia idea = idea(ideaId); Utilizador author = user(dto.autorId());
+        Ideia idea = idea(ideaId); exigirAcesso(idea, dto.autorId()); Utilizador author = user(dto.autorId());
         Comentario comment = new Comentario(); comment.setIdeia(idea); comment.setAutor(author);
         comment.setTexto(dto.texto().trim()); comment = comments.save(comment);
         if (!idea.getCliente().getId().equals(author.getId()))
@@ -68,11 +70,13 @@ public class SocialService {
     }
     public void removerComentario(Long commentId, Long userId) {
         Comentario comment = comments.findById(commentId).orElseThrow(() -> new ResourceNotFoundException("Comentário não encontrado."));
+        exigirAcesso(comment.getIdeia(), userId);
         if (!comment.getAutor().getId().equals(userId)) throw new IllegalArgumentException("Só o autor pode remover o comentário.");
         comments.delete(comment);
     }
     public boolean gostarComentario(Long commentId, Long userId, boolean like) {
         Comentario comment = comments.findById(commentId).orElseThrow(() -> new ResourceNotFoundException("Comentário não encontrado."));
+        exigirAcesso(comment.getIdeia(), userId);
         Utilizador user = user(userId);
         if (like) return comment.getGostadaPor().add(user);
         comment.getGostadaPor().remove(user); return false;
@@ -213,4 +217,6 @@ public class SocialService {
     }
     private Utilizador user(Long id) { return users.findById(id).orElseThrow(() -> new ResourceNotFoundException("Utilizador não encontrado.")); }
     private Ideia idea(Long id) { return ideas.findById(id).orElseThrow(() -> new ResourceNotFoundException("Ideia não encontrada.")); }
+    private boolean acessivel(Ideia idea, Long userId) { return idea.getEstado() == Ideias.enums.IdeiaStatus.PUBLICA || idea.getCliente().getId().equals(userId); }
+    private void exigirAcesso(Ideia idea, Long userId) { if (!acessivel(idea, userId)) throw new ForbiddenException("Não tens acesso a esta ideia."); }
 }

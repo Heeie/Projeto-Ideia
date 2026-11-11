@@ -6,4 +6,5 @@ import Ideias.entities.Notificacao;
 
 public interface NotificacaoRepository extends JpaRepository<Notificacao, Long> {
     List<Notificacao> findByDestinatario_IdOrderByCriadoEmDesc(Long utilizadorId);
+    List<Notificacao> findByDestinatario_Id(Long utilizadorId);
 }
