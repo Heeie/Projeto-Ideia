@@ -8,7 +8,9 @@
     <title>Criar Ideia</title>
 
     <link rel="stylesheet" href="css/criarIdeia.css">
-    <script src="Javascript/CriarIdeia..js" defer></script>
+    <script src="Javascript/api.js" defer></script>
+    <script src="Javascript/ideias.js" defer></script>
+    <script src="Javascript/criarIdeia.js" defer></script>
 </head>
 
 <body>
@@ -64,6 +66,15 @@
 
                 </div>
 
+                <div class="campo">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="">Escolhe uma categoria</option>
+                        <option>Tecnologia</option><option>Arte</option><option>Comunidade</option>
+                        <option>Educação</option><option>Ambiente</option><option>Negócio</option><option>Outra</option>
+                    </select>
+                </div>
+
 
                 <!-- Descrição -->
                 <div class="campo">
@@ -108,7 +119,7 @@
                             type="file"
                             id="img"
                             name="img"
-                            accept="image/*"
+                            accept="image/jpeg,image/png,image/webp"
                         >
 
                     </div>
@@ -159,58 +170,6 @@
 
     </main>
 
-
-    <script>
-
-        const inputImagem = document.getElementById("img");
-        const previewContainer =
-            document.getElementById("preview-container");
-
-        const preview =
-            document.getElementById("preview");
-
-
-        inputImagem.addEventListener("change", function () {
-
-            const ficheiro = this.files[0];
-
-            if (!ficheiro) {
-
-                previewContainer.style.display = "none";
-
-                return;
-            }
-
-
-            if (!ficheiro.type.startsWith("image/")) {
-
-                alert("Por favor, seleciona uma imagem válida.");
-
-                this.value = "";
-
-                previewContainer.style.display = "none";
-
-                return;
-            }
-
-
-            const reader = new FileReader();
-
-
-            reader.onload = function (event) {
-
-                preview.src = event.target.result;
-
-                previewContainer.style.display = "block";
-
-            };
-
-
-            reader.readAsDataURL(ficheiro);
-
-        });
-
-    </script>
 
 </body>
 

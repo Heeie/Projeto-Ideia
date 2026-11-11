@@ -1,24 +1,20 @@
 package Ideias.entities;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 
-import Ideias.entities.Ideia;
-
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-
 import jakarta.persistence.Table;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import java.util.Set;
+import java.util.HashSet;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -35,18 +31,27 @@ public class Utilizador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 254)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 80)
     private String nome;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String password;
 
 
-    @OneToMany(mappedBy = "utilizador")
-    private List<Ideia> ideiasFav = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name = "utilizador_favoritos",
+        joinColumns = @JoinColumn(name = "utilizador_id"),
+        inverseJoinColumns = @JoinColumn(name = "ideia_id"))
+    private Set<Ideia> ideiasFav = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "utilizador_gostos_ideias",
+        joinColumns = @JoinColumn(name = "utilizador_id"),
+        inverseJoinColumns = @JoinColumn(name = "ideia_id"))
+    private Set<Ideia> ideiasGostadas = new HashSet<>();
     
 
     public Utilizador() {}
@@ -57,13 +62,17 @@ public class Utilizador {
         this.password = password;
     }
     
-    public List<Ideia> getIdeiasFav() {
+    public Set<Ideia> getIdeiasFav() {
         return ideiasFav;
     }
 
-    public void setIdeiasFav(List<Ideia> ideiasFav) {
+    public void setIdeiasFav(Set<Ideia> ideiasFav) {
         this.ideiasFav = ideiasFav;
     }
+
+    public Set<Ideia> getIdeiasGostadas() { return ideiasGostadas; }
+
+    public void setIdeiasGostadas(Set<Ideia> ideiasGostadas) { this.ideiasGostadas = ideiasGostadas; }
 
     public Long getId() {
         return id;

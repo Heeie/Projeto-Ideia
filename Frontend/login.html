@@ -9,6 +9,7 @@
     <title>Login | Ideias</title>
 
     <link rel="stylesheet" href="css/login.css">
+    <script src="Javascript/api.js" defer></script>
     <script src="Javascript/login.js" defer></script>
 </head>
 
@@ -50,14 +51,14 @@
             <form id="formu">
 
                 <div class="campo">
-                    <label for="nome">Nome de utilizador</label>
+                    <label for="nome">Email</label>
 
                     <input
-                        type="text"
+                        type="email"
                         id="nome"
                         name="nome"
-                        placeholder="Escreve o teu nome de utilizador"
-                        autocomplete="username"
+                        placeholder="Escreve o email da tua conta"
+                        autocomplete="email"
                         required
                     >
                 </div>
@@ -83,6 +84,7 @@
                 </button>
 
             </form>
+            <p id="mensagem" role="status" aria-live="polite"></p>
 
 
             <div class="separador">

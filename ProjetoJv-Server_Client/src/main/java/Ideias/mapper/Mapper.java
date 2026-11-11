@@ -27,7 +27,7 @@ public class Mapper {
                 utilizador.getId(),
                 utilizador.getEmail(),
                 utilizador.getNome(),
-                utilizador.getPassword(),
+                null, // Credenciais nunca fazem parte de respostas da API.
                 tipo
         );
     }
@@ -81,6 +81,7 @@ public class Mapper {
         	    ideia.getId(),
         	    ideia.getNome(),
         	    ideia.getDescricao(),
+                ideia.getImagem(),
         	    ideia.getCategoria(),
         	    ideia.getEstado(),
         	    ideia.getCliente() != null ? ideia.getCliente().getId() : null
@@ -106,6 +107,7 @@ public class Mapper {
 
         ideia.setNome(dto.nome());
         ideia.setDescricao(dto.descricao());
+        ideia.setImagem(dto.imagem());
         ideia.setCategoria(dto.categoria());
         ideia.setEstado(dto.estado());
 

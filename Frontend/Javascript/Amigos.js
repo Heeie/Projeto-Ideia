@@ -1,47 +1,11 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const amigos = document.getElementById("Amigos");
-    const pesquisarAmigos = document.getElementById("PesquisarAmigo");
-    const pedidosAmigos = document.getElementById("PedidoAmizade");
-   
-    const amigosBtn = document.getElementById("amigosPage");
-    const pesquisaBtn = document.getElementById("pesquisaPage");
-    const pedidosBtn = document.getElementById("pedidosPage");
-
-    // amigosPage , pesquisaPage , pedidosPage
-    pesquisarAmigos.style.display = "none";
-    pedidosAmigos.style.display = "none";
-    amigos.style.display = "block"; 
-
-    amigosBtn.addEventListener("click", function () {
-        if ( amigos.style.display === "none") {
-            amigos.style.display = "block";
-            pesquisarAmigos.style.display = "none";
-            pedidosAmigos.style.display = "none";
-        } else {
-            amigos.style.display = "block";
-        }
-    });
-
-    pesquisaBtn.addEventListener("click", function () {
-        if ( pesquisarAmigos.style.display === "none") {
-            amigos.style.display = "none";
-            pesquisarAmigos.style.display = "block";
-            pedidosAmigos.style.display = "none";
-        } else {
-            pesquisarAmigos.style.display = "block";
-        }
-    });
-    
-    pedidosBtn.addEventListener("click", function () {
-        if ( pedidosAmigos.style.display === "none") {
-            amigos.style.display = "none";
-            pesquisarAmigos.style.display = "none" ;
-            pedidosAmigos.style.display = "block";
-        } else {
-            pedidosAmigos.style.display = "block";
-        }
-    });
+document.addEventListener("DOMContentLoaded",async()=>{
+ const current=IdeiasAPI.current();if(!current){location.href="login.html";return;}
+ const friendsRoot=document.querySelector("#Amigos .ListAmigos"),searchRoot=document.querySelector("#PesquisarAmigo .ListAmigos"),requestsRoot=document.querySelector("#PedidoAmizade .ListAmigos");let users=[],relationships=[];
+ const load=async()=>{[users,relationships]=await Promise.all([IdeiasAPI.request("/api/utilizadores"),IdeiasAPI.social.friendships(current.id)]);render();};
+ const card=(name,label,buttonText,action)=>{const el=document.createElement("article");el.className="amigoConta";const avatar=document.createElement("div");avatar.className="avatar";avatar.textContent=(name||"?").slice(0,1).toUpperCase();const details=document.createElement("div"),title=document.createElement("h2"),status=document.createElement("p");details.className="dadosAmigo";title.textContent=name;status.textContent=label;details.append(title,status);const button=document.createElement("button");button.type="button";button.textContent=buttonText;button.onclick=async()=>{try{await action();await load();}catch(e){alert(e.message);}};el.append(avatar,details,button);return el;};
+ const render=()=>{friendsRoot.replaceChildren();searchRoot.replaceChildren();requestsRoot.replaceChildren();const accepted=relationships.filter(r=>r.estado==="ACEITE");if(!accepted.length)friendsRoot.innerHTML='<p class="lista-vazia">Ainda não tens amizades aceites.</p>';accepted.forEach(r=>{const other=r.requerenteId===current.id?{id:r.destinatarioId,nome:r.destinatarioNome}:{id:r.requerenteId,nome:r.requerenteNome};friendsRoot.append(card(other.nome,"Amigo da comunidade","Remover",()=>IdeiasAPI.social.removeFriend(r.id,current.id)));});
+ const query=document.getElementById("nomeU").value.trim().toLocaleLowerCase("pt-PT"),related=new Set(relationships.map(r=>r.requerenteId===current.id?r.destinatarioId:r.requerenteId));const matches=users.filter(u=>u.id!==current.id&&u.nome.toLocaleLowerCase("pt-PT").includes(query));if(!matches.length)searchRoot.innerHTML='<p class="lista-vazia">Escreve um nome para procurar contas.</p>';matches.forEach(u=>searchRoot.append(card(u.nome,related.has(u.id)?"Já existe um pedido ou amizade":"Utilizador da comunidade",related.has(u.id)?"Já ligado":"Pedir amizade",()=>related.has(u.id)?Promise.resolve():IdeiasAPI.social.requestFriend({requerenteId:current.id,destinatarioId:u.id}))));
+ const pending=relationships.filter(r=>r.estado==="PENDENTE");if(!pending.length)requestsRoot.innerHTML='<p class="lista-vazia">Não tens pedidos pendentes.</p>';pending.forEach(r=>{const incoming=r.destinatarioId===current.id;requestsRoot.append(card(incoming?r.requerenteNome:r.destinatarioNome,incoming?"Pedido recebido":"Pedido enviado",incoming?"Aceitar":"Cancelar",()=>incoming?IdeiasAPI.social.acceptFriend(r.id,current.id):IdeiasAPI.social.removeFriend(r.id,current.id)));});};
+ document.getElementById("barraPesquisa").addEventListener("submit",e=>{e.preventDefault();render();});document.querySelector("#PesquisarAmigo form").addEventListener("submit",e=>{e.preventDefault();render();});document.getElementById("nomeA").addEventListener("input",render);document.getElementById("nomeU").addEventListener("input",render);
+ const show=(section,button)=>{document.querySelectorAll(".pagina").forEach(p=>p.style.display=p.id===section?"block":"none");document.querySelectorAll(".btnLateral").forEach(b=>b.classList.toggle("ativo",b.id===button));};document.getElementById("amigosPage").onclick=()=>show("Amigos","amigosPage");document.getElementById("pesquisaPage").onclick=()=>show("PesquisarAmigo","pesquisaPage");document.getElementById("pedidosPage").onclick=()=>show("PedidoAmizade","pedidosPage");show("Amigos","amigosPage");try{await load();}catch(e){friendsRoot.textContent=e.message;}
 });
-
-
-

@@ -8,6 +8,8 @@
     <title>Ideias</title>
 
     <link rel="stylesheet" href="css/home.css">
+    <script src="Javascript/api.js" defer></script>
+    <script src="Javascript/ideias.js" defer></script>
     <script src="Javascript/home.js" defer></script>
 </head>
 
@@ -97,7 +99,7 @@
                 🔑 Recuperar Palavra-passe
             </button>
 
-            <button class="btnAba" onclick="location.href='login.html'">
+            <button class="btnAba" id="terminarSessao">
                 🚪 Terminar Sessão
             </button>
 
@@ -148,7 +150,8 @@
 
         <div id="ideiasScroll">
 
-            <!-- IDEIA 1 -->
+            <!-- Os cartões são carregados a partir das ideias publicadas. -->
+            <!--
             <article class="ideia"
                      onclick="location.href='ideiaPage.html?id=1'"
                      role="link"
@@ -170,7 +173,7 @@
                         onclick="event.stopPropagation()">
                     ☆
                 </button>
-            </article>
+            </article>-->
 
 
             <!-- IDEIA 2 -->

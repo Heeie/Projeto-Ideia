@@ -19,9 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         mensagem.textContent =
-            "O formulário está válido. A recuperação por email ainda não está ligada ao servidor.";
+            "A recuperação por email ainda não está ligada ao servidor. Podes regressar ao login ou criar uma nova conta para esta demonstração.";
 
-        mensagem.className = "erro";
+        mensagem.className = "info";
         mensagem.style.display = "block";
     });
 

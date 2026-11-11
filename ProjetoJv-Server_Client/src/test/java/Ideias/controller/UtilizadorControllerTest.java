@@ -106,4 +106,54 @@ class UtilizadorControllerTest {
 
         assertTrue(lista.isEmpty());
     }
+
+    @Test
+    void registarEIniciarSessaoSemExporPassword() throws Exception {
+        mockMvc.perform(post("/api/auth/registo")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"nome":"Maria","email":"maria@exemplo.com","password":"password123"}
+                                """))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.email").value("maria@exemplo.com"))
+                .andExpect(jsonPath("$.password").doesNotExist());
+
+        String passwordGuardada = utilizadorRepository.findByEmail("maria@exemplo.com")
+                .orElseThrow().getPassword();
+        org.junit.jupiter.api.Assertions.assertNotEquals("password123", passwordGuardada);
+        org.junit.jupiter.api.Assertions.assertTrue(passwordGuardada.startsWith("pbkdf2-sha256$"));
+
+        mockMvc.perform(post("/api/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"email":"MARIA@EXEMPLO.COM","password":"password123"}
+                                """))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.nome").value("Maria"))
+                .andExpect(jsonPath("$.password").doesNotExist());
+    }
+
+    @Test
+    void atualizarPerfilSemSubstituirCredenciais() throws Exception {
+        mockMvc.perform(put("/api/utilizadores/" + cliente.getId() + "/perfil")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"nome":"João Novo","email":"joao.novo@exemplo.com"}
+                                """))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.nome").value("João Novo"))
+                .andExpect(jsonPath("$.password").doesNotExist());
+
+        org.junit.jupiter.api.Assertions.assertEquals("123456",
+                utilizadorRepository.findById(cliente.getId()).orElseThrow().getPassword());
+    }
+
+    @Test
+    void permitirCorsParaFrontendLocal() throws Exception {
+        mockMvc.perform(options("/api/ideias")
+                        .header("Origin", "http://localhost:5500")
+                        .header("Access-Control-Request-Method", "GET"))
+                .andExpect(status().isOk())
+                .andExpect(header().string("Access-Control-Allow-Origin", "http://localhost:5500"));
+    }
 }

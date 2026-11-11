@@ -1,11 +1,10 @@
 package Ideias.entities;
 
-import Ideias.entities.Cliente;
 import Ideias.enums.CategoriaIdeia;
 import Ideias.enums.IdeiaStatus;
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import Ideias.enums.IdeiaStatus;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 public class Ideia {
@@ -14,7 +13,7 @@ public class Ideia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 120)
     private String nome;
 
     @Enumerated(EnumType.STRING)
@@ -25,18 +24,21 @@ public class Ideia {
     @Column(nullable = false)
     private IdeiaStatus estado;
 
-    @Column(nullable = true)
+    @Column(length = 5000)
     private String descricao;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    @JsonBackReference
+    @Column(columnDefinition = "TEXT")
+    private String imagem;
+
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
-    
-    @ManyToOne
-    @JoinColumn(name = "utilizador_favorito_id")
-    private Utilizador utilizador;
+    @ManyToMany(mappedBy = "ideiasFav")
+    private Set<Utilizador> favoritaPor = new HashSet<>();
+
+    @ManyToMany(mappedBy = "ideiasGostadas")
+    private Set<Utilizador> gostadaPor = new HashSet<>();
     
     public Ideia() {}
 
@@ -88,6 +90,10 @@ public class Ideia {
         this.descricao = descricao;
     }
 
+    public String getImagem() { return imagem; }
+
+    public void setImagem(String imagem) { this.imagem = imagem; }
+
    
 
     public Cliente getCliente() {
@@ -98,13 +104,9 @@ public class Ideia {
         this.cliente = cliente;
     }
     
-    public Utilizador getUtilizador() {
-        return utilizador;
-    }
+    public Set<Utilizador> getFavoritaPor() { return favoritaPor; }
 
-    public void setUtilizador(Utilizador utilizador) {
-        this.utilizador = utilizador;
-    }
+    public Set<Utilizador> getGostadaPor() { return gostadaPor; }
 
 
 }

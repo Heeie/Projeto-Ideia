@@ -6,54 +6,49 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import Ideias.dto.IdeiaDto;
+import Ideias.dto.IdeiaResponseDto;
 import Ideias.entities.Ideia;
 import Ideias.services.IdeiaService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/ideias")
 public class IdeiaController {
-
     private final IdeiaService ideiaService;
 
-    public IdeiaController(IdeiaService ideiaService) {
-        this.ideiaService = ideiaService;
-    }
+    public IdeiaController(IdeiaService ideiaService) { this.ideiaService = ideiaService; }
 
-    // Criar ideia
     @PostMapping
-    public ResponseEntity<Ideia> criar(@RequestBody IdeiaDto dto) {
-        return ResponseEntity.ok(ideiaService.criarIdeia(dto));
+    public ResponseEntity<IdeiaResponseDto> criar(@Valid @RequestBody IdeiaDto dto) {
+        return ResponseEntity.ok(resposta(ideiaService.criarIdeia(dto)));
     }
 
-    // Listar todas
     @GetMapping
-    public List<Ideia> listar() {
-        return ideiaService.getAll();
+    public List<IdeiaResponseDto> listar() {
+        return ideiaService.getAll().stream().map(IdeiaController::resposta).toList();
     }
 
-    // Obter por id
     @GetMapping("/{id}")
-    public ResponseEntity<Ideia> detalhes(@PathVariable Long id) {
-        return ResponseEntity.ok(ideiaService.getById(id));
+    public ResponseEntity<IdeiaResponseDto> detalhes(@PathVariable Long id) {
+        return ResponseEntity.ok(resposta(ideiaService.getById(id)));
     }
 
-    // Atualizar
     @PutMapping("/{id}")
-    public ResponseEntity<Ideia> atualizar(
-            @PathVariable Long id,
-            @RequestBody IdeiaDto dto) {
-
-        return ResponseEntity.ok(
-                ideiaService.atualizarIdeia(id, dto)
-        );
+    public ResponseEntity<IdeiaResponseDto> atualizar(@PathVariable Long id,
+            @Valid @RequestBody IdeiaDto dto) {
+        return ResponseEntity.ok(resposta(ideiaService.atualizarIdeia(id, dto)));
     }
 
-    // Eliminar
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remover(@PathVariable Long id) {
-
         ideiaService.removerIdeia(id);
-
         return ResponseEntity.noContent().build();
+    }
+
+    public static IdeiaResponseDto resposta(Ideia ideia) {
+        return new IdeiaResponseDto(ideia.getId(), ideia.getNome(), ideia.getDescricao(), ideia.getImagem(),
+                ideia.getCategoria(), ideia.getEstado(),
+                ideia.getCliente() == null ? null : ideia.getCliente().getId(),
+                ideia.getCliente() == null ? null : ideia.getCliente().getNome());
     }
 }

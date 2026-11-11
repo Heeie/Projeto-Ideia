@@ -84,6 +84,25 @@ class IdeiaControllerTest {
     }
 
     @Test
+    void criarIdeiaComImagemParaFrontend() throws Exception {
+        mockMvc.perform(post("/api/ideias")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                  "nome":"Ideia ilustrada",
+                                  "descricao":"Descrição com imagem",
+                                  "imagem":"data:image/png;base64,aGVsbG8=",
+                                  "categoria":"TECNOLOGIA",
+                                  "estado":"PUBLICA",
+                                  "clienteId":%d
+                                }
+                                """.formatted(cliente.getId())))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.imagem").value("data:image/png;base64,aGVsbG8="))
+                .andExpect(jsonPath("$.clienteNome").value("João"));
+    }
+
+    @Test
     void testAtualizar() throws Exception {
 
         mockMvc.perform(put("/api/ideias/" + ideia.getId())
